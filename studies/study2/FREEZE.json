@@ -1,0 +1,10 @@
+{
+  "frozen_at_utc": "2026-10-11T14:32:03.438741+00:00",
+  "baseline_commit": "9bdee8f250e1157a99d6f7dece42ff48bc2a64d0",
+  "status": "before_new_scientific_code_pilot_final_test",
+  "sha256": {
+    "PROTOCOL.md": "5a909490c107659fe9cca46ca7cdfed7b524abd75d123de3de635322f5027bde",
+    "MATHEMATICS.md": "3132d6bd5a757c541e2d28d3a7e60ff41828d8390906d1569ed150003692b4ee",
+    "SOURCES.md": "a53f3d5e59be3dd49017316eba8f560397dd3f40e9953f5fa4b716c932720f03"
+  }
+}
