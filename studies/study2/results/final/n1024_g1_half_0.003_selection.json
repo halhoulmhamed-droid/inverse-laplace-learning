@@ -1,0 +1,1518 @@
+{
+  "selected": {
+    "D": {
+      "method": "D",
+      "index": 0,
+      "parameter": 1e-08,
+      "norm": 211.73544710910528,
+      "valid": true,
+      "failure": null,
+      "score": 0.1267138338654166
+    },
+    "F": {
+      "method": "F",
+      "index": 4,
+      "parameter": 7.847599703514607e-07,
+      "norm": 71.79565416780984,
+      "valid": true,
+      "failure": null,
+      "score": 0.04357223074930408
+    },
+    "O": {
+      "method": "O",
+      "index": 4,
+      "parameter": 7.847599703514607e-07,
+      "norm": 87.70581801265975,
+      "valid": true,
+      "failure": null,
+      "score": 0.006494353158995138
+    },
+    "L": {
+      "method": "L",
+      "index": 5,
+      "parameter": 2.335721469090121e-06,
+      "norm": 90.9345956364793,
+      "valid": true,
+      "failure": null,
+      "score": 0.006546826094431466
+    },
+    "LP": {
+      "method": "LP",
+      "index": 5,
+      "parameter": 2.335721469090121e-06,
+      "norm": 73.98449181008668,
+      "valid": true,
+      "failure": null,
+      "score": 0.04359428119299101
+    },
+    "H1": {
+      "method": "H1",
+      "index": 14,
+      "parameter": 0.012742749857031322,
+      "norm": 95.1767787378897,
+      "valid": true,
+      "failure": null,
+      "score": 0.00838348763784483
+    },
+    "signed": {
+      "method": "signed",
+      "index": 12,
+      "parameter": 335.9818286283781,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    "bounded": {
+      "method": "bounded",
+      "index": 12,
+      "parameter": 335.9818286283781,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    }
+  },
+  "candidates": [
+    {
+      "method": "D",
+      "index": 0,
+      "parameter": 1e-08,
+      "norm": 211.73544710910528,
+      "valid": true,
+      "failure": null,
+      "score": 0.1267138338654166
+    },
+    {
+      "method": "F",
+      "index": 0,
+      "parameter": 1e-08,
+      "norm": 75.61676992063364,
+      "valid": true,
+      "failure": null,
+      "score": 0.043576217642706694
+    },
+    {
+      "method": "O",
+      "index": 0,
+      "parameter": 1e-08,
+      "norm": 92.9788636838433,
+      "valid": true,
+      "failure": null,
+      "score": 0.006503095059886694
+    },
+    {
+      "method": "L",
+      "index": 0,
+      "parameter": 1e-08,
+      "norm": 98.72746029309828,
+      "valid": true,
+      "failure": null,
+      "score": 0.006598038471674212
+    },
+    {
+      "method": "LP",
+      "index": 0,
+      "parameter": 1e-08,
+      "norm": 79.62090561153636,
+      "valid": true,
+      "failure": null,
+      "score": 0.043619470640848076
+    },
+    {
+      "method": "D",
+      "index": 1,
+      "parameter": 2.976351441631319e-08,
+      "norm": 211.1702054538032,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671952374180023
+    },
+    {
+      "method": "F",
+      "index": 1,
+      "parameter": 2.976351441631319e-08,
+      "norm": 75.50313690908183,
+      "valid": true,
+      "failure": null,
+      "score": 0.04357590714453235
+    },
+    {
+      "method": "O",
+      "index": 1,
+      "parameter": 2.976351441631319e-08,
+      "norm": 92.82117397307644,
+      "valid": true,
+      "failure": null,
+      "score": 0.006502528424323294
+    },
+    {
+      "method": "L",
+      "index": 1,
+      "parameter": 2.976351441631319e-08,
+      "norm": 98.6450629287085,
+      "valid": true,
+      "failure": null,
+      "score": 0.006597290888677246
+    },
+    {
+      "method": "LP",
+      "index": 1,
+      "parameter": 2.976351441631319e-08,
+      "norm": 79.56144133256493,
+      "valid": true,
+      "failure": null,
+      "score": 0.043619079808371805
+    },
+    {
+      "method": "D",
+      "index": 2,
+      "parameter": 8.858667904100832e-08,
+      "norm": 209.50556530956425,
+      "valid": true,
+      "failure": null,
+      "score": 0.12673768608016064
+    },
+    {
+      "method": "F",
+      "index": 2,
+      "parameter": 8.858667904100832e-08,
+      "norm": 75.17091659803796,
+      "valid": true,
+      "failure": null,
+      "score": 0.04357506413908657
+    },
+    {
+      "method": "O",
+      "index": 2,
+      "parameter": 8.858667904100832e-08,
+      "norm": 92.3603911798579,
+      "valid": true,
+      "failure": null,
+      "score": 0.006500976238046152
+    },
+    {
+      "method": "L",
+      "index": 2,
+      "parameter": 8.858667904100832e-08,
+      "norm": 98.40191333888943,
+      "valid": true,
+      "failure": null,
+      "score": 0.006595108830690194
+    },
+    {
+      "method": "LP",
+      "index": 2,
+      "parameter": 8.858667904100832e-08,
+      "norm": 79.38596289233462,
+      "valid": true,
+      "failure": null,
+      "score": 0.04361794088258098
+    },
+    {
+      "method": "D",
+      "index": 3,
+      "parameter": 2.6366508987303554e-07,
+      "norm": 204.7027529973215,
+      "valid": true,
+      "failure": null,
+      "score": 0.12680172456938152
+    },
+    {
+      "method": "F",
+      "index": 3,
+      "parameter": 2.6366508987303554e-07,
+      "norm": 74.23156517508777,
+      "valid": true,
+      "failure": null,
+      "score": 0.043573211456292574
+    },
+    {
+      "method": "O",
+      "index": 3,
+      "parameter": 2.6366508987303554e-07,
+      "norm": 91.05970404924844,
+      "valid": true,
+      "failure": null,
+      "score": 0.006497440699504574
+    },
+    {
+      "method": "L",
+      "index": 3,
+      "parameter": 2.6366508987303554e-07,
+      "norm": 97.6961975357053,
+      "valid": true,
+      "failure": null,
+      "score": 0.006588980510422672
+    },
+    {
+      "method": "LP",
+      "index": 3,
+      "parameter": 2.6366508987303554e-07,
+      "norm": 78.8766163123152,
+      "valid": true,
+      "failure": null,
+      "score": 0.04361475818623134
+    },
+    {
+      "method": "D",
+      "index": 4,
+      "parameter": 7.847599703514607e-07,
+      "norm": 191.62772562085124,
+      "valid": true,
+      "failure": null,
+      "score": 0.12706135172209176
+    },
+    {
+      "method": "F",
+      "index": 4,
+      "parameter": 7.847599703514607e-07,
+      "norm": 71.79565416780984,
+      "valid": true,
+      "failure": null,
+      "score": 0.04357223074930408
+    },
+    {
+      "method": "O",
+      "index": 4,
+      "parameter": 7.847599703514607e-07,
+      "norm": 87.70581801265975,
+      "valid": true,
+      "failure": null,
+      "score": 0.006494353158995138
+    },
+    {
+      "method": "L",
+      "index": 4,
+      "parameter": 7.847599703514607e-07,
+      "norm": 95.74141983881306,
+      "valid": true,
+      "failure": null,
+      "score": 0.006573636368968409
+    },
+    {
+      "method": "LP",
+      "index": 4,
+      "parameter": 7.847599703514607e-07,
+      "norm": 77.46514193621773,
+      "valid": true,
+      "failure": null,
+      "score": 0.0436069231177032
+    },
+    {
+      "method": "D",
+      "index": 5,
+      "parameter": 2.335721469090121e-06,
+      "norm": 161.0169265505204,
+      "valid": true,
+      "failure": null,
+      "score": 0.1281357921826059
+    },
+    {
+      "method": "F",
+      "index": 5,
+      "parameter": 2.335721469090121e-06,
+      "norm": 66.49686565898948,
+      "valid": true,
+      "failure": null,
+      "score": 0.04359147466422684
+    },
+    {
+      "method": "O",
+      "index": 5,
+      "parameter": 2.335721469090121e-06,
+      "norm": 80.54914292865985,
+      "valid": true,
+      "failure": null,
+      "score": 0.006520505063657003
+    },
+    {
+      "method": "L",
+      "index": 5,
+      "parameter": 2.335721469090121e-06,
+      "norm": 90.9345956364793,
+      "valid": true,
+      "failure": null,
+      "score": 0.006546826094431466
+    },
+    {
+      "method": "LP",
+      "index": 5,
+      "parameter": 2.335721469090121e-06,
+      "norm": 73.98449181008668,
+      "valid": true,
+      "failure": null,
+      "score": 0.04359428119299101
+    },
+    {
+      "method": "D",
+      "index": 6,
+      "parameter": 6.951927961775605e-06,
+      "norm": 109.13107365844186,
+      "valid": true,
+      "failure": null,
+      "score": 0.1314570695755204
+    },
+    {
+      "method": "F",
+      "index": 6,
+      "parameter": 6.951927961775605e-06,
+      "norm": 57.12261321767297,
+      "valid": true,
+      "failure": null,
+      "score": 0.04371732520830847
+    },
+    {
+      "method": "O",
+      "index": 6,
+      "parameter": 6.951927961775605e-06,
+      "norm": 68.4655497988286,
+      "valid": true,
+      "failure": null,
+      "score": 0.006698066296876569
+    },
+    {
+      "method": "L",
+      "index": 6,
+      "parameter": 6.951927961775605e-06,
+      "norm": 81.59613199545741,
+      "valid": true,
+      "failure": null,
+      "score": 0.0065476910300889405
+    },
+    {
+      "method": "LP",
+      "index": 6,
+      "parameter": 6.951927961775605e-06,
+      "norm": 67.11842066648968,
+      "valid": true,
+      "failure": null,
+      "score": 0.04360287813337775
+    },
+    {
+      "method": "D",
+      "index": 7,
+      "parameter": 2.06913808111479e-05,
+      "norm": 86.15629595853802,
+      "valid": true,
+      "failure": null,
+      "score": 0.1378025598843236
+    },
+    {
+      "method": "F",
+      "index": 7,
+      "parameter": 2.06913808111479e-05,
+      "norm": 42.836476057063,
+      "valid": true,
+      "failure": null,
+      "score": 0.04422869006880979
+    },
+    {
+      "method": "O",
+      "index": 7,
+      "parameter": 2.06913808111479e-05,
+      "norm": 50.8914816410579,
+      "valid": true,
+      "failure": null,
+      "score": 0.007406689146272164
+    },
+    {
+      "method": "L",
+      "index": 7,
+      "parameter": 2.06913808111479e-05,
+      "norm": 67.61674219588014,
+      "valid": true,
+      "failure": null,
+      "score": 0.0067364130377431195
+    },
+    {
+      "method": "LP",
+      "index": 7,
+      "parameter": 2.06913808111479e-05,
+      "norm": 56.344890003355275,
+      "valid": true,
+      "failure": null,
+      "score": 0.04374247915836564
+    },
+    {
+      "method": "D",
+      "index": 8,
+      "parameter": 6.158482110660255e-05,
+      "norm": 58.86483019211437,
+      "valid": true,
+      "failure": null,
+      "score": 0.1476061570373729
+    },
+    {
+      "method": "F",
+      "index": 8,
+      "parameter": 6.158482110660255e-05,
+      "norm": 27.508428348854583,
+      "valid": true,
+      "failure": null,
+      "score": 0.04539661491785886
+    },
+    {
+      "method": "O",
+      "index": 8,
+      "parameter": 6.158482110660255e-05,
+      "norm": 32.180739137186386,
+      "valid": true,
+      "failure": null,
+      "score": 0.00901554543273659
+    },
+    {
+      "method": "L",
+      "index": 8,
+      "parameter": 6.158482110660255e-05,
+      "norm": 49.05664349108223,
+      "valid": true,
+      "failure": null,
+      "score": 0.00752849366144928
+    },
+    {
+      "method": "LP",
+      "index": 8,
+      "parameter": 6.158482110660255e-05,
+      "norm": 41.29818193246593,
+      "valid": true,
+      "failure": null,
+      "score": 0.04431648301036356
+    },
+    {
+      "method": "D",
+      "index": 9,
+      "parameter": 0.00018329807108324338,
+      "norm": 30.298813884118932,
+      "valid": true,
+      "failure": null,
+      "score": 0.16095022955126775
+    },
+    {
+      "method": "F",
+      "index": 9,
+      "parameter": 0.00018329807108324338,
+      "norm": 18.96346959003409,
+      "valid": true,
+      "failure": null,
+      "score": 0.04671603256876605
+    },
+    {
+      "method": "O",
+      "index": 9,
+      "parameter": 0.00018329807108324338,
+      "norm": 21.45760005213267,
+      "valid": true,
+      "failure": null,
+      "score": 0.010780684066166463
+    },
+    {
+      "method": "L",
+      "index": 9,
+      "parameter": 0.00018329807108324338,
+      "norm": 30.688553691494473,
+      "valid": true,
+      "failure": null,
+      "score": 0.009204456346099888
+    },
+    {
+      "method": "LP",
+      "index": 9,
+      "parameter": 0.00018329807108324338,
+      "norm": 26.295985142967044,
+      "valid": true,
+      "failure": null,
+      "score": 0.04553462166805064
+    },
+    {
+      "method": "D",
+      "index": 10,
+      "parameter": 0.0005455594781168515,
+      "norm": 22.383235653453255,
+      "valid": true,
+      "failure": null,
+      "score": 0.1751295195978287
+    },
+    {
+      "method": "F",
+      "index": 10,
+      "parameter": 0.0005455594781168515,
+      "norm": 14.945841486621926,
+      "valid": true,
+      "failure": null,
+      "score": 0.048237511167744815
+    },
+    {
+      "method": "O",
+      "index": 10,
+      "parameter": 0.0005455594781168515,
+      "norm": 16.604429602142652,
+      "valid": true,
+      "failure": null,
+      "score": 0.012599743615181758
+    },
+    {
+      "method": "L",
+      "index": 10,
+      "parameter": 0.0005455594781168515,
+      "norm": 20.84944671835324,
+      "valid": true,
+      "failure": null,
+      "score": 0.01093885577727234
+    },
+    {
+      "method": "LP",
+      "index": 10,
+      "parameter": 0.0005455594781168515,
+      "norm": 18.47879956804524,
+      "valid": true,
+      "failure": null,
+      "score": 0.04684041513761649
+    },
+    {
+      "method": "D",
+      "index": 11,
+      "parameter": 0.0016237767391887208,
+      "norm": 13.559043345048519,
+      "valid": true,
+      "failure": null,
+      "score": 0.19260435657166852
+    },
+    {
+      "method": "F",
+      "index": 11,
+      "parameter": 0.0016237767391887208,
+      "norm": 10.592631475116178,
+      "valid": true,
+      "failure": null,
+      "score": 0.05219489006216816
+    },
+    {
+      "method": "O",
+      "index": 11,
+      "parameter": 0.0016237767391887208,
+      "norm": 11.702273584599494,
+      "valid": true,
+      "failure": null,
+      "score": 0.017190304471080175
+    },
+    {
+      "method": "L",
+      "index": 11,
+      "parameter": 0.0016237767391887208,
+      "norm": 16.15603983718473,
+      "valid": true,
+      "failure": null,
+      "score": 0.012872406316753635
+    },
+    {
+      "method": "LP",
+      "index": 11,
+      "parameter": 0.0016237767391887208,
+      "norm": 14.553695730574194,
+      "valid": true,
+      "failure": null,
+      "score": 0.04847424617150292
+    },
+    {
+      "method": "D",
+      "index": 12,
+      "parameter": 0.004832930238571752,
+      "norm": 7.680288935563621,
+      "valid": true,
+      "failure": null,
+      "score": 0.2125282098715618
+    },
+    {
+      "method": "F",
+      "index": 12,
+      "parameter": 0.004832930238571752,
+      "norm": 6.4121400907245105,
+      "valid": true,
+      "failure": null,
+      "score": 0.05965538285857021
+    },
+    {
+      "method": "O",
+      "index": 12,
+      "parameter": 0.004832930238571752,
+      "norm": 7.004810258913269,
+      "valid": true,
+      "failure": null,
+      "score": 0.02599714556215844
+    },
+    {
+      "method": "L",
+      "index": 12,
+      "parameter": 0.004832930238571752,
+      "norm": 11.173905403817924,
+      "valid": true,
+      "failure": null,
+      "score": 0.017926612557038327
+    },
+    {
+      "method": "LP",
+      "index": 12,
+      "parameter": 0.004832930238571752,
+      "norm": 10.11981339484123,
+      "valid": true,
+      "failure": null,
+      "score": 0.0528231654864838
+    },
+    {
+      "method": "D",
+      "index": 13,
+      "parameter": 0.01438449888287663,
+      "norm": 5.555560553802827,
+      "valid": true,
+      "failure": null,
+      "score": 0.23389128659191205
+    },
+    {
+      "method": "F",
+      "index": 13,
+      "parameter": 0.01438449888287663,
+      "norm": 4.52248971738635,
+      "valid": true,
+      "failure": null,
+      "score": 0.06670000517871408
+    },
+    {
+      "method": "O",
+      "index": 13,
+      "parameter": 0.01438449888287663,
+      "norm": 4.802293870866203,
+      "valid": true,
+      "failure": null,
+      "score": 0.03433116828573562
+    },
+    {
+      "method": "L",
+      "index": 13,
+      "parameter": 0.01438449888287663,
+      "norm": 6.655398364282241,
+      "valid": true,
+      "failure": null,
+      "score": 0.026946227562083425
+    },
+    {
+      "method": "LP",
+      "index": 13,
+      "parameter": 0.01438449888287663,
+      "norm": 6.106811120115224,
+      "valid": true,
+      "failure": null,
+      "score": 0.060455345347785475
+    },
+    {
+      "method": "D",
+      "index": 14,
+      "parameter": 0.04281332398719387,
+      "norm": 3.0468164565081226,
+      "valid": true,
+      "failure": null,
+      "score": 0.26173624976002746
+    },
+    {
+      "method": "F",
+      "index": 14,
+      "parameter": 0.04281332398719387,
+      "norm": 3.8113851738351414,
+      "valid": true,
+      "failure": null,
+      "score": 0.0733501162101645
+    },
+    {
+      "method": "O",
+      "index": 14,
+      "parameter": 0.04281332398719387,
+      "norm": 4.000902134173516,
+      "valid": true,
+      "failure": null,
+      "score": 0.04187079892590347
+    },
+    {
+      "method": "L",
+      "index": 14,
+      "parameter": 0.04281332398719387,
+      "norm": 4.697542834978603,
+      "valid": true,
+      "failure": null,
+      "score": 0.035028842161191995
+    },
+    {
+      "method": "LP",
+      "index": 14,
+      "parameter": 0.04281332398719387,
+      "norm": 4.433244316954324,
+      "valid": true,
+      "failure": null,
+      "score": 0.06729742423471892
+    },
+    {
+      "method": "D",
+      "index": 15,
+      "parameter": 0.1274274985703132,
+      "norm": 2.2024831421285036,
+      "valid": true,
+      "failure": null,
+      "score": 0.29168624553932315
+    },
+    {
+      "method": "F",
+      "index": 15,
+      "parameter": 0.1274274985703132,
+      "norm": 2.9312055361900007,
+      "valid": true,
+      "failure": null,
+      "score": 0.09177197298484886
+    },
+    {
+      "method": "O",
+      "index": 15,
+      "parameter": 0.1274274985703132,
+      "norm": 3.070198734103788,
+      "valid": true,
+      "failure": null,
+      "score": 0.06198588536091909
+    },
+    {
+      "method": "L",
+      "index": 15,
+      "parameter": 0.1274274985703132,
+      "norm": 3.9237173771830016,
+      "valid": true,
+      "failure": null,
+      "score": 0.04296518596346498
+    },
+    {
+      "method": "LP",
+      "index": 15,
+      "parameter": 0.1274274985703132,
+      "norm": 3.7393513446716224,
+      "valid": true,
+      "failure": null,
+      "score": 0.07434379250960038
+    },
+    {
+      "method": "D",
+      "index": 16,
+      "parameter": 0.3792690190732246,
+      "norm": 1.5203168565093448,
+      "valid": true,
+      "failure": null,
+      "score": 0.32960347905188825
+    },
+    {
+      "method": "F",
+      "index": 16,
+      "parameter": 0.3792690190732246,
+      "norm": 1.8393762933656237,
+      "valid": true,
+      "failure": null,
+      "score": 0.1387184249003286
+    },
+    {
+      "method": "O",
+      "index": 16,
+      "parameter": 0.3792690190732246,
+      "norm": 1.9196211008670263,
+      "valid": true,
+      "failure": null,
+      "score": 0.11314619322191963
+    },
+    {
+      "method": "L",
+      "index": 16,
+      "parameter": 0.3792690190732246,
+      "norm": 2.9561109472686584,
+      "valid": true,
+      "failure": null,
+      "score": 0.06561066506114833
+    },
+    {
+      "method": "LP",
+      "index": 16,
+      "parameter": 0.3792690190732246,
+      "norm": 2.8226612772685096,
+      "valid": true,
+      "failure": null,
+      "score": 0.09509845473552547
+    },
+    {
+      "method": "D",
+      "index": 17,
+      "parameter": 1.1288378916846884,
+      "norm": 1.050684359645645,
+      "valid": true,
+      "failure": null,
+      "score": 0.38444893748990483
+    },
+    {
+      "method": "F",
+      "index": 17,
+      "parameter": 1.1288378916846884,
+      "norm": 1.2574569180676554,
+      "valid": true,
+      "failure": null,
+      "score": 0.20007149921860443
+    },
+    {
+      "method": "O",
+      "index": 17,
+      "parameter": 1.1288378916846884,
+      "norm": 1.2811952261251904,
+      "valid": true,
+      "failure": null,
+      "score": 0.179697534382189
+    },
+    {
+      "method": "L",
+      "index": 17,
+      "parameter": 1.1288378916846884,
+      "norm": 1.8186387223918585,
+      "valid": true,
+      "failure": null,
+      "score": 0.11973144751216036
+    },
+    {
+      "method": "LP",
+      "index": 17,
+      "parameter": 1.1288378916846884,
+      "norm": 1.7447869253082264,
+      "valid": true,
+      "failure": null,
+      "score": 0.14476475874942848
+    },
+    {
+      "method": "D",
+      "index": 18,
+      "parameter": 3.359818286283774,
+      "norm": 0.8934139796034875,
+      "valid": true,
+      "failure": null,
+      "score": 0.4519954797301463
+    },
+    {
+      "method": "F",
+      "index": 18,
+      "parameter": 3.359818286283774,
+      "norm": 1.0225209350316673,
+      "valid": true,
+      "failure": null,
+      "score": 0.27035789293897594
+    },
+    {
+      "method": "O",
+      "index": 18,
+      "parameter": 3.359818286283774,
+      "norm": 1.0337416076863228,
+      "valid": true,
+      "failure": null,
+      "score": 0.2538045224656227
+    },
+    {
+      "method": "L",
+      "index": 18,
+      "parameter": 3.359818286283774,
+      "norm": 1.2529954641989236,
+      "valid": true,
+      "failure": null,
+      "score": 0.18627261117520716
+    },
+    {
+      "method": "LP",
+      "index": 18,
+      "parameter": 3.359818286283774,
+      "norm": 1.2318761414015613,
+      "valid": true,
+      "failure": null,
+      "score": 0.2061935484943053
+    },
+    {
+      "method": "D",
+      "index": 19,
+      "parameter": 10.0,
+      "norm": 0.6180608073598828,
+      "valid": true,
+      "failure": null,
+      "score": 0.5742702477643942
+    },
+    {
+      "method": "F",
+      "index": 19,
+      "parameter": 10.0,
+      "norm": 0.705784207091684,
+      "valid": true,
+      "failure": null,
+      "score": 0.41933676441701884
+    },
+    {
+      "method": "O",
+      "index": 19,
+      "parameter": 10.0,
+      "norm": 0.7127719449229454,
+      "valid": true,
+      "failure": null,
+      "score": 0.40658725110757804
+    },
+    {
+      "method": "L",
+      "index": 19,
+      "parameter": 10.0,
+      "norm": 1.0061854733634308,
+      "valid": true,
+      "failure": null,
+      "score": 0.26397696268031634
+    },
+    {
+      "method": "LP",
+      "index": 19,
+      "parameter": 10.0,
+      "norm": 0.9954766871306843,
+      "valid": true,
+      "failure": null,
+      "score": 0.28019098284518673
+    },
+    {
+      "method": "H1",
+      "index": 0,
+      "parameter": 1e-10,
+      "norm": 419787.0408622201,
+      "valid": true,
+      "failure": null,
+      "score": 31981.02953810046
+    },
+    {
+      "method": "H1",
+      "index": 1,
+      "parameter": 3.792690190732254e-10,
+      "norm": 228490.67306633867,
+      "valid": true,
+      "failure": null,
+      "score": 9529.502305092188
+    },
+    {
+      "method": "H1",
+      "index": 2,
+      "parameter": 1.4384498882876659e-09,
+      "norm": 121401.6088469463,
+      "valid": true,
+      "failure": null,
+      "score": 2668.1030127269146
+    },
+    {
+      "method": "H1",
+      "index": 3,
+      "parameter": 5.455594781168515e-09,
+      "norm": 66744.2755631889,
+      "valid": true,
+      "failure": null,
+      "score": 784.537496356838
+    },
+    {
+      "method": "H1",
+      "index": 4,
+      "parameter": 2.0691380811147902e-08,
+      "norm": 35416.4974742566,
+      "valid": true,
+      "failure": null,
+      "score": 232.51508830185622
+    },
+    {
+      "method": "H1",
+      "index": 5,
+      "parameter": 7.847599703514623e-08,
+      "norm": 19634.91421541924,
+      "valid": true,
+      "failure": null,
+      "score": 71.01081213569505
+    },
+    {
+      "method": "H1",
+      "index": 6,
+      "parameter": 2.976351441631319e-07,
+      "norm": 10443.501075500551,
+      "valid": true,
+      "failure": null,
+      "score": 19.560602502517686
+    },
+    {
+      "method": "H1",
+      "index": 7,
+      "parameter": 1.1288378916846883e-06,
+      "norm": 5826.672801534597,
+      "valid": true,
+      "failure": null,
+      "score": 5.552613697859131
+    },
+    {
+      "method": "H1",
+      "index": 8,
+      "parameter": 4.281332398719396e-06,
+      "norm": 3122.1650903872314,
+      "valid": true,
+      "failure": null,
+      "score": 1.5770832478175898
+    },
+    {
+      "method": "H1",
+      "index": 9,
+      "parameter": 1.6237767391887242e-05,
+      "norm": 1746.7395566815965,
+      "valid": true,
+      "failure": null,
+      "score": 0.4859712538882065
+    },
+    {
+      "method": "H1",
+      "index": 10,
+      "parameter": 6.158482110660267e-05,
+      "norm": 950.5531708793494,
+      "valid": true,
+      "failure": null,
+      "score": 0.14761282698193012
+    },
+    {
+      "method": "H1",
+      "index": 11,
+      "parameter": 0.00023357214690901212,
+      "norm": 529.8109898883624,
+      "valid": true,
+      "failure": null,
+      "score": 0.04659725643798605
+    },
+    {
+      "method": "H1",
+      "index": 12,
+      "parameter": 0.0008858667904100832,
+      "norm": 296.4106066380985,
+      "valid": true,
+      "failure": null,
+      "score": 0.017544163648300887
+    },
+    {
+      "method": "H1",
+      "index": 13,
+      "parameter": 0.003359818286283788,
+      "norm": 163.06835803086804,
+      "valid": true,
+      "failure": null,
+      "score": 0.009563628776489863
+    },
+    {
+      "method": "H1",
+      "index": 14,
+      "parameter": 0.012742749857031322,
+      "norm": 95.1767787378897,
+      "valid": true,
+      "failure": null,
+      "score": 0.00838348763784483
+    },
+    {
+      "method": "H1",
+      "index": 15,
+      "parameter": 0.04832930238571752,
+      "norm": 51.38489435850492,
+      "valid": true,
+      "failure": null,
+      "score": 0.009356112791177552
+    },
+    {
+      "method": "H1",
+      "index": 16,
+      "parameter": 0.18329807108324375,
+      "norm": 31.50762615571576,
+      "valid": true,
+      "failure": null,
+      "score": 0.011838162340180213
+    },
+    {
+      "method": "H1",
+      "index": 17,
+      "parameter": 0.6951927961775619,
+      "norm": 17.034981003678332,
+      "valid": true,
+      "failure": null,
+      "score": 0.01603251654353261
+    },
+    {
+      "method": "H1",
+      "index": 18,
+      "parameter": 2.636650898730366,
+      "norm": 10.682763856602497,
+      "valid": true,
+      "failure": null,
+      "score": 0.02219479323575594
+    },
+    {
+      "method": "H1",
+      "index": 19,
+      "parameter": 10.0,
+      "norm": 6.274944728517119,
+      "valid": true,
+      "failure": null,
+      "score": 0.033535635242139566
+    },
+    {
+      "method": "signed",
+      "index": 0,
+      "parameter": 1.0,
+      "norm": 1.0000000000000004,
+      "valid": true,
+      "failure": null,
+      "score": 0.3592090149739836
+    },
+    {
+      "method": "bounded",
+      "index": 0,
+      "parameter": 1.0,
+      "norm": 1.0000000000000009,
+      "valid": true,
+      "failure": null,
+      "score": 0.35921018765687895
+    },
+    {
+      "method": "signed",
+      "index": 1,
+      "parameter": 1.6237767391887217,
+      "norm": 1.623776739188723,
+      "valid": true,
+      "failure": null,
+      "score": 0.30201305907699694
+    },
+    {
+      "method": "bounded",
+      "index": 1,
+      "parameter": 1.6237767391887217,
+      "norm": 1.6237767391887221,
+      "valid": true,
+      "failure": null,
+      "score": 0.3020142317598923
+    },
+    {
+      "method": "signed",
+      "index": 2,
+      "parameter": 2.636650898730358,
+      "norm": 2.6366508987303603,
+      "valid": true,
+      "failure": null,
+      "score": 0.258887347260397
+    },
+    {
+      "method": "bounded",
+      "index": 2,
+      "parameter": 2.636650898730358,
+      "norm": 2.6366508987303594,
+      "valid": true,
+      "failure": null,
+      "score": 0.2588885199432923
+    },
+    {
+      "method": "signed",
+      "index": 3,
+      "parameter": 4.281332398719393,
+      "norm": 4.281332398719398,
+      "valid": true,
+      "failure": null,
+      "score": 0.2355170477888131
+    },
+    {
+      "method": "bounded",
+      "index": 3,
+      "parameter": 4.281332398719393,
+      "norm": 4.281332398719396,
+      "valid": true,
+      "failure": null,
+      "score": 0.23551822047170845
+    },
+    {
+      "method": "signed",
+      "index": 4,
+      "parameter": 6.951927961775605,
+      "norm": 6.951927961775611,
+      "valid": true,
+      "failure": null,
+      "score": 0.20919986781169547
+    },
+    {
+      "method": "bounded",
+      "index": 4,
+      "parameter": 6.951927961775605,
+      "norm": 6.951927961775611,
+      "valid": true,
+      "failure": null,
+      "score": 0.20920104049459082
+    },
+    {
+      "method": "signed",
+      "index": 5,
+      "parameter": 11.28837891684689,
+      "norm": 11.288378916846902,
+      "valid": true,
+      "failure": null,
+      "score": 0.1909350493265033
+    },
+    {
+      "method": "bounded",
+      "index": 5,
+      "parameter": 11.28837891684689,
+      "norm": 11.2883789168469,
+      "valid": true,
+      "failure": null,
+      "score": 0.19093622656811465
+    },
+    {
+      "method": "signed",
+      "index": 6,
+      "parameter": 18.329807108324356,
+      "norm": 18.32980710832437,
+      "valid": true,
+      "failure": null,
+      "score": 0.17426579236865478
+    },
+    {
+      "method": "bounded",
+      "index": 6,
+      "parameter": 18.329807108324356,
+      "norm": 18.32980710832438,
+      "valid": true,
+      "failure": null,
+      "score": 0.17426696961026603
+    },
+    {
+      "method": "signed",
+      "index": 7,
+      "parameter": 29.763514416313175,
+      "norm": 29.763514416313196,
+      "valid": true,
+      "failure": null,
+      "score": 0.15753633678414314
+    },
+    {
+      "method": "bounded",
+      "index": 7,
+      "parameter": 29.763514416313175,
+      "norm": 29.7635144163132,
+      "valid": true,
+      "failure": null,
+      "score": 0.15753751402575444
+    },
+    {
+      "method": "signed",
+      "index": 8,
+      "parameter": 48.32930238571752,
+      "norm": 48.329302385717526,
+      "valid": true,
+      "failure": null,
+      "score": 0.14722143471754034
+    },
+    {
+      "method": "bounded",
+      "index": 8,
+      "parameter": 48.32930238571752,
+      "norm": 48.329302385717554,
+      "valid": true,
+      "failure": null,
+      "score": 0.14722261195915154
+    },
+    {
+      "method": "signed",
+      "index": 9,
+      "parameter": 78.47599703514611,
+      "norm": 78.47599703514614,
+      "valid": true,
+      "failure": null,
+      "score": 0.13609044995133457
+    },
+    {
+      "method": "bounded",
+      "index": 9,
+      "parameter": 78.47599703514611,
+      "norm": 78.47599703514615,
+      "valid": true,
+      "failure": null,
+      "score": 0.1360916271929459
+    },
+    {
+      "method": "signed",
+      "index": 10,
+      "parameter": 127.42749857031335,
+      "norm": 127.42749857031333,
+      "valid": true,
+      "failure": null,
+      "score": 0.12954559153071088
+    },
+    {
+      "method": "bounded",
+      "index": 10,
+      "parameter": 127.42749857031335,
+      "norm": 127.42749857031338,
+      "valid": true,
+      "failure": null,
+      "score": 0.12954676877232235
+    },
+    {
+      "method": "signed",
+      "index": 11,
+      "parameter": 206.913808111479,
+      "norm": 206.91380811147906,
+      "valid": true,
+      "failure": null,
+      "score": 0.12677031086419988
+    },
+    {
+      "method": "bounded",
+      "index": 11,
+      "parameter": 206.913808111479,
+      "norm": 206.913808111479,
+      "valid": true,
+      "failure": null,
+      "score": 0.12677148810581124
+    },
+    {
+      "method": "signed",
+      "index": 12,
+      "parameter": 335.9818286283781,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 12,
+      "parameter": 335.9818286283781,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    },
+    {
+      "method": "signed",
+      "index": 13,
+      "parameter": 545.5594781168514,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 13,
+      "parameter": 545.5594781168514,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    },
+    {
+      "method": "signed",
+      "index": 14,
+      "parameter": 885.8667904100823,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 14,
+      "parameter": 885.8667904100823,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    },
+    {
+      "method": "signed",
+      "index": 15,
+      "parameter": 1438.449888287663,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 15,
+      "parameter": 1438.449888287663,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    },
+    {
+      "method": "signed",
+      "index": 16,
+      "parameter": 2335.7214690901214,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 16,
+      "parameter": 2335.7214690901214,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    },
+    {
+      "method": "signed",
+      "index": 17,
+      "parameter": 3792.690190732246,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 17,
+      "parameter": 3792.690190732246,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    },
+    {
+      "method": "signed",
+      "index": 18,
+      "parameter": 6158.48211066026,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 18,
+      "parameter": 6158.48211066026,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    },
+    {
+      "method": "signed",
+      "index": 19,
+      "parameter": 10000.0,
+      "norm": 212.0226041746735,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671103632603625
+    },
+    {
+      "method": "bounded",
+      "index": 19,
+      "parameter": 10000.0,
+      "norm": 212.02260417467355,
+      "valid": true,
+      "failure": null,
+      "score": 0.12671221356764778
+    }
+  ]
+}

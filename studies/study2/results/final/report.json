@@ -1,0 +1,1062 @@
+{
+  "success": true,
+  "failures": [],
+  "cpu_seconds": 6.629940872,
+  "wall_seconds": 6.63587010899937,
+  "peak_rss_bytes": 83066880,
+  "bytes": 67514295,
+  "reconstructions": 3120000,
+  "max_operator_projection_error": 5.300648808770347e-12,
+  "diagnostics": [
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.0061396160665481e-15
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.0343288725511712e-16
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 9.237402509576498e-17
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 1.0408340855860843e-15
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 2.5196858488563123e-16
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.870031907102998e-15
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.1102230246251565e-15
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 2.1094237467877974e-15
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.4224732503009818e-15
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.2281842209915794e-15
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 9.992007221626409e-16
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.0462550964485118e-16
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.0451708942760263e-16
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 4.3298697960381105e-15
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.3834419720915037e-16
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.1206313654810174e-15
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.0685896612017132e-15
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 7.216449660063518e-15
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 9.332812300755222e-16
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.0443035325380379e-15
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.3808398868775384e-15
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.0343288725511712e-16
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.452830911130576e-16
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 4.107825191113079e-15
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 2.0903417885520525e-16
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.6618650899857812e-15
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.6792123247455493e-15
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 7.91033905045424e-15
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.3773704399255848e-15
+    },
+    {
+      "N": 1024,
+      "game": 0,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.627170620466245e-15
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.1796119636642288e-15
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.2728533504979822e-16
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.3053794156725473e-16
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 1.942890293094024e-15
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.0755285551056204e-16
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.3340023530261647e-15
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.3739009929736312e-15
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 1.942890293094024e-15
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.8665624601510444e-15
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.2351231148954867e-15
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.1934897514720433e-15
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.4181364416110398e-16
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 2.398255205537936e-16
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 3.1363800445660672e-15
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.1319070680748666e-16
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.1483869410966463e-15
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.3253287356462806e-15
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 2.914335439641036e-15
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.1657341758564144e-15
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.0061396160665481e-15
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 2.3245294578089215e-15
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.452830911130576e-16
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 2.0903417885520525e-16
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 5.134781488891349e-15
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 2.2638141361497333e-16
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.7728873924482969e-15
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 4.98212582300539e-15
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 1.584843367652411e-14
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 2.2343238370581275e-15
+    },
+    {
+      "N": 1024,
+      "game": 1,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 2.0747292772682613e-15
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.0408340855860843e-15
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.4116312285761268e-16
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 2.0166160408230382e-16
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 2.831068712794149e-15
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 2.1163626406917047e-16
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 9.419548474554063e-16
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.1449174941446927e-15
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 3.1502578323738817e-15
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 8.743006318923108e-16
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 9.367506770274758e-16
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.033895191682177e-15
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.1579279202145187e-16
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.0451708942760263e-16
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 3.747002708109903e-15
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.5612511283791264e-16
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.5612511283791264e-15
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.8596235662471372e-15
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 6.661338147750939e-15
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 8.344019919448442e-16
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.1032841307212493e-15
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 2.0088097851811426e-15
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.2023802092864244e-16
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.1145598333150986e-16
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 3.941291737419306e-15
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.717376241217039e-16
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.4051260155412137e-15
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.2559397966072083e-15
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 1.226796442210798e-14
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.7867651802561113e-15
+    },
+    {
+      "N": 1024,
+      "game": 2,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.816255479347717e-15
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.2420620087993939e-15
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 9.627715291671279e-17
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.4268100589909238e-16
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 1.7486012637846216e-15
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.496198998029996e-16
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.186550857568136e-15
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.2073675392798577e-15
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 3.219646771412954e-15
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.3600232051658168e-15
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.4085954624931674e-15
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.700029006457271e-15
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.1861171766991419e-16
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.6046192152785466e-16
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 1.5265566588595902e-15
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.0950441942103595e-16
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.7590096046404824e-15
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.4432899320127035e-15
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 5.88418203051333e-15
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.9914625504213745e-15
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.9637069748057456e-15
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.6445178552260131e-15
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.0625181290357943e-16
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 9.93129189996722e-17
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 4.551914400963142e-15
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.448494102440634e-16
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 3.2075037070811163e-15
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.0824674490095276e-15
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 9.575673587391975e-15
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 2.078198724220215e-15
+    },
+    {
+      "N": 1024,
+      "game": 3,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 2.147587663259287e-15
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.0408340855860843e-15
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.0928757898653885e-16
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.0755285551056204e-16
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 2.0261570199409107e-15
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.3704315460216776e-16
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.4641066137244252e-15
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 1.096345236817342e-15
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 4.551914400963142e-15
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.0373646386341306e-15
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 8.847089727481716e-16
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 2.0886070650760757e-15
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.0711917464156784e-16
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.2923689896027213e-16
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 2.2065682614424986e-15
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.6306400674181987e-16
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.141448047192739e-15
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 9.853229343548264e-16
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 1.3683498778505054e-14
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.7277845820728999e-15
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.942890293094024e-15
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 1.3912482277333993e-15
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 1.5222198501696482e-16
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "even32",
+      "failures": 0,
+      "identity_error": 1.444157293750692e-16
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 3.247402347028583e-15
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "even16",
+      "failures": 0,
+      "identity_error": 1.3097162243624894e-16
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "noise_low",
+      "failures": 0,
+      "identity_error": 1.2073675392798577e-15
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "noise_high",
+      "failures": 0,
+      "identity_error": 3.1086244689504383e-15
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "rough",
+      "failures": 0,
+      "identity_error": 4.9682480351975755e-15
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "height5",
+      "failures": 0,
+      "identity_error": 1.6583956430338276e-15
+    },
+    {
+      "N": 1024,
+      "game": 4,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 1.4432899320127035e-15
+    }
+  ]
+}

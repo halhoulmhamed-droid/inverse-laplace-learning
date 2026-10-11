@@ -1,0 +1,7 @@
+{
+  "study1_files_byte_identical": 209,
+  "independent_scalar_checks": 468,
+  "max_absolute_difference": 1.970645868709653e-15,
+  "raw_loss_files_sha256_verified": 150,
+  "success": true
+}

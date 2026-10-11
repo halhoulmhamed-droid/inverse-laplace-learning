@@ -1,0 +1,42 @@
+[
+  {
+    "name": "primary",
+    "data": "figures/primary.npz",
+    "figure": "figures/primary.pdf",
+    "script": "src/figures.py",
+    "analysis": "src/analysis.py",
+    "configuration": "results/final/configuration.json"
+  },
+  {
+    "name": "training",
+    "data": "figures/training.npz",
+    "figure": "figures/training.pdf",
+    "script": "src/figures.py",
+    "analysis": "src/analysis.py",
+    "configuration": "results/final/configuration.json"
+  },
+  {
+    "name": "robustness",
+    "data": "figures/robustness.npz",
+    "figure": "figures/robustness.pdf",
+    "script": "src/figures.py",
+    "analysis": "src/analysis.py",
+    "configuration": "results/final/configuration.json"
+  },
+  {
+    "name": "projection",
+    "data": "figures/projection.npz",
+    "figure": "figures/projection.pdf",
+    "script": "src/figures.py",
+    "analysis": "src/analysis.py",
+    "configuration": "results/final/configuration.json"
+  },
+  {
+    "name": "covariance",
+    "data": "figures/covariance.npz",
+    "figure": "figures/covariance.pdf",
+    "script": "src/figures.py",
+    "analysis": "src/analysis.py",
+    "configuration": "results/final/configuration.json"
+  }
+]

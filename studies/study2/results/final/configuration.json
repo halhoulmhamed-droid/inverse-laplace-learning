@@ -1,0 +1,125 @@
+{
+  "pilot": false,
+  "root_seed": 2026101102,
+  "sizes": [
+    64,
+    256,
+    1024
+  ],
+  "games": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "validation": 256,
+  "test": 400,
+  "repetitions": 4,
+  "scenarios": [
+    [
+      "primary",
+      "half",
+      0.01,
+      2.5,
+      0.25
+    ],
+    [
+      "full",
+      "full",
+      0.01,
+      2.5,
+      0.25
+    ],
+    [
+      "even32",
+      "even32",
+      0.01,
+      2.5,
+      0.25
+    ],
+    [
+      "quarter",
+      "quarter",
+      0.01,
+      2.5,
+      0.25
+    ],
+    [
+      "even16",
+      "even16",
+      0.01,
+      2.5,
+      0.25
+    ],
+    [
+      "noise_low",
+      "half",
+      0.003,
+      2.5,
+      0.25
+    ],
+    [
+      "noise_high",
+      "half",
+      0.03,
+      2.5,
+      0.25
+    ],
+    [
+      "rough",
+      "half",
+      0.01,
+      1.5,
+      0.25
+    ],
+    [
+      "height5",
+      "half",
+      0.01,
+      2.5,
+      0.2625
+    ],
+    [
+      "height10",
+      "half",
+      0.01,
+      2.5,
+      0.275
+    ]
+  ],
+  "methods": [
+    "D",
+    "F",
+    "O",
+    "L",
+    "LP",
+    "H1",
+    "signed",
+    "bounded"
+  ],
+  "fixed_methods": [
+    "D_at_F",
+    "F_at_F",
+    "O_at_F",
+    "L_at_L",
+    "LP_at_L"
+  ],
+  "loss_axes": [
+    "total",
+    "projected",
+    "complementary"
+  ],
+  "rank": 12,
+  "protocol_sha256": "5a909490c107659fe9cca46ca7cdfed7b524abd75d123de3de635322f5027bde",
+  "freeze_commit": "20a663d",
+  "sources": {
+    "src/run.py": "9279f86113506688fe9d30d044c48523c0b675a5067d89a36a2cb2181bb46142",
+    "src/bounded.py": "fe678730e46ae7424a31365ce973c073692266e302e52684139a33ad9023de0d",
+    "src/analysis.py": "acbcca9c1576c2e36bed1b48b9ad124e89c6d7d38fac3876ae5e9718d43fb166",
+    "src/model.py": "7766f60d1d19e9816102837a5700d5b0968c108f4b76335fb604f1dd3c199851"
+  },
+  "reused_direct_sha256": "ae7c9e853eacee824387540b8902620722b2168a2039ec19611e545f0036416e",
+  "numpy": "2.3.5",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+}
