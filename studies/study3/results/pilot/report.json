@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "failures": [],
+  "invalid_candidates": 0,
+  "conditions": 4,
+  "fits": 2,
+  "reconstructions": 1536,
+  "cpu_seconds": 0.131959652,
+  "wall_seconds": 0.1321697919993312,
+  "peak_rss_bytes": 62545920,
+  "bytes": 647398,
+  "records": [
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "height_partial",
+      "failures": 0
+    }
+  ],
+  "estimated_final_cpu_with_10x_margin": 1649.49565,
+  "estimated_final_output_bytes": 83000000,
+  "feasibility_pass": true
+}

@@ -1,0 +1,90 @@
+{
+  "pilot": true,
+  "root_seed": 2026101103,
+  "sizes": [
+    32
+  ],
+  "games": [
+    0
+  ],
+  "validation": 24,
+  "test": 24,
+  "repetitions": 2,
+  "scenarios": [
+    [
+      "primary",
+      "full",
+      0.01,
+      2.5,
+      0.25
+    ],
+    [
+      "partial",
+      "half",
+      0.01,
+      2.5,
+      0.25
+    ],
+    [
+      "rough_full",
+      "full",
+      0.01,
+      1.5,
+      0.25
+    ],
+    [
+      "height_partial",
+      "half",
+      0.01,
+      2.5,
+      0.275
+    ]
+  ],
+  "methods": [
+    "S",
+    "M0",
+    "Diag",
+    "E",
+    "H1",
+    "H1m"
+  ],
+  "fixed_methods": [
+    "M0_at_S",
+    "H1m_at_S"
+  ],
+  "loss_axes": [
+    "L2_squared",
+    "modes_ge8_squared",
+    "nominal_residual_squared"
+  ],
+  "protocol_sha256": "d18b5c766840786716028f12aa0059ba58582eaf55f4c82bb20fedc0fbb136fc",
+  "freeze_commit": "8c23fccb9e00d053af71fa9349c1b761c30ca4b4",
+  "source_sha256": {
+    "src/data.py": "3ca7f01250a14b33ab0a56bc9a915a6fed856b08358c2862d45c28ee3aea5828",
+    "src/run.py": "5cd3f8790088b28c9713006403740a237391ef66aae894ca45029b2a0fd389f3",
+    "src/bounded.py": "a78ad7d816113dfc3731775cb3a550ebab140aa91e938767c372c00c5e6cc5fc",
+    "src/analysis.py": "661a590d3093bbbfa0578bcfcbd741d59667e7515e9e9fcbb99552619e7a1e27",
+    "src/model.py": "0e1359321a087ae83a6dc44ef2cbd1123c467ccf66cd6322b3764b9d56c7d9d5",
+    "src/test_runner.py": "3079a48443675a8498883bb5473d496d7a012733009b748d77e052900a19c732"
+  },
+  "reused_source_sha256": {
+    "laplace_learning/direct.py": "ae7c9e853eacee824387540b8902620722b2168a2039ec19611e545f0036416e",
+    "studies/study2/src/model.py": "7766f60d1d19e9816102837a5700d5b0968c108f4b76335fb604f1dd3c199851"
+  },
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "candidate_counts": {
+    "S": 140,
+    "M0": 20,
+    "Diag": 20,
+    "E": 20,
+    "H1": 20,
+    "H1m": 20
+  },
+  "status_codes": {
+    "success": 0,
+    "invalid_estimator": 1,
+    "nonfinite_prediction_or_loss": 2
+  }
+}
