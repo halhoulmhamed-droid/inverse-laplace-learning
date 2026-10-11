@@ -1,0 +1,13 @@
+{
+  "frozen_at_utc": "2026-10-11T15:11:59.882699+00:00",
+  "baseline_commit": "1f11fea35d5367a355901c3866d21f5b3b21a5b0",
+  "status": "before_study3_implementation_pilot_final_test",
+  "prior_audit": "no_substantial_anomaly",
+  "independent_math_review": "passed before freeze",
+  "sha256": {
+    "PROTOCOL.md": "d18b5c766840786716028f12aa0059ba58582eaf55f4c82bb20fedc0fbb136fc",
+    "MATHEMATICS.md": "09eed6f0a1801774d94f6390d3a4f95dc49874727e2af2ecb405ef03a56c13f5",
+    "SOURCES.md": "e6e884a21f4609a7665fa387b26027f9731eb7e47c355d08a1c9bc5658027c33",
+    "AUDIT_STUDY2.md": "3bc388b02355c9bcac74d14fb36b0057de8484f58a266ced1b7ebe72e688718d"
+  }
+}
