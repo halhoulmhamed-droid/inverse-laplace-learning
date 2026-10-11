@@ -1,6 +1,6 @@
 # Figure provenance
 
-Scientific commit: `0ea95cd7e390c8a478469b36a043a5f99e4fcd10`. Links below refer to this exact local commit and will become remotely valid only after its publication.
+Scientific commit: `0ea95cd7e390c8a478469b36a043a5f99e4fcd10`. Links below refer to this exact published scientific commit.
 
 | Figure | Numerical data | Script | Configuration |
 |---|---|---|---|
