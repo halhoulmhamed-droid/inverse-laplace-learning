@@ -169,7 +169,7 @@ Pour H=1/4, N_y=N_x/4, l’évaluation scalaire de cette formule (pas une expér
 
 L’évaluation des huit entiers k=1,…,8 donne son maximum en k=8 aux deux maillages fins. Les enveloppes 0,005 et 0,02 laissent respectivement environ 17,8 % et 17,6 % au-dessus de cette prédiction, sans modifier la tolérance d’accord à la solution discrète. Pour h_x=h_y, γ=s−s³/12+O(s⁵) et ρ_k−1=s²[(kπH)tanh(kπH)−1]/12+O(s⁴) : ordre deux à k fixé. Les ratios au mode 8 sont environ 4,027 et 4,007. Ces nombres ne démontrent pas que le futur solveur passe les tests.
 
-Au repli inverse 33×9, les 32 capteurs contigus sur [0,1/2] ne dépendent que de 17 nœuds inférieurs. Les deux demi-cellules par maille ont coefficients (3/4,1/4) et (1/4,3/4) ; leurs différences permettent de retrouver les deux valeurs nodales. La matrice d’acquisition sur ces 17 nœuds a donc rang exact 17. Le rang du direct composé est au plus 17, jamais automatiquement min(m,n)=32 ; son rang numérique peut être inférieur. Cette grille grossière n’a pas de bornes toutes alignées aux capteurs : utiliser l’intégration par morceaux, sans lui appliquer le facteur B comme formule générale. Les grilles de contrôle 65×17 et129×33 restent alignées. Rapporter séparément rang acquisition, rang algébrique composé lorsqu’établi et rang numérique mesuré.
+Au repli inverse 33×9, les 32 capteurs contigus sur [0,1/2] ne dépendent que de 17 nœuds inférieurs. Les deux demi-cellules par maille ont coefficients (3/4,1/4) et (1/4,3/4) ; leur somme et leur différence permettent de retrouver les deux valeurs nodales. La matrice d’acquisition sur ces 17 nœuds a donc rang exact 17. Le rang du direct composé est au plus 17, jamais automatiquement min(m,n)=32 ; son rang numérique peut être inférieur. Cette grille grossière n’a pas de bornes toutes alignées aux capteurs : utiliser l’intégration par morceaux, sans lui appliquer le facteur B comme formule générale. Les grilles de contrôle 65×17 et129×33 restent alignées. Rapporter séparément rang acquisition, rang algébrique composé lorsqu’établi et rang numérique mesuré.
 
 Les modes hauts, potentiellement plus mal résolus, sont examinés en erreur absolue normalisée et via ||Q(G_n−A_raw)||₂. Une faible erreur relative sur les modes bas ne certifie pas les hautes fréquences. Le générateur exact permet ce diagnostic sans confondre queue et discrétisation.
 
@@ -266,3 +266,15 @@ C1–C5 et R01–R14 sont définis dans sources.md. Les formules ci-dessus sont 
 | Trois graines sans objet défini | Trois entraînements différents, tests partagés et bootstrap par objet |
 
 Aucune donnée clinique, supériorité mesurée, garantie d'erreur de modèle réelle, convergence infinidimensionnelle ou nouveauté algorithmique n'est établie. Le manuscrit final devra séparer les preuves analytiques, diagnostics numériques, estimations statistiques et hypothèses physiques.
+
+### Précisions de sélection des diagnostics
+
+Les diagnostics illustratifs P1 et P2 utilisent uniquement l'entraînement 0, le bruit de 1 % et le filtre appris signé non plafonné comme référence de sélection. Pour chaque objet, l'erreur relative et le résidu nominal sont moyennés sur les dix répétitions ; un échec est conservé comme +∞. Les objets médian, q95 et pire sont choisis par rang supérieur sur les 200 moyennes d'erreur, avec identifiant croissant en cas d'égalité. Toutes les méthodes sont ensuite représentées sur le même objet, réalisation 0.
+
+Pour le diagnostic « faible résidu, erreur élevée », calculer séparément pour chaque contraste les déciles D1 du résidu et D9 de l'erreur sur tous les objets, sans interpolation ni retrait des infinis. Parmi les objets dont les deux moyennes sont finies, retenir ceux vérifiant résidu ≤ D1 et erreur ≥ D9 ; choisir l'erreur décroissante, puis le résidu croissant, puis l'identifiant croissant. Au plus un objet est retenu par contraste. Une absence est rapportée.
+
+Une éventuelle figure d'échec utilise le premier couple (objet, répétition) lexicographique où au moins une méthode échoue, au plus un panneau par contraste. Les courbes non finies ne sont pas remplacées par des courbes inventées. Six illustrations de quantiles, deux diagnostics et deux panneaux d'échec au maximum donnent un plafond de dix figures de traces ; les figures agrégées sont distinctes. Toutes les figures et données de courbes partagent le plafond de 10 Mo. Ces règles ont été précisées avant l'ouverture du test principal.
+
+Dans le contrôle d'acquisition du repli, deux moyennes successives vérifient a=(3u+v)/4 et b=(u+3v)/4. Les deux valeurs nodales sont u=(3a−b)/2 et v=(3b−a)/2 ; la différence seule ne suffit pas. Le rang 17 annoncé concerne l'acquisition contiguë du repli, non un rang minimal imposé à sa SVD numérique.
+
+Le pilote utilise la partition 0 : objets 0–23 pour l’entraînement, 24–31 pour la validation, 32–39 pour le test pilote et 40–55 pour les contrôles sans bruit. Ils ne sont pas réutilisés dans les partitions principales.
