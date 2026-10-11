@@ -1,0 +1,48 @@
+SYNTHÈSE DES TROIS ÉTUDES DE COMPLÉTION DE LAPLACE
+Halhoul Mhamed - 11 octobre 2026
+
+CONTENU
+- Synthese_Laplace_Trois_Etudes.pdf : document compilé, fourni séparément du ZIP.
+- Synthese_Laplace_Trois_Etudes.tex : source principale éditable.
+- assets/logos/ : logos authentiques et provenance.
+- figures/ : deux figures vectorielles prêtes à compiler.
+- data/ : valeurs arrondies transcrites des tableaux des rapports E2 et E3.
+- generer_figures.py : mise en graphique de ces valeurs, sans simulation.
+- PROVENANCE.json : identité des trois PDF sources et liens scientifiques.
+- MANIFEST_SHA256.json : empreintes des fichiers livrés, hors manifeste lui-même.
+
+COMPILATION
+Extraire l'intégralité du ZIP. Depuis le dossier contenant le .tex :
+
+  pdflatex -interaction=nonstopmode -halt-on-error Synthese_Laplace_Trois_Etudes.tex
+  pdflatex -interaction=nonstopmode -halt-on-error Synthese_Laplace_Trois_Etudes.tex
+
+Les figures PDF et les logos sont déjà fournis. Aucune exécution Python n'est
+nécessaire à la compilation. Le .tex seul a besoin des dossiers assets/ et figures/.
+Une distribution TeX Live récente doit disposer de babel, lmodern, microtype,
+amsmath, mathtools, geometry, booktabs, tabularx, enumitem, caption, fancyhdr,
+lastpage, tcolorbox, pgf/tikz, titlesec, hyperref et xurl.
+La locale française est chargée avec babelprovide ; aucun accès réseau n'est requis.
+
+RETRACER LES GRAPHIQUES (FACULTATIF)
+Avec Python et Matplotlib installés :
+
+  python3 generer_figures.py
+
+Le script lit seulement les CSV locaux et remplace les deux figures PDF.
+Il ne relance ni simulateur, ni entraînement, ni bootstrap.
+Les valeurs transcrites ne remplacent pas les données brutes des études.
+
+PORTÉE
+Synthèse des trois rapports reçus, sans nouvelle campagne scientifique.
+Les liens épinglés aux commits donnent accès aux archives, protocoles et scripts
+d'origine. L'existence des chemins a été vérifiée ; aucun audit intégral du code
+ou des archives statistiques n'est revendiqué dans ce document.
+Les rapports sources gardent leurs conclusions et leurs déclarations académiques.
+Aucun dépôt GitHub ni portfolio n'a été modifié pour cette livraison.
+
+CONTACT
+Halhoul Mhamed
+halhoul.mhamed@etu.uae.ac.ma
+halhoulmhamed@gmail.com
+https://github.com/halhoulmhamed-droid/inverse-laplace-learning

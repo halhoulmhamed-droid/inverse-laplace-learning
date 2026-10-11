@@ -1,0 +1,60 @@
+{
+  "scope": "Sources complètes ; PDF principal livré séparément. Manifeste exclu de sa propre liste.",
+  "files": [
+    {
+      "path": "Synthese_Laplace_Trois_Etudes.tex",
+      "size_bytes": 34698,
+      "sha256": "2079440d8b347754d1a5490f0c036f9af4791d4d349a468ac96c0f11d4f7794b"
+    },
+    {
+      "path": "generer_figures.py",
+      "size_bytes": 3372,
+      "sha256": "e32f6691e55a2fd34af3b4d9892c8ee17e1b1dda1865be571373c43dff7e8818"
+    },
+    {
+      "path": "LIRE_SOURCES.txt",
+      "size_bytes": 2335,
+      "sha256": "75f6be2ac374b0b82a8d9fbf775e9dece1f69e84665c7ec7ad48e405901c7fc8"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "size_bytes": 5855,
+      "sha256": "f02d257a8e861db43136164721cbe5bde6ec8fd979ce5272d63dfb86a7cdf408"
+    },
+    {
+      "path": "assets/logos/uae.png",
+      "size_bytes": 85484,
+      "sha256": "225552e504ed640284005fa060b2aeccb89a5fd8e94bc6904ce27c05d3372e5b"
+    },
+    {
+      "path": "assets/logos/fpl.png",
+      "size_bytes": 738431,
+      "sha256": "0e9941ae6991d05d3322966e561a9d4ebe7c3f0cdc557bec661755a5c913db73"
+    },
+    {
+      "path": "assets/logos/SOURCES.txt",
+      "size_bytes": 1269,
+      "sha256": "b0042f9a95566800d3cb1238c8b182e18291058e1b29478cbd015fcd46de226e"
+    },
+    {
+      "path": "figures/etude2_risques.pdf",
+      "size_bytes": 13384,
+      "sha256": "f526b045b5ac255675863be4a5459e967021bc459286cb93ed24078c2605e2ee"
+    },
+    {
+      "path": "figures/etude3_criteres.pdf",
+      "size_bytes": 14429,
+      "sha256": "2e7da09e718b7b03b54982919b844699accd4a4ba97b31a5d9ea766fafc1bd95"
+    },
+    {
+      "path": "data/etude2_risques.csv",
+      "size_bytes": 97,
+      "sha256": "806c418ba759a788db509d0e64c0244d19e604ecfcfa8114455fcfbce85d11bf"
+    },
+    {
+      "path": "data/etude3_criteres.csv",
+      "size_bytes": 260,
+      "sha256": "51bf4fd58d43069445160edb070f8e27a2c34504e40646f21e00ae5775a7e47a"
+    }
+  ]
+}

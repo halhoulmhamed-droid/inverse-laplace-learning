@@ -21,6 +21,10 @@ The analytic data generator and finite-difference inverse are independent. Exper
 
 The [French report (PDF)](docs/report.pdf), [slides (PDF)](docs/slides.pdf), their [LaTeX sources](docs/) and [figure provenance](docs/provenance.md) are available with the verified institutional logos. Their [sources and SHA-256 checksums](assets/logos/SOURCES.md) document the exact public source revision.
 
+## Synthèse des trois études
+
+La [synthèse scientifique (PDF)](docs/synthesis/Synthese_Laplace_Trois_Etudes.pdf) réunit les résultats, les limites et les différences de protocole des trois études. Les [sources LaTeX](docs/synthesis/Synthese_Laplace_Trois_Etudes.tex), les [instructions de compilation](docs/synthesis/LIRE_SOURCES.txt) et la [provenance des figures](docs/synthesis/PROVENANCE.json) sont également disponibles. Cette synthèse ne modifie pas les conclusions ni les archives des études.
+
 ## Reproduce
 
 Python 3.12, NumPy, SciPy and Matplotlib suffice. Install the pinned free dependencies in an isolated environment. No FreeFem, GPU or paid service is needed.

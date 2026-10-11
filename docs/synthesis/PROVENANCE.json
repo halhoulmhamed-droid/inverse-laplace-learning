@@ -1,0 +1,85 @@
+{
+  "title": "Synthèse des trois études de complétion de Laplace",
+  "author": "Halhoul Mhamed",
+  "date": "2026-10-11",
+  "scope": "Synthèse documentaire ; aucune nouvelle expérience ou inférence statistique.",
+  "source_reports": [
+    {
+      "id": "E1",
+      "received_filename": "report.pdf",
+      "sha256": "8b81d4a68a1c06da3bc0e20b7fc9cf4bfd39aff41878f5c17669832120a19571",
+      "size_bytes": 1511859,
+      "pdf_pages": 16,
+      "scientific_commit": "0ea95cd7e390c8a478469b36a043a5f99e4fcd10"
+    },
+    {
+      "id": "E2",
+      "received_filename": "report (1).pdf",
+      "sha256": "c0ab0f253022d2b0c37999a7f84b67f737b159a16865bf70c5593b5f955130af",
+      "size_bytes": 1284244,
+      "pdf_pages": 13,
+      "scientific_commit": "57ab54ebc994029be3c24a8a34da56371547f4ac"
+    },
+    {
+      "id": "E3",
+      "received_filename": "report (2).pdf",
+      "sha256": "17e9989cf0d283e5f3ae4b006140101212370d6aa43ad50bb257bf0bdd616fd5",
+      "size_bytes": 1287132,
+      "pdf_pages": 13,
+      "scientific_commit": "867144db98eba3c0f5fe7cece4261918a46f1c31"
+    }
+  ],
+  "figures": [
+    {
+      "file": "figures/etude2_risques.pdf",
+      "transcribed_csv": "data/etude2_risques.csv",
+      "source": "E2",
+      "printed_page": 7,
+      "primary_scenario": "32 capteurs contigus, N=256, sigma=0.01",
+      "aggregation": "Risques moyens des cinq entraînements, méthodes réglées séparément",
+      "original_data_url": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/results/analysis/summary.csv"
+    },
+    {
+      "file": "figures/etude3_criteres.pdf",
+      "transcribed_csv": "data/etude3_criteres.csv",
+      "source": "E3",
+      "printed_page": 6,
+      "aggregation": "Ratios et bornes supérieures par entraînement ; valeurs arrondies du tableau",
+      "original_data_url": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/figures/primary.npz"
+    }
+  ],
+  "verification_scope": {
+    "pinned_paths_present": true,
+    "checked_pinned_links": [
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/docs/protocol.md",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/docs/theory.md",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/analysis/bootstrap.npz",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/analysis/primary.json",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/analysis/summary.csv",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/FREEZE.json",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/MATHEMATICS.md",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/PROTOCOL.md",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/figures/primary.npz",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/figures/projection.npz",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/results/analysis/summary.csv",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/results/final/configuration.json",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/57ab54ebc994029be3c24a8a34da56371547f4ac/studies/study2/src/figures.py",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/MATHEMATICS.md",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/MATHEMATICS_ADDENDUM.md",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/PROTOCOL.md",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/figures/primary.npz",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/figures/robustness.npz",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/results/final/configuration.json",
+      "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/867144db98eba3c0f5fe7cece4261918a46f1c31/studies/study3/src/figures.py"
+    ],
+    "unique_external_links_in_pdf": 30,
+    "original_experiments_repeated": false,
+    "statistical_audit_repeated": false,
+    "compilation": "pdfLaTeX, TeX Live 2023/Debian, deux passages finaux",
+    "figure_code": "generer_figures.py",
+    "pdf_pages": 12
+  },
+  "bibliography_scope": "Notices officielles et résumés consultés pour R1/R2 ; aucune revue exhaustive ni audit des preuves."
+}

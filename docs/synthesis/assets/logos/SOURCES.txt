@@ -1,0 +1,24 @@
+LOGOS INSTITUTIONNELS
+
+Université Abdelmalek Essaâdi : uae.png
+Source officielle historique :
+https://fpl.ac.ma/site/wp-content/uploads/2024/07/logo-uae-1024x297-1.png
+Dimensions : 1024 x 297 pixels.
+SHA-256 : 225552e504ed640284005fa060b2aeccb89a5fd8e94bc6904ce27c05d3372e5b
+
+Faculté Polydisciplinaire de Larache : fpl.png
+Source officielle historique :
+https://fpl.ac.ma/site/wp-content/uploads/2024/09/fpl-logo.webp
+PNG issu de la conversion sans modification des pixels du WebP officiel.
+Dimensions : 1236 x 1241 pixels.
+SHA-256 PNG : 0e9941ae6991d05d3322966e561a9d4ebe7c3f0cdc557bec661755a5c913db73
+SHA-256 WebP original : fcc31601acb48b3bb203a707d4ce438e9b9760ead2a71019422d242435c47d35
+
+Les copies locales réutilisées ont été acquises lors de la préparation académique
+précédente. Leurs SHA-256 concordent avec les copies préservées et les actifs du
+dépôt pde-image-denoising, commit 155bbe46d38e0c526493e77af288f08e748ed584 :
+https://github.com/halhoulmhamed-droid/pde-image-denoising/tree/155bbe46d38e0c526493e77af288f08e748ed584/assets/logos
+
+Aucun logo n'a été redessiné. Les logos servent à identifier les affiliations.
+Ils restent soumis aux droits de leurs titulaires et ne constituent pas une
+approbation des conclusions scientifiques.
