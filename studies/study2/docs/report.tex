@@ -1,0 +1,265 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\babelprovide[import,main]{french}
+\usepackage{lmodern,amsmath,amssymb,graphicx,booktabs,array}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor,hyperref,microtype}
+\definecolor{ink}{RGB}{25,48,73}
+\definecolor{accent}{RGB}{23,116,126}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,pdftitle={Étude 2 : complétion de données de Laplace, covariances apprises et observations partielles},pdfauthor={Halhoul Mhamed}}
+\input{provenance.tex}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\src}[2]{\href{\DataURL{#1}}{#2}}
+\newcommand{\figsource}[1]{\par{\footnotesize\src{figures/#1.npz}{Données}\,|\,\src{src/figures.py}{Script}\,|\,\src{results/final/configuration.json}{Configuration}\,|\,\src{figures/#1.pdf}{Version scientifique}.}\par}
+\newcommand{\plot}[1]{\includegraphics[width=\linewidth]{../figures/#1.pdf}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\begin{document}
+\selectlanguage{french}
+\begin{titlepage}
+\begin{minipage}{.45\textwidth}\includegraphics[width=\linewidth,height=20mm,keepaspectratio]{../../../assets/logos/university.png}\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}\raggedleft\includegraphics[width=\linewidth,height=20mm,keepaspectratio]{../../../assets/logos/faculty.png}\end{minipage}
+\vspace{15mm}
+\begin{center}
+{\large Université Abdelmalek Essaâdi\par}
+{\large Faculté Polydisciplinaire de Larache\par}
+\vspace{12mm}
+{\Large\bfseries Projet scientifique de Master\par}
+\vspace{6mm}
+{\large Étude 2\par}
+\vspace{6mm}
+{\huge\bfseries Complétion de données de Laplace\par}
+\vspace{7mm}
+{\Large Apport des covariances apprises et robustesse aux observations partielles\par}
+\vspace{14mm}
+{\Large Halhoul Mhamed\par}
+\vspace{5mm}
+Master « Modélisation mathématique et applications et apprentissages »\par
+M2 en cours\par
+\vspace{12mm}
+\textbf{Professeur encadrant : Pr. Chakir Tajani}\par
+\vfill
+11 octobre 2026\par
+\end{center}
+\end{titlepage}
+
+\section*{Résumé et réponse scientifique}
+L'étude examine une question distincte de l'étude 1 : dans quelle mesure les covariances empiriques complètes expliquent-elles l'intérêt de LMMSE pour compléter une trace harmonique à partir de capteurs partiels ? Le générateur conserve des coefficients cosinus indépendants. Les corrélations dans une base singulière ne sont donc pas assimilées à des corrélations physiques démontrées.
+
+Le protocole est figé avant les nouvelles données finales. Le contraste principal oppose une régression affine complète F à sa restriction diagonale D, dans \textbf{les mêmes 12 directions d'entrée et de sortie}, avec les mêmes données, moyennes et budgets de réglage. Pour 256 objets d'apprentissage et 32 capteurs contigus bruités à $\sigma=0,01$, les cinq rapports de risques $R_F/R_D$ sont compris entre 0,3192 et 0,3218. Leurs bornes supérieures conditionnelles corrigées sont inférieures à 0,336 ; le critère utile de 0,95 et la protection des queues sont satisfaits dans les cinq entraînements.
+
+\textbf{Ce résultat est restreint au contraste préspécifié.} F seul reste moins performant que Tikhonov H1 dans ce scénario : risques moyens 0,05133 et 0,01645. LMMSE complet L atteint 0,01239 ; sa projection LP revient à 0,05158. Une part majeure de son intérêt provient donc de la prédiction hors du sous-espace retenu, distincte du gain des covariances à sous-espace constant.
+
+\textbf{Les dégradations sont conservées.} Dans les comparaisons secondaires à $N=256$, L présente un risque moyen supérieur à H1 d'environ 9,2\,\% avec tous les capteurs et 10,7\,\% sur les objets plus rugueux. Aucune supériorité universelle ni nouveauté algorithmique n'est revendiquée.
+
+\subsection*{Repères de lecture}
+Le modèle et les covariances sont précisés p.~\pageref{model}. Les ablations et leurs identités figurent p.~\pageref{ablations}. Le protocole et la décision sont détaillés p.~\pageref{protocol}--\pageref{primary}. Les résultats secondaires, les limites et la traçabilité complètent l'analyse.
+
+\subsection*{Continuité avec l'étude 1}
+Le code, les résultats, les PDF et la conclusion négative de l'étude 1 restent intacts au commit de base \texttt{9bdee8f}. Ses observations ont motivé l'hypothèse, sans être utilisées comme observations confirmatoires. Les graines, objets et partitions sont nouveaux. La présente sélection supervisée sur validation diffère de sa sélection fondée sur les observations : les chiffres des deux études ne sont pas une comparaison expérimentale directe.
+
+\newpage
+\section{Modèle physique et indépendance des coefficients}\label{model}
+Dans le rectangle $(0,1)\times(0,H)$, la trace supérieure inconnue est $q$. Les conditions latérales et inférieure sont de Neumann homogènes. L'équation intérieure est $\Delta u=0$. Dans la base orthonormale
+\[
+ \phi_0(x)=1,\qquad \phi_k(x)=\sqrt2\cos(k\pi x),
+\]
+le transfert harmonique de la trace supérieure à la trace inférieure multiplie le mode $k$ par $\operatorname{sech}(k\pi H)$. Cette atténuation exponentielle explique l'instabilité de l'inversion.
+
+Le générateur utilise 128 coefficients $c_k=w_k\xi_k$, où les $\xi_k$ sont des normales standard indépendantes et $w_k\propto(1+k^2)^{-p/2}$, avec $\sum_k w_k^2=1$. Ainsi $\mathbb E\norm{q}_{L^2}^2=1$. Le cas nominal utilise $p=2,5$ et $H=0,25$. Le cas rugueux utilise $p=1,5$.
+
+Soit $B_H$ le transfert analytique suivi des 64 moyennes exactes sur des intervalles de longueur $1/64$. Les observations d'un masque $M$ sont
+\[
+ y=\frac{1}{8}M(B_Hc+\sigma\varepsilon),\qquad
+ \varepsilon\sim\mathcal N(0,I_{64}).
+\]
+Les poids restent $1/64$ après masquage. Le niveau $\sigma$ est un écart-type absolu par capteur avant division par 8, \textbf{pas} un bruit relatif au signal de chaque objet.
+
+L'opérateur inverse $A$ est calculé par le solveur 2D de différences finies de l'étude 1, inchangé : 64 coefficients, 64 intervalles horizontaux et 16 verticaux, hauteur nominale 0,25. Il ne réutilise pas le générateur analytique pour résoudre l'inverse. La différence de discrétisation et les modes 64--127 restent donc présents.
+
+\subsection{La diagonalité dépend de la base}
+Si $D_c=\operatorname{diag}(w_0^2,\ldots,w_{63}^2)$ et $V_r$ contient les premières directions singulières de $A$, alors
+\[
+ C_{bb}^{\rm population}=V_r^\top D_c V_r.
+\]
+Cette matrice peut être non diagonale alors que les coefficients cosinus sont indépendants. Les masques partiels changent $V_r$ et peuvent mélanger les modes. Les covariances empiriques ajoutent une erreur d'échantillonnage. Les effets de coordonnées, d'observation et d'échantillonnage ne démontrent aucune dépendance physique nouvelle des coefficients.
+
+\newpage
+\section{Ablations dans des espaces contrôlés}\label{ablations}
+Écrire $A=U\Sigma V^\top$, retenir $r=12$ et poser $P=V_rV_r^\top$. Les moyennes d'apprentissage $\mu_c,\mu_y$ sont identiques pour toutes les méthodes. Les covariances empiriques centrées utilisent le diviseur $N-1$. Poser $z=U_r^\top(y-\mu_y)$, $b=V_r^\top(c-\mu_c)$ et $t=\operatorname{tr}(C_{zz})/r$.
+
+Toutes les reconstructions prennent la forme $\widehat c=\mu_c+R(y-\mu_y)$ : les versions projetées projettent l'incrément, \textbf{pas la moyenne}.
+\begin{align*}
+ R_D&=V_r\operatorname{diag}\!\left(\frac{\operatorname{diag}C_{bz}}{\operatorname{diag}C_{zz}+\lambda t}\right)U_r^\top,\\
+ R_F&=V_r C_{bz}(C_{zz}+\lambda tI)^{-1}U_r^\top,\\
+ R_O&=C_{cz}(C_{zz}+\lambda tI)^{-1}U_r^\top,\\
+ R_L&=C_{cy}(C_{yy}+\lambda t_yI)^{-1},\qquad t_y=\operatorname{tr}(C_{yy})/m,\\
+ R_{LP}&=P R_L.
+\end{align*}
+D et F ont exactement les mêmes entrées et sorties. D remplace les deux blocs $C_{bz}$ et $C_{zz}$ par leurs diagonales. Cela correspond à conserver chaque covariance jointe du couple $(b_j,z_j)$ et à annuler les liaisons entre indices ; les blocs $2\times2$ restent semi-définis positifs. Ce n'est pas seulement diagonaliser la covariance cosinus du signal.
+
+\subsection{Vérification mathématique avant implémentation}
+Le gradient de $\mathbb E\norm{b-Gz}^2+\lambda t\norm{G}_F^2$ s'annule lorsque $G(C_{zz}+\lambda tI)=C_{bz}$. La positivité de $\lambda t$ assure l'unicité. Imposer $G$ diagonal donne D. L'optimalité est empirique et pénalisée, sans garantie automatique sur le test. LMMSE désigne ici une estimation affine empirique régularisée, et non un oracle connaissant la distribution exacte.
+
+À même $\lambda$, $PR_O=R_F$ et $PR_L=R_{LP}$. Les diagnostics utilisent donc le $\lambda$ sélectionné pour F dans D/F/O, et celui de L dans L/LP. Les résultats des méthodes réglées indépendamment restent distincts de ces diagnostics. L/O change aussi l'espace d'entrée et ne constitue pas, seul, une mesure des corrélations.
+
+Pour $e=\widehat c-c_{0:63}$, Parseval donne exactement
+\[
+ \norm{\widehat q-q}_{L^2}^2=\norm{Pe}^2+\norm{(I-P)e}^2+\sum_{k=64}^{127}c_k^2.
+\]
+Le complément de $P$ n'est pas nécessairement le noyau exact de $A$.
+
+\newpage
+\section{Protocole et séparation des données}\label{protocol}
+Le \src{PROTOCOL.md}{protocole} et l'\src{MATHEMATICS.md}{audit mathématique} ont été figés dans le commit \texttt{20a663d}, avant le nouveau code, le pilote et le test final. Les SHA-256 et l'heure UTC sont conservés dans \src{FREEZE.json}{FREEZE.json}. Aucun ajustement de grille n'a suivi les résultats.
+
+\begin{center}
+\begin{tabular}{lp{10cm}}
+\toprule Élément & Choix figé\\\midrule
+Apprentissage & 64, 256, 1\,024 objets, tailles imbriquées ; cinq jeux indépendants. Un bruit par objet.\\
+Validation & 256 objets par jeu d'apprentissage, deux bruits ; mêmes objets entre tailles et méthodes.\\
+Test & 400 objets, quatre bruits ; mêmes objets et bruits entre méthodes et entraînements.\\
+Pilote & Partitions propres, un apprentissage de 64 objets, 24 en validation et 24 en test, deux bruits, quatre scénarios.\\
+Graines & PCG64 / SeedSequence ; racine 2026101102. Tuple : racine, partition, jeu, objet, canal, répétition.\\
+Partitions & 10 apprentissage, 20 validation, 30 test nominal/hauteur, 31 test rugueux ; +100 pour le pilote ; 40 bootstrap.\\\bottomrule
+\end{tabular}
+\end{center}
+
+Les tests nominaux et de hauteur partagent les objets ; la rugosité utilise une partition indépendante. Le vecteur de bruit de 64 capteurs est généré avant masquage et reste apparié entre méthodes, masques et niveaux.
+
+\subsection{Réglage équitable}
+Chaque famille dispose de 20 candidats. D/F/O/L/LP utilisent $\lambda\in\operatorname{logspace}(-8,1,20)$. H1 utilise 20 valeurs $\alpha\in\operatorname{logspace}(-10,1,20)$ avec pénalité $1+(k\pi)^2$, normalisée par son maximum. Les filtres signés ou positifs bornés utilisent 20 plafonds de $10^0$ à $10^4$ dans les mêmes 12 directions.
+
+La perte inverse moyenne de validation sélectionne chaque paramètre. Les vérités de validation synthétiques sont explicitement autorisées par ce protocole ; les vérités de test ne sont jamais transmises au sélecteur. Les ex æquo à la tolérance fixée sont départagés par norme opérateur puis indice de grille.
+
+Les modèles sont ajustés pour chaque masque et bruit connus, puis conservés pour les tests de rugosité et de hauteur. Les moyennes empiriques restent communes. Les tableaux de sélection conservent les 160 candidats de chaque ajustement, y compris leur validité et leur score.
+
+\newpage
+\section{Décision principale et scénarios secondaires}
+\subsection{Un contraste principal}
+Le scénario principal est : 32 capteurs contigus, $\sigma=0,01$, $p=2,5$, $H=0,25$, $N=256$. On compare F à D. La perte d'un objet est l'erreur quadratique $L^2$ sur ses 128 modes, moyennée sur ses quatre bruits. Le risque est la moyenne sur les 400 objets.
+
+Le gain utile exige $R_F/R_D\leq0,95$. Les 5\,\% représentent un seuil de décision conventionnel fixé avant test, équivalant à environ 2,53\,\% en racine du risque, pour justifier un bloc $12\times12$ plutôt que 12 gains. Il ne provient ni de l'ancien seuil de 10\,\% ni d'une optimisation sur les résultats.
+
+La marge de non-dégradation exige $q_{95,F}/q_{95,D}\leq1,05$, où le percentile concerne les pertes moyennes par objet, pas les répétitions traitées comme indépendantes.
+
+\subsection{Règle d'incertitude}
+Pour chaque entraînement, 4\,000 rééchantillonnages appariés des objets conservent ensemble les deux méthodes et les quatre bruits. Les bornes supérieures percentile à 99,5\,\% corrigent les dix critères (cinq entraînements, deux ratios) par Bonferroni. Une conclusion positive exige les deux bornes sous les seuils dans chacun des cinq jeux.
+
+Cette couverture simultanée nominale est \textbf{approximative}, car fondée sur le bootstrap. L'incertitude est conditionnelle aux modèles et validations observés. Les cinq jeux montrent une dispersion d'apprentissage, mais ne donnent pas un intervalle fiable sur toute la population des entraînements. Aucun rééchantillonnage naïf de toutes les répétitions ni mélange entraînement/objet n'est utilisé.
+
+\subsection{Dix scénarios, sans recherche supplémentaire}
+Au principal s'ajoutent : 64 capteurs complets ; 32 espacés ; 16 contigus ; 16 espacés ; bruit 0,003 ; bruit 0,03 ; rugosité $p=1,5$ ; hauteur vraie 0,2625 (+5\,\%) ; hauteur vraie 0,275 (+10\,\%). Chaque variation conserve les autres paramètres nominaux, et les trois tailles d'apprentissage sont évaluées.
+
+Ces résultats secondaires sont \textbf{descriptifs}. Les ratios ponctuels ne deviennent pas des preuves corrigées de supériorité. Toute panne devait être conservée et rendre le contraste concerné indécidable ; aucune panne n'a été observée. Les résultats en queue et les dégradations restent publiés.
+
+\newpage
+\section{Résultat du contraste principal}\label{primary}
+\plot{primary}\figsource{primary}
+\vspace{3mm}
+\begin{center}\small\input{primary_table.tex}\end{center}
+
+Les cinq critères de risque et les cinq critères de queue satisfont les seuils fixés. Le gain utile de F sur D est donc \textbf{établi selon la règle du protocole, dans ce scénario et conditionnellement aux cinq modèles observés}. Les rapports de risque proches de 0,32 correspondent à environ 68\,\% de réduction de l'erreur quadratique, et non à 68\,\% de réduction de son écart-type ou de toute erreur individuelle.
+
+La faible dispersion des cinq points ne remplace pas une étude plus large de variabilité d'apprentissage. Les objets de test sont communs entre jeux ; on ne les recompte pas comme 2\,000 objets indépendants. Les bornes supérieures sont celles du bootstrap conditionnel et non des barres d'erreur sur une moyenne de cinq entraînements.
+
+L'écart D/F est cohérent avec la présence de blocs non diagonaux dans la base singulière masquée. La conclusion porte sur l'ablation conjointe des blocs $C_{bz}$ et $C_{zz}$ : elle n'identifie pas séparément la contribution de chaque bloc.
+
+\newpage
+\section{Méthodes complètes et tailles d'apprentissage}
+\begin{center}\input{method_table.tex}\end{center}
+{\small Scénario principal, $N=256$. Risque : moyenne sur les cinq jeux. Dernière colonne : moyenne des cinq percentiles, \emph{pas} percentile d'un mélange. Les huit méthodes sont réglées séparément à budget égal.}
+
+\plot{training}\figsource{training}
+
+F améliore fortement D, mais conserve un risque environ 3,12 fois celui de H1. À l'inverse, L obtient un ratio de risques moyens L/H1 de 0,753 à $N=256$ : avantage \emph{observé} d'environ 24,7\,\%, hors contraste confirmatoire. O, qui n'utilise que les 12 observations projetées mais autorise toute la sortie, fait légèrement mieux que L ici (0,01203 contre 0,01239).
+
+Quand $N$ passe de 64 à 1\,024, les risques moyens de L passent de 0,01423 à 0,01188 ; ceux de F restent proches de 0,05270 à 0,05139. Les courbes relient les tailles imbriquées de chaque entraînement ; elles ne sont pas cinq réplications indépendantes entre tailles ni des intervalles de confiance.
+
+\newpage
+\section{Séparer corrélations et prédiction hors sous-espace}
+\plot{projection}\figsource{projection}
+
+Dans les trois premières barres, $\lambda$ est celui choisi pour F. L'écart D/F subsiste à ce réglage partagé : il ne se réduit pas à un avantage de sélection. La composante complémentaire est identique, car les deux incréments restent dans $P$ avec la même moyenne.
+
+F et O ont la même erreur dans $P$ à $\lambda$ commun. Leur écart de risque, de 0,05133 à 0,01203, provient du complément. Le passage à une sortie complète peut prédire des directions qui ne sont pas représentées par les douze vecteurs retenus ; cette prédiction exploite la distribution d'apprentissage et ne garantit pas une inversion déterministe de directions invisibles.
+
+Les barres L et LP utilisent toutes les observations et le même $\lambda$ choisi pour L. La projection de l'incrément fait remonter le risque à environ 0,05158. Cette seconde comparaison vérifie que l'effet de sortie ne dépend pas seulement d'une restriction préalable des entrées.
+
+\subsection{Ce que ces expériences ne séparent pas}
+Le complément de $P$ contient des directions mal observées et, selon le masque, des directions du noyau ; il n'est pas assimilable au seul noyau. L/O modifie l'espace d'entrée et l'échelle de ridge, puis règle les paramètres séparément. Son faible écart descriptif ne constitue donc pas une estimation causale isolée de l'information dans les capteurs restants.
+
+Les moyennes empiriques sont identiques entre méthodes, et les incréments sont projetés autour de cette moyenne. Projeter aussi la moyenne aurait introduit un autre effet et aurait invalidé l'attribution précédente. Les identités d'opérateurs et de pertes ont été testées et vérifiées sur la campagne.
+
+\newpage
+\section{Robustesse : succès locaux et dégradations}
+\plot{robustness}\figsource{robustness}
+
+Le tableau montre des \textbf{ratios de risques moyens} sur cinq entraînements à $N=256$, sans intervalle confirmatoire secondaire. La géométrie du masque importe autant que le nombre de capteurs : F/D est proche de 1,04 pour 32 capteurs espacés, contre 0,32 pour 32 contigus.
+
+L dépasse le risque de H1 de 9,2\,\% avec tous les capteurs, 4,9\,\% avec 32 espacés, 0,5\,\% avec 16 espacés et 10,7\,\% avec la rugosité accrue. La covariance complète empirique peut payer un coût de variance d'estimation lorsqu'une structure diagonale convient déjà, ou un coût de transfert quand la distribution change.
+
+Avec 16 capteurs contigus, L réduit le risque moyen face à H1 (ratio 0,878), mais la moyenne des $q_{95}$ augmente : 0,30789 contre 0,29488, soit environ +4,4\,\%. Une amélioration moyenne n'assure donc pas l'amélioration des queues.
+
+Les hauteurs +5\,\% et +10\,\% conservent ici un avantage ponctuel de L face à H1. Cela ne démontre pas une robustesse à toute erreur de modèle : seules deux perturbations positives de hauteur sont évaluées, sans changer la forme du domaine ni les conditions aux limites.
+
+\newpage
+\section{Covariance de population : diagnostic de coordonnées}
+\plot{covariance}\figsource{covariance}
+
+Ces matrices sont calculées directement comme $V_r^\top D_cV_r$ à partir des variances connues du générateur, \textbf{pas estimées à partir des objets de test}. Chaque carte est divisée par sa variance diagonale maximale. La fraction hors diagonale est
+\[
+ \frac{\norm{C-\operatorname{diag}(\operatorname{diag}C)}_F}{\norm{C}_F}.
+\]
+Elle vaut environ $4,8\times10^{-15}$ pour les capteurs complets, 0,667 pour 32 contigus et 0,736 pour 16 contigus. Elle mesure une part de norme de matrice, pas un pourcentage de couples de variables « corrélés ».
+
+Le diagnostic explique pourquoi une covariance diagonale dans les coordonnées cosinus peut devenir non diagonale dans les coordonnées singulières d'un masque. Il contextualise les écarts observés ; il ne prouve pas que chaque liaison estimée à partir d'un petit échantillon soit utile ni qu'une structure physique corrélée ait été ajoutée.
+
+\subsection{Sensibilité au choix de représentation}
+Seul $r=12$ est étudié. Une autre troncature peut déplacer le partage entre erreur projetée et complémentaire. Les opérateurs sont invariants à des changements de signes simultanés des vecteurs singuliers ; la notion de diagonalité n'est pas invariante par une rotation arbitraire au sein d'un sous-espace de valeurs singulières multiples. Les bases calculées sont sauvegardées avec les modèles pour rendre l'expérience vérifiable.
+
+\newpage
+\section{Contrôles, coût et reproductibilité}
+\textbf{Validation avant campagne.} Onze tests ciblés sont réussis : optimum ridge comparé à un problème de moindres carrés augmenté, cas diagonal, projections, Parseval, invariance de signe, partitions, bruit apparié, sélection et échecs explicites. Le pilote indépendant a évalué 2\,496 reconstructions, sans panne, avec une extrapolation CPU majorée par 10 d'environ 1\,296 secondes.
+
+\textbf{Campagne.} Les 150 conditions (trois tailles, cinq entraînements, dix scénarios) donnent 1\,920\,000 évaluations des huit méthodes et 1\,200\,000 des cinq diagnostics à paramètres partagés, soit 3\,120\,000 au total. Aucun candidat invalide et aucune perte manquante ou non finie ne sont observés. Les 150 fichiers de pertes ont été vérifiés par SHA-256.
+
+\textbf{Contrôle indépendant.} Une recomposition par graines et intégrales de sinus, séparée de la formule sinc utilisée par le générateur, retrouve 468 valeurs scalaires avec un écart absolu maximal de $1,98\times10^{-15}$. Elle couvre deux objets, deux répétitions, trois régimes et les treize sorties. Ce contrôle ciblé ne constitue pas une seconde campagne exhaustive.
+
+\textbf{Ressources mesurées.} La campagne seule utilise 6,83 secondes CPU de processus, environ 6,83 secondes écoulées et un pic de 83,1 Mo. Ses sorties occupent 67,5 Mo. Le budget global est 14\,400 secondes CPU, 2 Gio RAM et 200 Mo de nouvelles sorties ; les ressources finales, incluant analyse, figures et compilation, figurent dans le bilan de livraison. Le journal détaillé reste privé. Aucun GPU, FreeFem ni service payant n'est utilisé.
+
+\textbf{Grilles bornées.} Sur 105 ajustements, le paramètre choisi est en bord de grille pour D dans 54 cas, F dans 8, O dans 6, L et LP dans 3 chacun. Il n'est pas étendu après test. La comparaison concerne donc les familles et grilles réellement étudiées, sans prétendre approcher un optimum illimité.
+
+\subsection{Traçabilité}
+Version scientifique immuable :\par
+{\small\texttt{\DataCommit}}.
+
+Chaque figure lie son NPZ, son script, sa configuration et sa version. Les pertes brutes, modèles affines, bases singulières, scores de tous les candidats et tirages bootstrap sont disponibles. Les entrées scientifiques sont reproductibles à partir des graines et des sources. Le code importé de l'étude 1 est inchangé ; ses 209 fichiers ont été comparés octet pour octet au commit de base.
+
+\newpage
+\section{Limites, antériorité et conclusion}
+Le contraste principal est confirmé selon le protocole, mais une méthode optimale pour toutes les observations n'est pas établie. La géométrie du masque, la taille d'apprentissage et la distribution des objets déterminent l'intérêt de la covariance complète. Les expériences n'étudient ni bruit corrélé, ni valeurs aberrantes, ni capteurs mal localisés, ni données réelles. Une unique valeur de rang est fixée.
+
+La validation supervisée bénéficie de vérités synthétiques disponibles ; sa transférabilité à une expérience réelle doit être étudiée séparément. L'incertitude bootstrap est conditionnelle et approximative. Les comparaisons secondaires, notamment L/H1, restent descriptives. L'usage de cinq jeux ne fournit pas une garantie populationnelle sur tous les entraînements.
+
+\textbf{Conclusion.} Dans le scénario préspécifié à capteurs contigus, tenir compte des blocs de covariance complets améliore nettement la restriction diagonale à espace identique. La prédiction hors sous-espace apporte un gain supplémentaire distinct. Ces constats coexistent avec des dégradations de LMMSE complet sur observations complètes et objets rugueux. Ils ne contredisent pas la conclusion négative, sur un autre contraste, de l'étude 1.
+
+\subsection*{Références et déclarations académiques}
+M. Burger et S. Kabri, \emph{Learned Regularization for Inverse Problems: Insights from a Spectral Model}, arXiv:2312.09845v2, 2024. \href{https://arxiv.org/html/2312.09845v2}{Texte des auteurs}, introduction et architecture spectrale consultées.
+
+G. S. Alberti, E. De Vito, M. Lassas, L. Ratti et M. Santacesaria, \emph{Learning the optimal Tikhonov regularizer for inverse problems}, NeurIPS 2021. \href{https://papers.nips.cc/paper_files/paper/2021/hash/d3e6cd9f66f2c1d3840ade4161cf7406-Abstract.html}{Notice et résumé} consultés ; preuves non réauditées.
+
+P. C. Hansen, \emph{Regularization Tools}, manuel version 4.0, 2007. \href{https://www.imm.dtu.dk/~pcha/Regutools/RTv4manual.pdf}{Manuel DTU}, entrée TSVD repérée ; logiciel non exécuté.
+
+C. Tajani et J. Abouchabaka, \emph{On the data completion problem for Laplace's equation}, Annals of the University of Craiova, Mathematics and Computer Science Series 45(1), 11--36, 2018. Référence physique issue de l'étude 1 ; KMF non reproduit.
+
+Les estimateurs affines et la régularisation apprise sont établis ; aucune nouveauté algorithmique n'est revendiquée. Code, analyse et rédaction ont été produits avec assistance d'IA ; la validation académique relève de l'auteur et de l'encadrant. Les logos identifient les affiliations et n'attestent pas une approbation des résultats. Les documents tiers privés ne sont pas redistribués.
+
+\subsection*{Contact}
+Halhoul Mhamed\par
+\href{mailto:halhoul.mhamed@etu.uae.ac.ma}{halhoul.mhamed@etu.uae.ac.ma}\par
+\href{mailto:halhoulmhamed@gmail.com}{halhoulmhamed@gmail.com}\par
+\href{https://github.com/halhoulmhamed-droid/inverse-laplace-learning}{Dépôt public inverse-laplace-learning}
+\end{document}

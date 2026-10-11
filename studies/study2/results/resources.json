@@ -1,0 +1,17 @@
+{
+  "measured_bounded_commands_cpu_seconds": 19.196337,
+  "additional_conservative_cpu_reserve_seconds": 60,
+  "peak_recorded_process_rss_bytes": 113164288,
+  "public_study2_bytes_at_check": 72081782,
+  "private_new_outputs_bytes_at_check": 7174032,
+  "additional_output_reserve_bytes": 5000000,
+  "limits": {
+    "cpu_seconds": 14400,
+    "memory_bytes": 2147483648,
+    "new_outputs_bytes": 200000000
+  },
+  "notes": "All scientific runs and three document builds measured. Conservative reserves cover lightweight inspection/rendering, metadata and transfer checks; this is not a claim to measure whole-session CPU. Detailed operational ledger remains private.",
+  "cpu_with_reserve_seconds": 79.196337,
+  "outputs_with_reserve_bytes": 84255814,
+  "budget_pass": true
+}

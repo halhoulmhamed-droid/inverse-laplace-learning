@@ -1,0 +1,227 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\babelprovide[import,main]{french}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx}
+\input{provenance.tex}
+\definecolor{ink}{RGB}{25,48,73}
+\definecolor{accent}{RGB}{23,116,126}
+\setbeamercolor{normal text}{fg=ink,bg=white}
+\setbeamercolor{frametitle}{fg=ink}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{block title}{bg=accent!12,fg=ink}
+\setbeamercolor{block body}{bg=accent!4,fg=ink}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{\hfill\scriptsize Halhoul Mhamed\quad Étude 2\quad\insertframenumber/\inserttotalframenumber\hspace{5mm}\vspace{3mm}}
+\setbeamersize{text margin left=9mm,text margin right=9mm}
+\hypersetup{pdftitle={Étude 2 : covariances apprises et observations partielles pour Laplace},pdfauthor={Halhoul Mhamed}}
+\newcommand{\src}[2]{\href{\DataURL{#1}}{#2}}
+\newcommand{\figsource}[1]{\par\tiny\src{figures/#1.npz}{Données}\,|\,\src{src/figures.py}{Script}\,|\,\src{results/final/configuration.json}{Configuration}\,|\,\src{figures/#1.pdf}{Version scientifique}\par}
+\newcommand{\plot}[2]{\includegraphics[width=#2\linewidth]{../figures/#1.pdf}}
+\begin{document}
+\begin{frame}[plain]
+\begin{columns}[T]
+\column{.48\textwidth}\includegraphics[width=\linewidth,height=12mm,keepaspectratio]{../../../assets/logos/university.png}
+\column{.48\textwidth}\raggedleft\includegraphics[width=\linewidth,height=12mm,keepaspectratio]{../../../assets/logos/faculty.png}
+\end{columns}
+\centering
+{\scriptsize Université Abdelmalek Essaâdi --- Faculté Polydisciplinaire de Larache\par}
+\par\vspace{2mm}
+{\large Projet scientifique de Master --- Étude 2\par}
+\par\vspace{3mm}
+{\LARGE\bfseries Complétion de données de Laplace\par}
+{\large Apport des covariances apprises et robustesse\par aux observations partielles\par}
+\par\vspace{4mm}
+{\large Halhoul Mhamed\par}
+{\scriptsize Master « Modélisation mathématique et applications et apprentissages » --- M2 en cours\par}
+\par\vspace{4mm}
+\textbf{Professeur encadrant : Pr. Chakir Tajani}\par
+\vfill
+{\tiny 11 octobre 2026}
+\end{frame}
+
+\begin{frame}{Question et réponse limitée}
+\begin{block}{Question préspécifiée}
+Les covariances complètes améliorent-elles les covariances diagonales dans les mêmes 12 directions singulières, avec mêmes données, moyennes et réglage ?
+\end{block}
+\par\vspace{3mm}
+\begin{itemize}
+\item Oui selon la règle figée : risque F/D proche de 0,32 sur 32 capteurs contigus, $N=256$.
+\item LMMSE complet bénéficie aussi de la prédiction hors du sous-espace : effet distinct.
+\item Dégradations observées face à H1 avec tous les capteurs et sur des objets plus rugueux.
+\end{itemize}
+\par\vspace{2mm}
+\small Les résultats de l'étude 1 ont formulé l'hypothèse ; ses objets de test ne sont pas réutilisés. Sa conclusion négative reste intégralement conservée.
+\end{frame}
+
+\begin{frame}{Modèle : indépendance dans la base cosinus}
+\[
+q(x)=\sum_{k=0}^{127}c_k\phi_k(x),\quad c_k=w_k\xi_k,\quad
+\xi_k\ \text{indépendants},\quad w_k^2\propto(1+k^2)^{-p}.
+\]
+\begin{itemize}
+\item Rectangle harmonique, $H=0,25$, 64 moyennes de capteurs ; transfert $\operatorname{sech}(k\pi H)$.
+\item Générateur analytique 128 modes ; inverse FD à 64 modes, grille $64\times16$ intervalles.
+\item Bruit absolu gaussien ; observations divisées par 8, poids $1/64$ conservés après masque.
+\end{itemize}
+\begin{block}{Attention à l'interprétation}
+$\operatorname{Cov}(V_r^\top c)=V_r^\top D_cV_r$ peut être non diagonale. Changement de base et capteurs partiels ne prouvent pas des corrélations physiques des coefficients cosinus.
+\end{block}
+\end{frame}
+
+\begin{frame}{Cinq restrictions pour séparer les effets}
+\small $z=U_r^\top(y-\mu_y)$, $b=V_r^\top(c-\mu_c)$, $r=12$, $P=V_rV_r^\top$. Toujours $\widehat c=\mu_c+R(y-\mu_y)$.
+\par\vspace{3mm}
+\begin{center}
+\begin{tabular}{llll}
+\toprule & Entrée & Sortie de l'incrément & Covariances\\\midrule
+D & $U_r$ & $V_r$ & Diagonales $C_{bz},C_{zz}$\\
+F & $U_r$ & $V_r$ & Blocs complets\\
+O & $U_r$ & Toute la sortie & Blocs complets\\
+L & Toutes les observations & Toute la sortie & Blocs complets\\
+LP & Toutes les observations & $V_r$ & Projection de L\\\bottomrule
+\end{tabular}
+\end{center}
+\par\vspace{3mm}
+\begin{block}{Identités testées à même ridge}
+$PR_O=R_F$ et $PR_L=R_{LP}$. Projeter l'incrément, pas la moyenne. Les diagnostics utilisent $\lambda_F$ pour D/F/O et $\lambda_L$ pour L/LP.
+\end{block}
+\end{frame}
+
+\begin{frame}{Pourquoi l'ablation est mathématiquement contrôlée}
+\[
+\min_G\;\mathbb E\|b-Gz\|^2+\lambda t\|G\|_F^2
+\quad\Longrightarrow\quad G=C_{bz}(C_{zz}+\lambda tI)^{-1}.
+\]
+\begin{itemize}
+\item Contrainte $G$ diagonale : $g_j=C_{bz,jj}/(C_{zz,jj}+\lambda t)$.
+\item Même base, même sous-espace, même échelle $t$, mêmes moyennes, 20 candidats chacun.
+\item Version empirique régularisée de LMMSE ; aucune optimalité universelle sur le test.
+\end{itemize}
+\[
+\|\widehat q-q\|^2=\|Pe\|^2+\|(I-P)e\|^2+\sum_{k=64}^{127}c_k^2.
+\]
+\small À ridge commun, F et O ont exactement la même perte dans $P$. Leur écart total provient du complément, qui n'est pas nécessairement le noyau exact de l'opérateur.
+\end{frame}
+
+\begin{frame}{Protocole figé avant l'évaluation finale}
+\begin{columns}[T]
+\column{.51\textwidth}
+\textbf{Données nouvelles}
+\begin{itemize}
+\item $N=64,256,1024$ ; cinq entraînements indépendants.
+\item 256 objets validation, deux bruits ; réglage supervisé uniquement sur validation.
+\item 400 objets test, quatre bruits appariés. Partitions pilote distinctes.
+\end{itemize}
+\column{.47\textwidth}
+\textbf{Décision principale}
+\begin{itemize}
+\item F/D, 32 contigus, $N=256$, bruit 0,01, nominal.
+\item Risque quadratique : ratio $\leq0,95$.
+\item Protection $q_{95}$ : ratio $\leq1,05$.
+\item 4\,000 bootstraps par objet ; bornes 99,5\,\%, deux critères dans cinq jeux.
+\end{itemize}
+\end{columns}
+\par\vspace{3mm}
+\small Gel : \texttt{20a663d}. Couverture simultanée nominale approximative ; incertitude conditionnelle aux modèles. Pas d'intervalle populationnel sur les entraînements.
+\end{frame}
+
+\begin{frame}{Contraste principal : critères satisfaits}
+\centering\plot{primary}{.90}\figsource{primary}
+\par\vspace{3mm}
+\normalsize Les cinq bornes de risque sont $<0,336$ ; les cinq bornes de queue sont $<0,375$. Les seuils 0,95 et 1,05 sont respectés.
+\par\vspace{2mm}
+\small Conclusion restreinte au scénario et aux cinq modèles observés ; réduction d'erreur quadratique, pas garantie individuelle.
+\end{frame}
+
+\begin{frame}{Huit méthodes : ne pas confondre F et LMMSE complet}
+\begin{columns}[c]
+\column{.54\textwidth}
+\centering\small\input{method_table.tex}
+\column{.43\textwidth}
+\small Scénario principal, $N=256$. Moyennes sur cinq entraînements ; chaque méthode est réglée séparément.
+\par\vspace{4mm}
+\normalsize F améliore D mais reste derrière H1.
+\par\vspace{3mm}
+L/H1 : ratio observé 0,753. O fait légèrement mieux que L ici.
+\par\vspace{3mm}
+\small La comparaison L/H1 est secondaire et descriptive. La colonne $q_{95}$ est la moyenne des cinq percentiles.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Tailles d'apprentissage : dispersion distincte de l'incertitude}
+\centering\plot{training}{1}\figsource{training}
+\par\vspace{3mm}
+\small Cinq courbes d'entraînement, tailles imbriquées. Les objets de test restent communs ; les courbes ne sont pas des intervalles de confiance populationnels.
+\end{frame}
+
+\begin{frame}{Une contribution séparée : la sortie hors sous-espace}
+\centering\plot{projection}{.96}\figsource{projection}
+\par\vspace{2mm}
+\small À ridge partagé, F/O puis L/LP isolent la sortie complémentaire. Les moyennes sont identiques. Le complément spectral n'est pas assimilé au seul noyau de $A$.
+\end{frame}
+
+\begin{frame}{Robustesse : les dégradations restent visibles}
+\begin{columns}[c]
+\column{.72\textwidth}
+\plot{robustness}{1}\figsource{robustness}
+\column{.26\textwidth}
+\small L face à H1 :
+\par\vspace{2mm}
+\textbf{+9,2\,\%} de risque avec tous les capteurs.
+\par\vspace{3mm}
+\textbf{+10,7\,\%} sur objets rugueux.
+\par\vspace{3mm}
+16 contigus : risque moyen réduit, mais $q_{95}$ moyen \textbf{+4,4\,\%}.
+\par\vspace{3mm}
+Ratios descriptifs ; pas de preuve corrigée de supériorité secondaire.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Covariance de population et effet de coordonnées}
+\centering\plot{covariance}{1}\figsource{covariance}
+\par\vspace{3mm}
+\small $V_r^\top D_cV_r$ est calculée à partir des variances connues, sans estimation sur les vérités de test. « Hors diagonale » désigne une fraction de norme de Frobenius. Les coefficients cosinus restent indépendants.
+\end{frame}
+
+\begin{frame}{Contrôles réussis et limites de portée}
+\begin{columns}[T]
+\column{.49\textwidth}
+\textbf{Vérifications}
+\begin{itemize}
+\item 11 tests ciblés ; pilote séparé réussi.
+\item 3,12 millions d'évaluations ; aucune panne numérique.
+\item 468 valeurs recomposées indépendamment, écart $<2\times10^{-15}$.
+\item 209 fichiers de l'étude 1 inchangés octet pour octet.
+\end{itemize}
+\column{.49\textwidth}
+\textbf{Limites}
+\begin{itemize}
+\item Un seul rang $r=12$ ; données synthétiques gaussiennes.
+\item Validation supervisée et cinq entraînements seulement.
+\item Grilles finies, sélections aux bornes conservées.
+\item Pas de bruit corrélé, de valeurs aberrantes ni de géométrie différente.
+\end{itemize}
+\end{columns}
+\par\vspace{3mm}
+\small Campagne seule : 6,83 s CPU, pic 83,1 Mo, sorties 67,5 Mo. Plafonds globaux : 4 h CPU, 2 Gio RAM, 200 Mo de nouvelles sorties. Aucun service payant, GPU ou FreeFem.
+\end{frame}
+
+\begin{frame}{Conclusion, antériorité et contact}
+\begin{block}{Conclusion}
+L'apport des covariances complètes est établi pour le contraste figé à espace identique. La sortie hors sous-espace apporte un gain distinct. Aucune supériorité générale de LMMSE n'est établie.
+\end{block}
+\small
+Antériorités : Burger--Kabri (2024), Alberti et al. (NeurIPS 2021), Hansen (Regularization Tools), Tajani--Abouchabaka (2018). \src{SOURCES.md}{Références et limites de lecture}. Méthodes établies, aucune nouveauté algorithmique revendiquée.
+\par\vspace{2mm}
+Code, analyse et rédaction avec assistance d'IA ; validation académique relevant de l'auteur et de l'encadrant. Les logos ne valent pas approbation des résultats.
+\par\vspace{3mm}
+\textbf{Halhoul Mhamed}\par
+\href{mailto:halhoul.mhamed@etu.uae.ac.ma}{halhoul.mhamed@etu.uae.ac.ma}\par
+\href{mailto:halhoulmhamed@gmail.com}{halhoulmhamed@gmail.com}\par
+\href{https://github.com/halhoulmhamed-droid/inverse-laplace-learning}{Dépôt public inverse-laplace-learning}\par
+\par\vspace{2mm}
+{\tiny Version scientifique : \texttt{\DataCommit}}
+\end{frame}
+\end{document}
