@@ -19,7 +19,7 @@ The analytic data generator and finite-difference inverse are independent. Exper
 - [All comparison summaries](results/analysis/summary.csv)
 - [Measured campaign checks and costs](results/full/report.json)
 
-The [French report (PDF)](docs/report.pdf), [slides (PDF)](docs/slides.pdf), their [LaTeX sources](docs/) and [figure provenance](docs/provenance.md) are available as a reviewed working edition. The two required official institutional logos could not yet be acquired and verified; final document release remains pending.
+The [French report (PDF)](docs/report.pdf), [slides (PDF)](docs/slides.pdf), their [LaTeX sources](docs/) and [figure provenance](docs/provenance.md) are available with the verified institutional logos. Their [sources and SHA-256 checksums](assets/logos/SOURCES.md) document the exact public source revision.
 
 ## Reproduce
 
