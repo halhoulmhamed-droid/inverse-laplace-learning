@@ -1,0 +1,254 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\babelprovide[import,main]{french}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx}
+\input{provenance.tex}
+\definecolor{ink}{RGB}{25,48,73}
+\definecolor{accent}{RGB}{23,116,126}
+\setbeamercolor{normal text}{fg=ink,bg=white}
+\setbeamercolor{frametitle}{fg=ink}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{block title}{bg=accent!12,fg=ink}
+\setbeamercolor{block body}{bg=accent!4,fg=ink}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{\hfill\scriptsize Halhoul Mhamed\quad\insertframenumber/\inserttotalframenumber\hspace{5mm}\vspace{3mm}}
+\setbeamersize{text margin left=9mm,text margin right=9mm}
+\hypersetup{pdftitle={Projet scientifique de Master : complétion de Laplace},pdfauthor={Halhoul Mhamed}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\src}[2]{\href{\DataURL{#1}}{#2}}
+\newcommand{\figsource}[1]{\par\tiny\src{figures/#1.npz}{Données}\,|\,\src{scripts/figures.py}{Script}\,|\,\href{\DataURL{figures/#1.pdf}}{Version GitHub}}
+\newcommand{\plot}[2]{\IfFileExists{../figures/#1.pdf}{\includegraphics[width=#2\linewidth]{../figures/#1.pdf}}{\parbox[c][30mm][c]{#2\linewidth}{\centering Figure en attente.}}}
+\title{Projet scientifique de Master : complétion de données de Laplace}
+\begin{document}
+\begin{frame}[plain]
+\begin{columns}[T]
+\column{.48\textwidth}\IfFileExists{../assets/logos/university.png}{\includegraphics[height=12mm]{../assets/logos/university.png}}{\vspace{12mm}}
+\column{.48\textwidth}\raggedleft\IfFileExists{../assets/logos/faculty.png}{\includegraphics[height=12mm]{../assets/logos/faculty.png}}{\vspace{12mm}}
+\end{columns}
+\centering
+{\scriptsize Université Abdelmalek Essaâdi --- Faculté Polydisciplinaire de Larache\par}
+\vspace{3mm}
+{\large Projet scientifique de Master\par}
+\vspace{3mm}
+{\LARGE\bfseries Complétion de données de Laplace\par}
+{\large Filtrage spectral appris, bruit et erreur de modèle\par}
+\vspace{5mm}
+{\large Halhoul Mhamed\par}
+{\scriptsize Master « Modélisation mathématique et applications et apprentissages » --- M2 en cours\par}
+\vspace{5mm}
+\textbf{Professeur encadrant : Pr. Chakir Tajani}\par
+\vfill
+{\tiny 11 octobre 2026 --- Édition de travail : visuels institutionnels en attente}
+\end{frame}
+
+\begin{frame}{Une question comparative, un résultat négatif}
+\begin{block}{Question}
+Le plafonnement d'un filtre appris améliore-t-il les erreurs extrêmes sous observations partielles ou erreur de hauteur ?
+\end{block}
+\begin{itemize}
+\item Onze méthodes affines ; aucun réseau neuronal nécessaire.
+\item Données synthétiques ; générateur analytique distinct de l'inverse numérique.
+\item 2\,376\,000 reconstructions, trois entraînements, zéro échec numérique détecté.
+\item Le critère préfixé de gain robuste n'est satisfait dans aucun entraînement.
+\end{itemize}
+\vspace{2mm}
+Une exécution réussie n'implique pas une supériorité statistique.
+\end{frame}
+
+\begin{frame}{Le transfert amortit exponentiellement les modes}
+\begin{columns}[T]
+\column{.51\textwidth}
+$\Omega=(0,1)\times(0,H)$, $H=1/4$.
+\begin{itemize}
+\item $\Delta u=0$ ; trace supérieure $q$ inconnue.
+\item Flux nul sur bas et côtés : hypothèse contrôlée.
+\item 64 moyennes inférieures, éventuellement masquées.
+\end{itemize}
+\column{.47\textwidth}
+$\phi_0=1$, $\phi_k=\sqrt2\cos(k\pi x)$.
+\[
+u_k(x,y)=\phi_k(x)\frac{\cosh(k\pi y)}{\cosh(k\pi H)}.
+\]
+\[
+T_H\phi_k=\operatorname{sech}(k\pi H)\phi_k.
+\]
+$\norm{\phi_k}=1$ mais $\norm{T_H\phi_k}\to0$ : inverse non borné.
+\end{columns}
+\vfill
+Le mode constant reste estimé ; le centrage statistique ne le supprime pas.
+\end{frame}
+
+\begin{frame}{La matrice inverse n'est pas le transfert continu}
+\begin{columns}
+\column{.43\textwidth}
+\small
+Capteurs : intervalles de longueur $1/64$. Masques : complet, pairs, contigu.
+\[
+W=\tfrac1{64}I_m,\quad A=QA_{\rm raw},
+\]
+\[
+Q=W^{1/2}/\norm{W^{1/2}A_{\rm raw}}.
+\]
+Bruit après moyenne, avant masque ; calibration entraînement seulement.
+
+Rang numérique : $\sigma_j>10^{-12}\sigma_1$.
+\column{.55\textwidth}\centering\plot{spectres}{1}\figsource{spectres}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Séparer implémentation et discrétisation}
+\begin{itemize}
+\item Générateur : 128 modes, moyennes analytiques.
+\item Inverse : 64 modes, différences finies 65$\times$17, fantômes réfléchis.
+\item Contrôle indépendant : solution modale discrète et raffinement jusqu'à 257$\times$65.
+\end{itemize}
+\[
+\gamma=2\operatorname{asinh}((h_y/h_x)\sin(s/2)),\quad
+\rho_k=\frac{\cosh(k\pi H)}{\cosh(N_y\gamma)}\frac{s/2}{\tan(s/2)}.
+\]
+\begin{center}\small\begin{tabular}{lrrr}\toprule
+Grille & 65$\times$17 & 129$\times$33 & 257$\times$65\\\midrule
+Erreur prévue, $k=8$ & 0,06851 & 0,01701 & 0,00425\\\bottomrule
+\end{tabular}\end{center}
+\small Accord discret : $10^{-10}$ ; erreur continue : $0,005$ au maillage fin. Seuils fixés avant calcul, pas ajustés aux résultats appris.
+\end{frame}
+
+\begin{frame}{Le plafond borne une amplification, pas le risque total}
+\[
+d=(A+E)c+b+\varepsilon,\qquad \widehat c=\mu_c+R(d-\mu_d).
+\]
+\begin{block}{Identité exacte, avec $f=A\mu_c-\mu_d$}
+\[
+\widehat c-c=(RA-I)(c-\mu_c)+R(Ec+b+\varepsilon+f).
+\]
+\end{block}
+\begin{itemize}
+\item Premier terme : biais, noyau et directions rejetées inclus.
+\item Second : erreur du modèle, queue transmise, bruit et offset.
+\item Erreur totale : $\norm{\widehat q-q}^2=\norm{\widehat c-c}^2+\norm{q_\perp}^2$.
+\end{itemize}
+\small Pour un filtre diagonal, $\norm R=\max|g_j|$ ; H1 et LMMSE demandent la vraie norme matricielle. Réduire la variance peut augmenter le biais.
+\end{frame}
+
+\begin{frame}{Ce qui est appris et ce qui est comparé}
+\[
+g_* =\frac{\operatorname{Cov}(\beta,z)}{\operatorname{Var}z},\qquad
+z=\sigma\beta+\varepsilon\ \Longrightarrow\ g_W=\frac{\sigma p}{\sigma^2p+v}
+\]
+\small La dernière égalité suppose signal et bruit décorrélés. Moyennes non nulles : estimateur affine. Sous erreur du modèle, gains négatifs possibles.
+\begin{columns}[T]
+\column{.49\textwidth}
+\begin{block}{Références}
+Tikhonov L2 et H1 ; TSVD ; Wiener ; Wiener plafonné ; LMMSE complet.
+\end{block}
+\column{.49\textwidth}
+\begin{block}{Cinq filtres appris}
+Signé ; signé plafonné ; positif ; positif borné par $1/\sigma$ ; borné plafonné.
+\end{block}
+\end{columns}
+\small H1 ne commute généralement pas avec $A^TA$. LMMSE exploite les covariances croisées et peut prédire dans le noyau, sans créer d'identifiabilité déterministe.
+\end{frame}
+
+\begin{frame}{Validation sans vérité et incertitude par objet}
+\begin{itemize}
+\item Trois entraînements de 1000 objets ; 200 validations ; 200 tests nominaux et 200 rugueux.
+\item Dix répétitions bruitées par objet test ; objets pilote distincts.
+\item Sept grilles de 20 configurations maximum, quatre méthodes fixes.
+\end{itemize}
+\[
+Q=\frac1{N_v}\sum_i\norm{A\widehat c(d_i^{(1)})-d_i^{(2)}}^2.
+\]
+\small Deux répétitions indépendantes conditionnellement à l'objet. Le risque prédictif n'est pas le risque inverse : le noyau reste peu visible.
+\begin{block}{Critère préfixé}
+À 1\,\% de bruit : P1 contigu nominal ; P2 complet, hauteur +5\,\%. Borne du ratio q95 $<0,90$ et borne du ratio de médiane nominale $<1,05$.
+\end{block}
+\tiny Bootstrap : 2000 tirages d'objets, quatre bornes à 98,75\,\% par entraînement. Pas de couverture simultanée des trois entraînements.
+\end{frame}
+
+\begin{frame}{Aucun entraînement n'atteint le critère principal}
+\begin{center}\small\begin{tabular}{lrrrr}\toprule
+ & Jeu 0 & Jeu 1 & Jeu 2 & Cible\\\midrule
+P1 ratio q95 & 0,97096 & 0,98498 & 0,98987 & ---\\
+P1 borne q95 & 0,99908 & 1,00117 & 1,00308 & $<0,90$\\
+P1 borne médiane & 1,00127 & 1,00350 & 1,00340 & $<1,05$\\
+P2 ratio et borne q95 & 1,00000 & 1,00000 & 1,00000 & $<0,90$\\\bottomrule
+\end{tabular}\end{center}
+\begin{itemize}
+\item P1 : baisses ponctuelles modestes, inférieures à l'objectif de 10\,\%.
+\item P2 : aucune différence mesurée entre signé et signé plafonné.
+\item Six évaluations non satisfaites ; aucun ratio bootstrap indéfini.
+\end{itemize}
+\vfill\tiny\src{results/analysis/primary.json}{Résultats primaires}\,|\,\src{results/analysis/bootstrap.npz}{Tirages conservés}
+\end{frame}
+
+\begin{frame}{Les comparateurs structurés restent essentiels}
+\begin{columns}
+\column{.57\textwidth}\small
+\begin{tabular}{lr}\toprule
+P1, jeu 0 & q95 relatif\\\midrule
+Tikhonov L2 & 0,8026\\
+Tikhonov H1 & 0,4435\\
+TSVD & 0,8569\\
+Wiener & 0,7877\\
+Wiener plafonné & 0,7731\\
+Appris signé & 0,7986\\
+Appris signé plafonné & 0,7754\\
+Appris positif & 0,8011\\
+Appris borné & 0,8011\\
+Appris borné plafonné & 0,7764\\
+LMMSE & 0,3910\\\bottomrule
+\end{tabular}
+\column{.39\textwidth}
+H1 et LMMSE constituent des références fortes dans cette condition.
+
+\vspace{5mm}
+Une condition ne prouve pas une supériorité universelle.
+
+\vspace{5mm}\tiny\src{results/analysis/summary.csv}{Toutes les conditions et méthodes}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Conserver les cas défavorables}
+\small P1, objet 197 : pire erreur moyenne du signé sur dix bruits. Toutes les méthodes, mêmes données, répétition 0.
+\begin{center}\plot{P1_pire_projection}{.98}\end{center}
+\small Zéro échec numérique ne signifie pas reconstruction exacte.
+\par\tiny\src{figures/P1_pire.npz}{Données}\,|\,\src{scripts/presentation_figures.py}{Script}\,|\,\src{figures/P1_pire_projection.pdf}{Version GitHub}
+\end{frame}
+
+\begin{frame}{Portée, coûts et prolongement}
+\begin{columns}[T]
+\column{.49\textwidth}
+\begin{block}{Mesures de campagne}
+\small Cumul avant analyse : 9,514 s CPU.\par
+Campagne : 4,542 s écoulées.\par
+Pic mémoire : 181,54 Mo.\par
+Résultats au relevé : 110,59 Mo.\par
+2\,376\,000 reconstructions.
+\end{block}
+\small Les rapports cumulatifs distinguent pilote, analyse et figures ; ces chiffres ne promettent pas un coût identique sur une autre machine.
+\column{.49\textwidth}
+\begin{block}{Limites}
+\small Rectangle, flux contrôlé, loi synthétique, calibration connue, trois entraînements seulement. Bornes bootstrap approximatives et conditionnelles.
+\end{block}
+\small Prolongement unique : choix statistique du plafond sous incertitude d'opérateur. Aucune escalade d'architecture justifiée par l'absence de gain.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Références et Contact}
+\scriptsize
+C2 : Tajani et Abouchabaka, \emph{On the data completion problem for Laplace's equation}, 2018.\par
+R01 : Burger et Kabri, \href{https://arxiv.org/abs/2312.09845v2}{régularisation spectrale apprise}, 2024.\par
+R02 : Alberti et al., \href{https://arxiv.org/abs/2106.06513}{apprentissage du régularisateur Tikhonov}, 2021.\par
+R06 : Byrne et Renaut, \href{https://doi.org/10.3934/ipi.2023006}{réglage spectral observationnel}, 2023.\par
+\vspace{4mm}
+\normalsize\textbf{Contact}\par
+\small\href{mailto:halhoul.mhamed@etu.uae.ac.ma}{halhoul.mhamed@etu.uae.ac.ma}\par
+\href{mailto:halhoulmhamed@gmail.com}{halhoulmhamed@gmail.com}\par
+\scriptsize\url{https://github.com/halhoulmhamed-droid/inverse-laplace-learning}\par
+\vspace{4mm}
+\tiny Données et code : \texttt{\DataCommit}.\par
+Aucune nouveauté algorithmique ni validation institutionnelle supplémentaire revendiquée.
+\end{frame}
+\end{document}

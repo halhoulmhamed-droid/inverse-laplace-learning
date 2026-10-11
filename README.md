@@ -19,7 +19,7 @@ The analytic data generator and finite-difference inverse are independent. Exper
 - [All comparison summaries](results/analysis/summary.csv)
 - [Measured campaign checks and costs](results/full/report.json)
 
-The French report, slides and figure provenance are prepared from these archived results. Their final release status is recorded with the document delivery.
+The [French report (PDF)](docs/report.pdf), [slides (PDF)](docs/slides.pdf), their [LaTeX sources](docs/) and [figure provenance](docs/provenance.md) are available as a reviewed working edition. The two required official institutional logos could not yet be acquired and verified; final document release remains pending.
 
 ## Reproduce
 
@@ -43,6 +43,8 @@ python scripts/figures.py --help
 ```
 
 The 200 MB retained-output limit covers the common results parent directory. Keeping the archived campaign and an additional full copy there exceeds the preflight allowance. For an independent full reproduction, use an empty separate experiment directory, retaining the published archive unchanged. Configuration or source-hash mismatches intentionally reject resuming an old run. Completed conditions are checked by SHA-256 and semantic status checks; unfinished conditions can resume within the remaining budget.
+
+Build both documents with `python scripts/build_documents.py` using the available pdfLaTeX and Babel locale support. Sources and PDFs must be updated together.
 
 The seeds use NumPy PCG64 and explicit object partitions. Truth chunks concatenate in manifest order along axis 0. Metric arrays use the axes recorded in `configuration.json`. Status 0 is success; bits 1, 2 and 4 mark numerical, metric and family failures; 128 means missing. Nonfinite failed reconstructions remain in the statistics as infinite errors.
 

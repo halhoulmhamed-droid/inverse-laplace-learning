@@ -1,0 +1,273 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\babelprovide[import,main]{french}
+\usepackage{lmodern,amsmath,amssymb,graphicx,booktabs,array}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor,hyperref,microtype}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black,citecolor=blue!45!black,pdftitle={Projet scientifique de Master : complétion de données de Laplace},pdfauthor={Halhoul Mhamed}}
+\input{provenance.tex}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\src}[2]{\href{\DataURL{#1}}{#2}}
+\newcommand{\figsource}[1]{\src{figures/#1.npz}{Données}\,; \src{scripts/figures.py}{script}\,; version \texttt{\DataCommit}.}
+\newcommand{\plot}[2]{\IfFileExists{../figures/#1.pdf}{\includegraphics[width=#2\linewidth]{../figures/#1.pdf}}{\parbox[c][35mm][c]{#2\linewidth}{\centering Figure en attente de génération vérifiée.}}}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\begin{document}
+\selectlanguage{french}
+\begin{titlepage}
+\begin{minipage}{.45\textwidth}\IfFileExists{../assets/logos/university.png}{\includegraphics[height=20mm]{../assets/logos/university.png}}{\vspace{20mm}}\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}\raggedleft\IfFileExists{../assets/logos/faculty.png}{\includegraphics[height=20mm]{../assets/logos/faculty.png}}{\vspace{20mm}}\end{minipage}
+\vspace{18mm}
+\begin{center}
+{\large Université Abdelmalek Essaâdi\par}
+{\large Faculté Polydisciplinaire de Larache\par}
+\vspace{13mm}
+{\Large\bfseries Projet scientifique de Master\par}
+\vspace{8mm}
+{\huge\bfseries Complétion de données pour l'équation de Laplace\par}
+\vspace{6mm}
+{\Large Filtrage spectral appris : stabilité au bruit et à l'erreur de modèle\par}
+\vspace{15mm}
+{\Large Halhoul Mhamed\par}
+\vspace{5mm}
+Master « Modélisation mathématique et applications et apprentissages »\par
+M2 en cours\par
+\vspace{15mm}
+\textbf{Professeur encadrant : Pr. Chakir Tajani}\par
+\vfill
+11 octobre 2026\par
+\small Édition de travail --- visuels institutionnels en attente\par
+\end{center}
+\end{titlepage}
+
+\section*{Résumé}
+Reconstruire une trace harmonique inaccessible exige de compenser une atténuation exponentielle des hautes fréquences. Ce projet compare onze estimateurs affines, dont des filtres spectraux appris, dans un rectangle avec bruit, capteurs partiels et erreur de hauteur. Un générateur analytique de 128 modes est séparé du direct numérique inverse de 64 modes. Les paramètres sont choisis sur deux observations de validation indépendantes conditionnellement à l'objet, sans accès à sa vérité pour le réglage.
+
+La campagne complète comporte 2\,376\,000 reconstructions, trois jeux d'entraînement et zéro échec numérique détecté. Le critère principal exigeait une réduction d'au moins 10\,\% du quantile 95\,\% par plafonnement, avec une hausse de médiane nominale inférieure à 5\,\%, évaluées par bornes bootstrap appariées. Il n'est satisfait pour aucun des trois entraînements. Sous masque contigu, les ratios ponctuels du quantile sont compris entre 0,9710 et 0,9899 ; sous hauteur augmentée de 5\,\% et masque complet, ils valent 1. Ces résultats ne démontrent pas un avantage robuste du plafond. Les comparaisons secondaires montrent l'importance de la pénalité H1 et des corrélations exploitées par LMMSE, sans établir une supériorité universelle.
+
+\selectlanguage{english}
+\section*{English synthesis}
+This study addresses harmonic boundary data completion using fixed affine spectral filters. Exponential smoothing makes the inverse unstable; finite, partially observed interval averages also introduce unobservable directions. Eleven estimators are compared using a separate analytical generator and finite-difference inverse operator. Training statistics, observation-only validation and held-out physical objects are kept distinct.
+
+The complete campaign contains 2,376,000 reconstructions with no detected numerical failure. The predefined joint criterion for clipping---a 10\% reduction in the 95th-percentile error with less than 5\% nominal median degradation---is not met for any training set. Point ratios range from 0.9710 to 0.9899 for contiguous sensors, and equal one for the complete-sensor, 5\%-height-shift contrast. These are negative comparative findings, not failed executions. Synthetic distributions, a controlled zero flux and approximate conditional bootstrap bounds limit extrapolation to real measurements. No algorithmic novelty is claimed.
+\selectlanguage{french}
+\clearpage
+\tableofcontents
+\clearpage
+
+\section{Question scientifique et modèle}
+Le potentiel vérifie $\Delta u=0$ dans $\Omega_H=(0,1)\times(0,H)$, $H=1/4$. La trace supérieure $u(x,H)=q(x)$ est inconnue. Les flux sur le bas et les côtés sont nuls. Cette isolation est une hypothèse physique connue, distincte d'une donnée de Neumann mesurée sans bruit. Les observations portent sur le bas.
+
+La question est de séparer l'apport de l'estimation statistique des gains et celui de leur plafonnement. La régularisation apprise a des antériorités proches \cite{R01,R02}; la complétion de Laplace s'inscrit dans les problèmes de Cauchy étudiés dans \cite{C2}. L'objectif est une comparaison explicable et reproductible, sans revendication de nouveauté ni validation clinique.
+
+Dans la base orthonormée $\phi_0=1$, $\phi_k(x)=\sqrt2\cos(k\pi x)$,
+\begin{equation}
+u(x,y)=c_0+\sum_{k\ge1}c_k\phi_k(x)\frac{\cosh(k\pi y)}{\cosh(k\pi H)}.
+\end{equation}
+Pour une somme finie, les dérivées secondes s'annulent mutuellement, les flux normaux sont nuls et la trace haute vaut $q$. La différence de deux solutions de même trace a une énergie $\int|\nabla w|^2$ nulle, donc est constante puis nulle. Pour des traces $H^{1/2}$, le cadre faible énergétique s'applique. Pour $L^2$, seul le transfert inférieur est prolongé par continuité ; une régularité $H^1$ jusqu'au haut n'est pas affirmée pour toute trace $L^2$.
+
+Le transfert $T_H$ multiplie chaque coefficient par $t_k=\sech(k\pi H)$, avec $t_0=1$. Il est injectif et compact, mais son inverse est non borné : $\norm{\phi_k}=1$ et $\norm{T_H\phi_k}=t_k\to0$. Une donnée $(d_k)$ appartient à son image lorsque $\sum_k|d_k/t_k|^2<\infty$. Le bruit peut sortir de cette image. Le mode constant est conservé, y compris après centrage statistique.
+
+\section{Acquisition et normes}
+Les capteurs sont les 64 intervalles $I_j=[j/64,(j+1)/64]$, $\ell=1/64$. Ils mesurent des moyennes, avec intégration analytique
+\begin{equation}
+S_j\phi_k=\sqrt2\frac{\sin(k\pi b_j)-\sin(k\pi a_j)}{k\pi\ell},\quad k\ge1;\qquad S_j\phi_0=1.
+\end{equation}
+Trois masques gardent les 64 capteurs, les 32 indices pairs ou les 32 premiers contigus. Avec la sélection $M$, $W=\ell I_m$ conserve les longueurs physiques même pour un demi-bord. On définit
+\[
+a=\norm{W^{1/2}A_{\rm raw}}_2,\quad Q=W^{1/2}/a,\quad A=QA_{\rm raw},\quad d=QM y_{\rm raw}.
+\]
+La SVD de $A$ intègre moyennes, masque, discrétisation et normalisation : ses singularités ne sont pas les $t_k$ continus. Le rang numérique retient $\sigma_j>10^{-12}\sigma_1$ ; il ne prouve pas un noyau physique exact.
+
+Le bruit gaussien de covariance $\tau^2I_{64}$ est ajouté après les moyennes, avant le masque. Avec $\tau=\nu s_{\rm train}$, le RMS $s_{\rm train}$ provient exclusivement de l'entraînement ; $\nu\in\{0,001;0,01;0,05\}$. Alors $C_\varepsilon=(\tau^2\ell/a^2)I_m$. L'échelle n'est pas recalibrée sur les tests.
+\clearpage
+
+\section{Discrétisation et contrôles indépendants}
+Les vérités utilisent $K=128$ coefficients et le transfert analytique. L'inverse utilise $n=64$ coefficients, un stencil centré sur 65$\times$17 points, des fantômes réfléchis pour Neumann et une trace haute Dirichlet. Les moyennes intègrent l'interpolant linéaire inférieur. Le générateur ne réutilise pas la matrice inverse : l'expérience principale ne repose pas sur un inverse crime.
+
+Pour $N_x,N_y$ intervalles, $s=k\pi/N_x$, $h_x=1/N_x$, $h_y=H/N_y$, la solution discrète séparée vérifie
+\[
+\gamma=2\operatorname{asinh}((h_y/h_x)\sin(s/2)),\qquad t_k^h=\sech(N_y\gamma).
+\]
+Lorsque les capteurs sont alignés, l'intégration linéaire multiplie la moyenne analytique par $B(s)=(s/2)\cot(s/2)$. Le ratio observation discrète/continue est
+\[
+\rho_k=\frac{\cosh(k\pi H)}{\cosh(N_y\gamma)}B(s).
+\]
+Pour $h_x=h_y$, $\rho_k-1=s^2[(k\pi H)\tanh(k\pi H)-1]/12+O(s^4)$. Les prédictions suivantes ont fixé les tolérances avant le pilote ; elles ne sont pas des mesures du solveur.
+\begin{center}\begin{tabular}{lrr}\toprule
+Grille de points & Erreur prévue, mode 8 & Seuil continu prévu\\\midrule
+65$\times$17 & 0,06850897 & ---\\
+129$\times$33 & 0,01701274 & 0,02 (repli)\\
+257$\times$65 & 0,00424584 & 0,005\\\bottomrule
+\end{tabular}\end{center}
+L'accord avec la solution discrète est testé séparément à $10^{-10}$. Les rapports successifs prévus sont 4,027 et 4,007. Les tests portent aussi sur quadrature, masques, rang, systèmes H1 non commutants, covariance négative, centrage et LMMSE corrélé. Une bonne erreur des modes bas n'est pas un certificat des modes hauts.
+
+Au repli 33$\times$9, le masque contigu dépend de 17 nœuds. Les deux demi-moyennes par maille, $(3v_0+v_1)/4$ et $(v_0+3v_1)/4$, permettent de retrouver les deux nœuds par somme et différence. L'acquisition a rang 17, le direct composé au plus 17. Le repli a été prévu, mais la campagne complète a été retenue après les contrôles de faisabilité.
+
+\begin{figure}[ht]\centering\plot{spectres}{.85}\caption{Spectres des matrices normalisées pour les trois masques. \figsource{spectres}}\end{figure}
+\clearpage
+
+\section{Décomposition exacte de l'erreur}
+Écrivons $q=J_nc+q_\perp$ et $d=(A+E)c+b+\varepsilon$, avec
+\[
+E=Q(MST_{H_*}J_n-A_{\rm raw}),\qquad b=QMST_{H_*}q_\perp.
+\]
+$E$ comprend géométrie et discrétisation ; $b$ est la queue transmise. Pour toute matrice $R$, l'estimateur affine est $\widehat c=\mu_c+R(d-\mu_d)$. Avec $f=A\mu_c-\mu_d$,
+\begin{equation}\label{eq:error}
+\widehat c-c=(RA-I)(c-\mu_c)+R(Ec+b+\varepsilon+f).
+\end{equation}
+L'offset $f$ ne disparaît pas automatiquement avec des moyennes empiriques. L'inégalité triangulaire donne
+\begin{align*}
+\norm{\widehat c-c}&\le\norm{(RA-I)(c-\mu_c)}\\
+&\quad+\norm R\left(\norm E\norm c+\norm b+\norm\varepsilon+\norm f\right).
+\end{align*}
+Pour $R=V_r\operatorname{diag}(g)U_r^T$, $\norm R=\max|g_j|$. Le carré du biais diagonal est
+\[
+\sum_{j\le r}(g_j\sigma_j-1)^2\beta_j^2+\sum_{j>r}\beta_j^2,\qquad \beta=V^T(c-\mu_c).
+\]
+La deuxième somme conserve noyau et directions rejetées. H1 et LMMSE requièrent leur vraie norme matricielle, sans formule diagonale fictive.
+
+L'orthogonalité établit $\norm{\widehat q-q}_{L^2}^2=\norm{\widehat c-c}^2+\norm{q_\perp}_{L^2}^2$. Le diagnostic du complément de $V_r$ porte sur les $n$ coefficients ; l'erreur totale ajoute la queue. Aucune propriété d'un champ infini au-delà de $K$ n'est déduite de cette vérité finie.
+
+Conditionnellement à l'objet et à un estimateur fixé, si le bruit test est centré, poser $h=(RA-I)(c-\mu_c)+R(Ec+b+f)$ donne
+\[
+\mathbb E_\varepsilon\norm{\widehat c-c}^2=\norm h^2+\operatorname{tr}(RC_\varepsilon R^T)
+\le\norm h^2+\norm R^2\operatorname{tr}C_\varepsilon.
+\]
+Le plafond réduit une borne de variance, mais peut augmenter le biais. Il ne garantit pas un meilleur risque total. Un bruit gaussien n'est pas uniformément borné par une constante finie. Par Markov, avec probabilité au moins $1-\zeta$, $\norm\varepsilon\le(\tau\sqrt\ell/a)\sqrt{m/\zeta}$ ; cette borne conservatrice n'est pas simultanée pour toute la campagne. Les erreurs numériques mesurées ne constituent pas des certificats rigoureux de modèle.
+\clearpage
+
+\section{Apprentissage, Wiener et onze comparateurs}
+Pour les variables centrées $\beta=V_r^T(c-\mu_c)$ et $z=U_r^T(d-\mu_d)$, minimiser $\mathbb E(\beta-gz)^2$ donne
+\[
+g_* =\frac{\operatorname{Cov}(\beta,z)}{\operatorname{Var}z}.
+\]
+Sous $z=\sigma\beta+\varepsilon$, avec variances $p,v$ et covariance $t$, on obtient $(\sigma p+t)/(\sigma^2p+2\sigma t+v)$. Wiener correspond à $t=0$. Sous erreur du modèle, des mélanges de modes rendent le rapport empirique distinct de Wiener nominal ; des gains négatifs sont possibles.
+
+Tous les moments centrés utilisent $N_t-1$. Une variance observée inférieure au seuil
+\[100\epsilon_{\rm machine}\max(1,\max_j\widehat{\operatorname{Var}}z_j)\]
+donne un gain nul. Les gains non finis restent des échecs. Les moyennes, bases, gains et paramètres sont fixes à l'inférence.
+\begin{center}\small\begin{tabular}{p{.33\linewidth}p{.53\linewidth}}\toprule
+Méthode & Action ou définition\\\midrule
+Tikhonov L2 & $(A^TA+\alpha I)^{-1}A^T$\\
+Tikhonov H1 & $(A^TA+\alpha\overline P)^{-1}A^T$\\
+TSVD & Inverse limité aux $k$ premières directions\\
+Wiener & $g_j=\sigma_j\widehat p_j/(\sigma_j^2\widehat p_j+v)$\\
+Wiener plafonné & $\min(g_j,L)$\\
+Appris signé & Rapport empirique covariance/variance\\
+Appris signé plafonné & $\operatorname{clip}(g_j,-L,L)$\\
+Appris positif & $\max(0,g_j)$\\
+Appris positif borné & $\operatorname{clip}(g_j,0,1/\sigma_j)$\\
+Appris borné plafonné & $\operatorname{clip}(g_j,0,\min(L,1/\sigma_j))$\\
+LMMSE complet & $\widehat C_{cd}(\widehat C_{dd}+\lambda s_CI)^{-1}$\\\bottomrule
+\end{tabular}\end{center}
+Pour H1, $P=\operatorname{diag}(1+(k\pi)^2)$, $\overline P=P/\max P_{kk}$, qui ne commute généralement pas avec $A^TA$. On résout les systèmes complets, sans inverse explicite ni TSVD substituée. Pour LMMSE, $s_C=\max(\operatorname{tr}\widehat C_{dd}/m,10^{-15})$, avec Cholesky. Ses corrélations peuvent prédire dans le noyau, sans rendre le problème identifiable hors distribution.
+
+Les grilles sont fixes : 20 valeurs logarithmiques de $10^{-10}$ à $10^1$ pour $\alpha,\lambda$, de $1$ à $10^4$ pour $L$ ; au plus 20 rangs distincts pour TSVD. Sept familles réglables et quatre fixes donnent au plus 144 candidats par condition. Un optimum de bord est conservé ; aucune extension après test n'est autorisée.
+\clearpage
+
+\section{Données, réglage et incertitude}
+Les profils suivent $c_k=Z_k(1+k^2)^{-p/2}/\sqrt{\sum_{l<K}(1+l^2)^{-p}}$, $Z_k\sim N(0,1)$ indépendants. Ainsi $\mathbb E\norm q^2=1$, sans normalisation individuelle. L'entraînement nominal utilise $p=2,5$ ; le test rugueux $p=1,5$. Cette loi privilégie fortement les basses fréquences et constitue une hypothèse importante.
+
+Trois entraînements indépendants de 1000 objets sont séparés de 200 objets de validation, 200 tests nominaux et 200 tests rugueux. Les hauteurs $1,02H$ et $1,05H$ réutilisent les objets nominaux, sans réentraînement. Dix bruits par objet test sont partagés entre méthodes ; dix bruits ne sont pas dix objets indépendants. Les identifiants pilote sont distincts. Les graines déterministes sont documentées dans la configuration publiée.
+
+Le réglage minimise
+\[
+Q(\lambda)=\frac1{N_v}\sum_i\norm{A\widehat c_\lambda(d_i^{(1)})-d_i^{(2)}}^2.
+\]
+Les répétitions sont indépendantes conditionnellement à l'objet. Le risque attendu égale le risque prédictif envers l'observation propre plus une constante $\operatorname{tr}C_\varepsilon$. La vérité de validation ne sélectionne rien. Mais le risque prédictif n'est pas le risque inverse : le noyau peut cacher une erreur élevée. Les motivations du réglage observationnel ne constituent pas une garantie universelle \cite{R06}.
+
+L'erreur principale est $e=\norm{\widehat q-q}/\max(\norm q,d_0)$, avec $d_0=10^{-12}$ fois la médiane des normes d'entraînement. Deux contrastes à 1\,\% comparent signé plafonné/signé : P1, masque contigu nominal ; P2, masque complet et hauteur $1,05H$. Pour chacun, le ratio du q95 et le ratio de médiane nominale associé doivent avoir des bornes supérieures respectivement $<0,90$ et $<1,05$.
+
+Le bootstrap rééchantillonne 2000 fois les objets, avec toutes leurs répétitions. Les quatre bornes à 98,75\,\% appliquent une correction de Bonferroni conditionnelle à chaque entraînement ; aucune couverture simultanée des trois entraînements n'est affirmée. Les quantiles sont les valeurs ordonnées de rang $\lceil\alpha N\rceil$, sans interpolation. Les infinis restent présents ; un dénominateur nul ou infini rend le ratio indéfini. Les échecs ne sont pas retirés pour améliorer les résultats.
+
+Les cas illustrés sont préfixés : objet médian, proche du q95 et pire selon l'erreur moyenne sur bruits du signé, puis cas faible résidu/grande erreur selon déciles. Le départage se fait par identifiant ; les courbes montrent la répétition 0 pour toutes les méthodes.
+\clearpage
+
+\section{Résultats principaux : critère non satisfait}
+La campagne est complète : 27 conditions d'ajustement et 2\,376\,000 reconstructions, sans échec numérique détecté. Le statut d'exécution positif n'est pas un résultat de supériorité. Les chiffres du tableau proviennent de \src{results/analysis/primary.json}{l'analyse primaire conservée}.
+\begin{center}\small\begin{tabular}{llrrrr}\toprule
+ & Jeu & Ratio q95 & Borne q95 & Ratio médiane & Borne médiane\\\midrule
+P1 & 0 & 0,97096 & 0,99908 & 0,98761 & 1,00127\\
+P1 & 1 & 0,98498 & 1,00117 & 0,99300 & 1,00350\\
+P1 & 2 & 0,98987 & 1,00308 & 0,99018 & 1,00340\\
+P2 & 0 & 1,00000 & 1,00000 & 1,00000 & 1,00000\\
+P2 & 1 & 1,00000 & 1,00000 & 1,00000 & 1,00000\\
+P2 & 2 & 1,00000 & 1,00000 & 1,00000 & 1,00000\\\bottomrule
+\end{tabular}\end{center}
+Aucune borne q95 n'est inférieure à 0,90. Le critère conjoint échoue dans les six évaluations, sans tirage bootstrap indéfini. P1 présente des baisses ponctuelles modestes, inférieures à l'objectif de 10\,\%. P2 ne présente aucune différence mesurée entre les deux méthodes. Il n'existe donc pas ici de conclusion robuste favorable au plafond à travers les trois jeux.
+
+\begin{figure}[ht]\centering\plot{dispersion_entrainements}{.91}\caption{Ratios ponctuels entre méthodes avec et sans plafond selon les trois entraînements. Cette figure ne représente pas des intervalles bootstrap ; les bornes sont données au tableau. \figsource{dispersion_entrainements}}\end{figure}
+
+\subsection{Coûts mesurés et périmètre}
+Le compte rendu de campagne enregistre un cumul avant analyse de 9,51434 s CPU (dont 5,079885 s de débit antérieur), 4,54182 s écoulées et un pic mémoire de 181\,538\,816 octets ; l’ensemble du répertoire de résultats au relevé occupe 110\,590\,797 octets. L'analyse primaire prend 1,08912 s CPU. Son registre cumulatif comptabilise 20,79445 s CPU avec les débits antérieurs qu'il déclare. Ces valeurs sont propres à l'exécution mesurée, non une promesse de vitesse ailleurs. Elles ne comprennent pas une prétendue mesure finale de toute compilation documentaire. Les plafonds de conception étaient 14\,400 s CPU, 2 Gio de travail et 200 Mo de sorties expérimentales.
+\clearpage
+
+\section{Comparaisons secondaires et mécanismes}
+Le tableau suivant illustre une seule condition : jeu 0, masque contigu, bruit 1\,\%, régime nominal. Il ne remplace pas les trois jeux ni les contrastes principaux. Source : \src{results/analysis/summary.csv}{agrégats complets}.
+\begin{center}\small\begin{tabular}{lrrr}\toprule
+Méthode & Médiane relative & q95 relatif & $\norm R_2$\\\midrule
+Tikhonov L2 & 0,4055 & 0,8026 & 62,28\\
+Tikhonov H1 & 0,1265 & 0,4435 & 30,55\\
+TSVD & 0,4272 & 0,8569 & 102,84\\
+Wiener & 0,4027 & 0,7877 & 63,27\\
+Wiener plafonné & 0,3995 & 0,7731 & 48,33\\
+Appris signé & 0,4051 & 0,7986 & 65,20\\
+Appris signé plafonné & 0,4001 & 0,7754 & 48,33\\
+Appris positif & 0,4055 & 0,8011 & 65,20\\
+Appris positif borné & 0,4055 & 0,8011 & 65,20\\
+Appris borné plafonné & 0,4000 & 0,7764 & 48,33\\
+LMMSE & 0,1051 & 0,3910 & 34,98\\\bottomrule
+\end{tabular}\end{center}
+Dans cette condition, H1 et LMMSE ont des erreurs sensiblement inférieures aux filtres diagonaux. LMMSE peut utiliser les corrélations hors diagonale ; H1 contraint la régularité dans les coefficients physiques. Leur comportement ne démontre pas que l'une de ces explications soit seule responsable de l'écart. L'estimation diagonale apprise n'améliore pas ici Wiener. La positivité et la borne $1/\sigma$ ne produisent pas un progrès systématique. Ces constats limités sont plus précis qu'un classement global du machine learning.
+
+\begin{figure}[ht]\centering\plot{comparaison_nominale}{.94}\caption{Comparaison nominale des onze méthodes à 1\,\% de bruit, selon les masques et les trois entraînements. \figsource{comparaison_nominale}}\end{figure}
+\clearpage
+
+\section{Erreur de modèle, résidu et exemples préfixés}
+Les tests de hauteur isolent une géométrie différente, tandis que la rugosité change la loi des traces. Aucun réentraînement n'est réalisé. Ces écarts contrôlés sont plus restreints qu'une incertitude arbitraire du modèle physique.
+\begin{figure}[ht]\centering\plot{effet_hauteur}{.87}\caption{Quantiles q95 sous hauteurs nominale, +2\,\% et +5\,\%, masque complet. \figsource{effet_hauteur}}\end{figure}
+Un faible résidu peut accompagner une grande erreur inverse. Les objets préfixés de faible résidu/grande erreur sont 183 pour P1 et 138 pour P2 (jeu 0). Les identifiants médian/q95/pire sont respectivement 110/168/197 et 132/35/197. Ils sont déterminés par la règle préalable, pas choisis pour favoriser une méthode.
+\begin{figure}[ht]\centering\plot{residu_erreur}{.87}\caption{Résidu nominal et erreur, moyennés par objet sur dix bruits, pour onze méthodes et les deux contrastes du jeu 0. \figsource{residu_erreur}}\end{figure}
+\clearpage
+
+\begin{figure}[ht]\centering\plot{P1_mediane}{.93}\caption{P1 : objet de rang médian 110, répétition 0 ; toutes les méthodes utilisent les mêmes données. \figsource{P1_mediane}}\end{figure}
+\begin{figure}[ht]\centering\plot{P1_pire}{.93}\caption{P1 : pire objet 197 selon l'erreur moyenne du filtre signé, répétition 0. Cette sélection garde les situations défavorables. \figsource{P1_pire}}\end{figure}
+Les exemples du q95 et les quatre cas P2 sont conservés avec leurs données numériques dans la collection des figures. L'absence de NaN ou d'infini observé ne signifie pas absence d'erreur scientifique : les reconstructions inexactes et les critères comparatifs non satisfaits demeurent centraux.
+\clearpage
+
+\section{Reproduction, limites et prolongement}
+La version du code et des données référencée est \texttt{\DataCommit}. La configuration, les tuples de graines, les versions logicielles, les matrices sélectionnées, les métriques et les statuts permettent une vérification séparée des étapes. Les figures sont liées à leurs données numériques et au script. Les sources LaTeX et les PDF correspondants doivent être diffusés ensemble après contrôle des pages et des liens. La documentation du dépôt précise la recette courte de reproduction ; celle-ci ne remplace pas l'archive de la campagne complète.
+
+\begin{center}\small\begin{tabular}{p{.32\linewidth}p{.53\linewidth}}\toprule
+Élément & Source versionnée\\\midrule
+Configuration et campagne & \src{results/full/configuration.json}{Configuration}, \src{results/full/report.json}{compte rendu}\\
+Critères et bootstrap & \src{results/analysis/primary.json}{Ratios}, \src{results/analysis/bootstrap.npz}{tirages}\\
+Onze méthodes, tous scénarios & \src{results/analysis/summary.csv}{Agrégats numériques}\\
+Mathématiques et plan fixé & \src{docs/theory.md}{Théorie}, \src{docs/protocol.md}{protocole}\\
+Traçabilité des figures & \src{scripts/figures.py}{Script de figures}\\\bottomrule
+\end{tabular}\end{center}
+
+Les limites sont structurelles : rectangle homogène, flux contrôlé, profils synthétiques dont la loi est connue, modèle appris fixe, validation prédictive potentiellement aveugle au noyau et trois entraînements seulement. Les bornes bootstrap sont approximatives et conditionnelles ; elles ne sont pas des garanties finies exactes. Le plafond borne une amplification dans des unités déclarées, sans convergence infinidimensionnelle démontrée. La vitesse de cette algèbre de petite taille ne se transpose pas à un problème tridimensionnel.
+
+\subsection{Repères pour défendre le travail}
+La distinction essentielle est entre preuve, contrôle numérique et comparaison statistique. La série harmonique et l'identité \eqref{eq:error} sont démontrées ; la précision des solveurs est testée ; l'intérêt du plafond est mesuré et n'atteint pas la cible. Le modèle peut reconstruire statistiquement une composante non observable sans supprimer la non-identifiabilité. Wiener demeure un comparateur nécessaire parce que le gain appris lui est équivalent sous des hypothèses idéales.
+
+Le seul prolongement retenu est l'étude statistique du choix du plafond sous incertitude d'opérateur. Elle devrait expliciter la classe d'incertitude et le compromis biais--variance, puis réévaluer le réglage observationnel. Les résultats présents ne justifient pas d'ajouter un réseau pour obtenir une victoire numérique.
+
+\clearpage
+\begin{thebibliography}{9}\small
+\bibitem{C2} C. Tajani et J. Abouchabaka. \emph{On the data completion problem for Laplace's equation}. Annals of the University of Craiova, 45(1), 11--36, 2018.
+\bibitem{R01} M. Burger et S. Kabri. \emph{Learned Regularization for Inverse Problems: Insights from a Spectral Model}. \href{https://arxiv.org/abs/2312.09845v2}{arXiv:2312.09845v2}, 2024.
+\bibitem{R02} G. S. Alberti, E. De Vito, M. Lassas, L. Ratti et M. Santacesaria. \emph{Learning the optimal Tikhonov regularizer for inverse problems}. NeurIPS, 2021. \href{https://arxiv.org/abs/2106.06513}{arXiv:2106.06513}.
+\bibitem{R06} M. J. Byrne et R. A. Renaut. \emph{Learning spectral windowing parameters for regularization using unbiased predictive risk and generalized cross validation techniques for multiple data sets}. Inverse Problems and Imaging, 17(4), 841--869, 2023. \href{https://doi.org/10.3934/ipi.2023006}{doi:10.3934/ipi.2023006}.
+\end{thebibliography}
+Les niveaux de lecture et les limites bibliographiques sont précisés dans \src{docs/sources.md}{la bibliographie critique}. Aucune nouveauté algorithmique ni validation institutionnelle supplémentaire n'est revendiquée.
+\section*{Contact}
+\href{mailto:halhoul.mhamed@etu.uae.ac.ma}{halhoul.mhamed@etu.uae.ac.ma}\\
+\href{mailto:halhoulmhamed@gmail.com}{halhoulmhamed@gmail.com}\\
+\url{https://github.com/halhoulmhamed-droid/inverse-laplace-learning}
+\end{document}

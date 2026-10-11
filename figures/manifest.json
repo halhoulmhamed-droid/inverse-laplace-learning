@@ -17,7 +17,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/spectres.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/spectres.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/spectres.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "comparaison_nominale",
@@ -36,7 +42,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/comparaison_nominale.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/comparaison_nominale.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/comparaison_nominale.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "effet_hauteur",
@@ -55,7 +67,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/effet_hauteur.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/effet_hauteur.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/effet_hauteur.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "dispersion_entrainements",
@@ -74,7 +92,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/dispersion_entrainements.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/dispersion_entrainements.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/dispersion_entrainements.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "residu_erreur",
@@ -93,7 +117,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/residu_erreur.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/residu_erreur.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/residu_erreur.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P1_mediane",
@@ -112,7 +142,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_mediane.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_mediane.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_mediane.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P1_q95",
@@ -131,7 +167,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_q95.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_q95.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_q95.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P1_pire",
@@ -150,7 +192,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_pire.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_pire.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_pire.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P1_faible_residu",
@@ -169,7 +217,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_faible_residu.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_faible_residu.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_faible_residu.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P2_mediane",
@@ -188,7 +242,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_mediane.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_mediane.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_mediane.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P2_q95",
@@ -207,7 +267,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_q95.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_q95.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_q95.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P2_pire",
@@ -226,7 +292,13 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_pire.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_pire.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_pire.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     },
     {
       "name": "P2_faible_residu",
@@ -245,10 +317,41 @@
         "script": "ed846cb49d7a291f78cc54940c92e3f049ce105b10fe0714c99d9c178993284a",
         "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
       },
-      "github_links": null
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_faible_residu.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_faible_residu.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P2_faible_residu.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
+    },
+    {
+      "name": "P1_pire_projection",
+      "description": "Même objet P1 pire et onze méthodes, disposition adaptée à la projection",
+      "paths": {
+        "data": "figures/P1_pire.npz",
+        "pdf": "figures/P1_pire_projection.pdf",
+        "png": "figures/P1_pire_projection.png",
+        "script": "scripts/presentation_figures.py",
+        "configuration": "results/full/configuration.json"
+      },
+      "sha256": {
+        "data": "07b941afee1feb72b8d960aa525f869425fae51de9bf690baf2d8401830d1441",
+        "pdf": "4e1bbd84d12080c8f3b87a9d7bc867af4aeb6a6092082f9b09ff1f22980053b8",
+        "png": "9343ccbbf1a03407a0f431e17ecff33f9a3c20613338eff7835934129b72cd49",
+        "script": "434025bfeb80c2c7cdeb03645ef5c247d4d4135673b31a4f01620d3effd61a4e",
+        "configuration": "76378c63009e2fce80a43cba2de8600bec075f0a2c282abaa6524644d800ae2d"
+      },
+      "github_links": {
+        "data": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_pire.npz",
+        "pdf": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_pire_projection.pdf",
+        "png": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/figures/P1_pire_projection.png",
+        "script": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/scripts/presentation_figures.py",
+        "configuration": "https://github.com/halhoulmhamed-droid/inverse-laplace-learning/blob/0ea95cd7e390c8a478469b36a043a5f99e4fcd10/results/full/configuration.json"
+      }
     }
   ],
-  "git_commit": null,
+  "git_commit": "0ea95cd7e390c8a478469b36a043a5f99e4fcd10",
   "trace_selections": [
     {
       "name": "P1_mediane",
