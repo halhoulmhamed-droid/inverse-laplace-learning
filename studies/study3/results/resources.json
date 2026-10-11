@@ -1,0 +1,42 @@
+{
+  "budget": {
+    "cpu_seconds": 14400,
+    "ram_bytes": 2147483648,
+    "new_output_bytes": 200000000
+  },
+  "measured_child_cpu_seconds": 23.079568,
+  "light_checks_git_and_delivery_cpu_reserve_seconds": 60,
+  "accounted_cpu_upper_seconds": 83.079568,
+  "peak_measured_rss_bytes": 122556416,
+  "public_study_files_bytes_at_check": 68011958,
+  "private_study_files_bytes_at_check": 4691230,
+  "delivery_output_reserve_bytes": 5000000,
+  "accounted_output_bytes_with_reserve": 77703188,
+  "within_budget": true,
+  "scientific_campaigns_run": {
+    "study2_full_rerun": false,
+    "study3_pilot": 1,
+    "study3_final": 1
+  },
+  "measurement_scope": "Child process CPU including descendants; sequential bounded invocations with single-thread BLAS. RSS is maximum child process resident set, not sum over time. Private/public retained output files are counted plus delivery reserve; Git object storage is not counted as a second scientific output.",
+  "non_scientific_retries": [
+    {
+      "operation": "figure rendering",
+      "reason": "Remove overlapping minor x tick labels; harmonize training indices 0\u20134; archived data unchanged"
+    },
+    {
+      "operation": "LaTeX compilation",
+      "reason": "Fix one overfull line and bookmark math warning; final logs have none"
+    },
+    {
+      "operation": "logo pixel check",
+      "reason": "Initial checker compared RGBA directly to PDF RGB plane. Corrected checker validates RGB and separate alpha mask exactly; images unchanged."
+    }
+  ],
+  "scientific_failures": 0,
+  "installations": 0,
+  "gpu": false,
+  "paid_services": false,
+  "freefem": false,
+  "operational_logs": "Kept privately, not published"
+}

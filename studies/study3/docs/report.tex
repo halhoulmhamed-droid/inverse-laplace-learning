@@ -1,0 +1,254 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\babelprovide[import,main]{french}
+\usepackage{lmodern,amsmath,amssymb,graphicx,booktabs,array}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor,hyperref,microtype}
+\definecolor{ink}{RGB}{25,48,73}
+\definecolor{accent}{RGB}{23,116,126}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,pdftitle={Étude 3 : régularisation des covariances apprises pour Laplace},pdfauthor={Halhoul Mhamed}}
+\input{provenance.tex}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\src}[2]{\href{\DataURL{#1}}{#2}}
+\newcommand{\figsource}[1]{\par{\footnotesize\src{figures/#1.npz}{Données}\,|\,\src{src/figures.py}{Script}\,|\,\src{results/final/configuration.json}{Configuration}\,|\,\src{figures/#1.pdf}{Version scientifique}.}\par}
+\newcommand{\plot}[1]{\includegraphics[width=\linewidth]{../figures/#1.pdf}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\begin{document}
+\selectlanguage{french}
+\begin{titlepage}
+\begin{minipage}{.45\textwidth}\includegraphics[width=\linewidth,height=20mm,keepaspectratio]{../../../assets/logos/university.png}\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}\raggedleft\includegraphics[width=\linewidth,height=20mm,keepaspectratio]{../../../assets/logos/faculty.png}\end{minipage}
+\vspace{15mm}
+\begin{center}
+{\large Université Abdelmalek Essaâdi\par}
+{\large Faculté Polydisciplinaire de Larache\par}
+\vspace{12mm}
+{\Large\bfseries Projet scientifique de Master\par}
+\vspace{6mm}
+{\large Étude 3\par}
+\vspace{6mm}
+{\huge\bfseries Régularisation des covariances apprises\par}
+\vspace{7mm}
+{\Large Pour une reconstruction robuste de données de Laplace\par}
+\vspace{14mm}
+{\Large Halhoul Mhamed\par}
+\vspace{5mm}
+Master « Modélisation mathématique et applications et apprentissages »\par
+M2 en cours\par
+\vspace{12mm}
+\textbf{Professeur encadrant : Pr. Chakir Tajani}\par
+\vfill
+11 octobre 2026\par
+\end{center}
+\end{titlepage}
+
+\section*{Résumé : un gain utile non établi}
+Cette troisième étude examine une contraction de covariance du signal vers une cible dont l'inverse est proportionnel à une pénalité H1. Le mélange est $C_\gamma=(1-\gamma)C_{\rm emp}+\gamma C_{H1}$, avec $\gamma$ et le niveau de régularisation choisis uniquement sur validation nominale. Aucun résultat positif n'est présumé.
+
+Le contraste préspécifié oppose le mélange S au même modèle nominal avec $\gamma=0$ (M0), sur 64 capteurs complets, $N=64$ objets d'apprentissage et un bruit absolu $\sigma=0,01$. Il exige un gain utile de 3\,\% de risque quadratique et une dégradation ne dépassant pas 3\,\% sur 32 capteurs contigus. Cinq entraînements indépendants et un bootstrap apparié par objet évaluent les deux exigences.
+
+\textbf{Le gain utile de 3\,\% n'est pas établi.} Les cinq rapports de risque principal sont compris entre 0,9607 et 0,9823, mais leurs bornes supérieures corrigées vont de 0,9844 à 1,0098, toutes au-dessus du seuil 0,97. Le critère de protection est satisfait : toutes ses bornes restent sous 1,03. La décision globale du protocole est donc négative au sens « non établi », sans démontrer une absence d'effet.
+
+Le ratio des risques moyens complets S/M0 vaut 0,9720, soit un gain descriptif de 2,8\,\%. Sur 32 capteurs contigus, ce ratio vaut 1,0045. La méthode se dégrade également face à M0 sur certaines perturbations : environ +1,4\,\% pour les objets rugueux avec capteurs complets, +2,7\,\% pour la hauteur +10\,\% avec capteurs complets, et +1,9\,\% pour cette hauteur avec capteurs contigus.
+
+\textbf{Les familles ne sont pas confondues.} M0 construit son estimateur avec $C_{\rm emp}$ et l'opérateur direct nominal. Le LMMSE empirique E de l'étude 2 estime plutôt des covariances croisées signal--observation sur des couples bruités. Leurs centres diffèrent aussi. Un avantage S/E ne mesure donc pas à lui seul l'apport de la contraction vers H1.
+
+Les données de test sont nouvelles. Les deux études précédentes restent intégralement préservées ; leur audit ciblé n'a pas révélé d'anomalie substantielle. Les méthodes de contraction de covariance et de régularisation quadratique apprise sont établies : aucune invention ni supériorité générale n'est revendiquée.
+
+\newpage
+\section{Base vérifiée et question indépendante}
+L'étude part de la branche \texttt{study2-covariances-20261011}, au commit\par
+{\small\texttt{1f11fea35d5367a355901c3866d21f5b3b21a5b0}}.
+
+Un audit indépendant a lu son protocole figé, les partitions, les calculs principaux et les comparaisons projetées. Il a vérifié les empreintes de 150 archives, recomposé 7\,800 statistiques et 40\,000 valeurs bootstrap, et contrôlé 105 modèles projetés. Les 468 pertes scalaires recalculées avec une intégration indépendante des moyennes cosinus concordent à environ $2,1\times10^{-15}$ près. Aucune campagne entière n'a été relancée et aucun fichier antérieur n'a été modifié.
+
+Cet audit confirme la portée limitée des résultats antérieurs : F/D comparait des blocs $C_{bz},C_{zz}$ en base singulière à rang 12. Il ne comparait pas directement $C_{cc}$ à sa diagonale en base cosinus. Les projections isolaient l'effet de sortie uniquement à régularisation partagée et avec les mêmes moyennes.
+
+\subsection{Pourquoi une troisième étude ?}
+L'étude 2 a montré des avantages locaux de certains estimateurs empiriques et des dégradations, notamment en observation complète et sous rugosité accrue. Cela motive une hypothèse : combiner covariance estimée et forme H1 pourrait réduire une part de variance d'estimation, mais peut aussi introduire un biais défavorable. Les anciens objets n'interviennent ni dans le réglage ni dans le test nouveau.
+
+La nouvelle comparaison principale S/M0 porte exactement sur l'ajout d'une contraction à une famille fondée sur le modèle nominal. E, H1 historique, une covariance diagonale cosinus et l'extrémité H1 appariée sont conservés pour situer les résultats, sans les substituer à ce contraste.
+
+\subsection{Gel et responsabilité de l'analyse}
+Le \src{PROTOCOL.md}{protocole}, l'\src{MATHEMATICS.md}{audit mathématique}, les \src{SOURCES.md}{sources} et le \src{AUDIT_STUDY2.md}{résumé de l'audit antérieur} ont été figés au commit \texttt{8c23fcc}, avant l'implémentation, le pilote et l'évaluation finale. L'heure UTC et les SHA-256 sont dans \src{FREEZE.json}{FREEZE.json}. Deux relectures indépendantes ont examiné les formules et le protocole avant campagne. Les conclusions finales ont également fait l'objet d'une recomposition indépendante.
+
+\newpage
+\section{Covariance du signal, cible et solvabilité}
+Le générateur harmonique conserve 128 coefficients cosinus indépendants, de variances proportionnelles à $(1+k^2)^{-p}$, normalisées pour $\mathbb E\|q\|_{L^2}^2=1$. Le cas nominal est $p=2,5$, $H=0,25$ ; les perturbations changent $p$ ou $H$. Les 64 observations sont des moyennes exactes sur des intervalles de largeur $1/64$.
+
+L'inverse FD nominal représente les 64 premiers coefficients sur une grille de $64\times16$ intervalles. Après masque, opérateur et observations sont divisés par 8. Le bruit physique de covariance $\sigma^2I$ devient $\nu I_m$, avec $\nu=\sigma^2/64$, indépendamment du nombre $m$ de capteurs retenus. Les modes omis et l'écart FD/analytique constituent une erreur de modèle, non un bruit prétendument connu.
+
+Sur les signaux propres d'apprentissage représentés, poser
+\[
+ \mu=\frac1N\sum_i c_i,\qquad
+ C_{\rm emp}=\frac1{N-1}\sum_i(c_i-\mu)(c_i-\mu)^\top.
+\]
+La covariance porte sur le signal, pas sur les observations. Définir
+\[
+ Q=\operatorname{diag}(1+(\pi k)^2),\quad
+ s=\frac{\operatorname{tr}(C_{\rm emp})}{\operatorname{tr}(Q^{-1})},\quad
+ C_{H1}=sQ^{-1}.
+\]
+La trace est identique pour $C_{\rm emp}$, $C_{H1}$ et tout mélange $C_\gamma$. L'énergie $s$ est apprise, la forme H1 est fixée. La cible décroît comme $k^{-2}$, plus lentement que la covariance nominale proche de $k^{-5}$. Elle n'est donc pas la vraie covariance du générateur. « H1 » désigne la pénalité inverse à dimension finie, sans affirmation de régularité presque sûre en dimension infinie.
+
+Pour $\alpha>0$ et $\beta=\alpha\nu$, l'estimateur est
+\[
+ R_{\gamma,\alpha}=C_\gamma A^\top(AC_\gamma A^\top+\beta I)^{-1},
+ \qquad \widehat c=\mu+R_{\gamma,\alpha}(y-A\mu).
+\]
+$C_{\rm emp}$ est semi-définie positive, éventuellement singulière ; $C_\gamma$ est définie positive pour $\gamma>0$ si sa trace est positive. Pour tout $v\ne0$,
+\[
+ v^\top(AC_\gamma A^\top+\beta I)v\geq\beta\|v\|^2>0.
+\]
+La résolution par Cholesky est donc définie même à $\gamma=0$. Aucun ajout caché de diagonale n'est utilisé. $\alpha$ règle la pénalisation : pour $\alpha\ne1$, $\beta$ n'est pas présenté comme la variance physique exacte du bruit.
+
+\newpage
+\section{Extrémités exactes et comparateurs distincts}
+Pour $\gamma>0$, l'identité de transfert matriciel donne
+\[
+ R_{\gamma,\alpha}=(A^\top A+\beta C_\gamma^{-1})^{-1}A^\top.
+\]
+Elle résout la minimisation quadratique en l'incrément $x=\widehat c-\mu$ : $\|Ax-(y-A\mu)\|^2+\beta x^\top C_\gamma^{-1}x$. À $\gamma=0$ singulier, on conserve la formule en observations ; une pénalité avec pseudo-inverse seule, sans contrainte de support, ne serait pas équivalente.
+
+\begin{center}\small
+\begin{tabular}{lp{10.9cm}}
+\toprule Méthode & Définition et centre\\\midrule
+S & Mélange $C_\gamma$ ; centre d'observation $A\mu$ ; $\gamma,\alpha$ réglés.\\
+M0 & Même formule avec $\gamma=0$ ; centre $A\mu$ ; $\alpha$ réglé.\\
+Diag & $\operatorname{diag}(\operatorname{diag}C_{\rm emp})$ en base cosinus ; centre $A\mu$.\\
+E & LMMSE empirique original : $C_{cy}(C_{yy}+\lambda t_yI)^{-1}$, $t_y=\operatorname{tr}(C_{yy})/m$ ; centre empirique $\mu_y$.\\
+H1 & H1 historique : $(A^\top A+aQ/Q_{\max})^{-1}A^\top$ ; centre $\mu_y$.\\
+H1m & Extrémité $\gamma=1$ : $(A^\top A+(\beta/s)Q)^{-1}A^\top$ ; centre $A\mu$.\\\bottomrule
+\end{tabular}\end{center}
+
+Toutes partagent la même moyenne signal $\mu$. H1m coïncide \textbf{exactement} avec H1 de même centre à la pénalisation $\eta=\beta/s$ pour $Q$ brut, ou $a=\beta Q_{\max}/s$ pour $Q/Q_{\max}$. Cela ne garantit pas l'égalité au H1 historique sélectionné : sa grille et son centre sont différents.
+
+Des conditions suffisantes pour que M0 et E coïncident sont $\mu_y=A\mu$, $C_{cy}=C_{\rm emp}A^\top$ et $C_{yy}+\lambda t_yI=AC_{\rm emp}A^\top+\beta I$. Ces conditions suffisantes ne sont pas nécessaires en général : des compensations matricielles peuvent donner le même estimateur. Cette précision de logique, apportée lors de la revue finale et consignée dans un \src{MATHEMATICS_ADDENDUM.md}{addendum daté}, ne change aucune méthode ni calcul. Les identités ne sont pas supposées pour des couples bruités finis produits par un direct analytique différent. Aucun bruit physique supplémentaire n'est ajouté une seconde fois à $C_{yy}$ dans E.
+
+Les termes hors diagonale de $C_{\rm emp}$ cosinus reflètent ici l'estimation finie de coefficients indépendants. La diagonale Diag n'est pas D de l'étude 2. On n'affirme aucune corrélation physique apprise ni supériorité théorique de la contraction.
+
+\newpage
+\section{Partitions et budgets de réglage}
+La racine PCG64/SeedSequence est 2026101103, différente des deux études précédentes. Le tuple est : racine, partition, jeu, objet, canal, répétition. Partitions 10 apprentissage, 20 validation, 30 test nominal/hauteur, 31 test rugueux ; +100 pour le pilote ; 40 bootstrap. La validation ne contient que le modèle nominal.
+
+\begin{center}
+\begin{tabular}{lp{10cm}}
+\toprule Échantillon & Dispositif figé\\\midrule
+Apprentissage & 32, 64, 256 objets, tailles imbriquées ; cinq jeux indépendants ; un bruit par objet.\\
+Validation & 256 objets par jeu, deux bruits ; données communes entre tailles et méthodes ; vérités synthétiques autorisées.\\
+Test & 400 objets, quatre bruits ; objets communs aux cinq entraînements, sans les recompter comme 2\,000 objets indépendants.\\
+Appariement & Bruit64 généré avant masque ; mêmes bruits entre méthodes, masques et niveaux. Nominal/hauteur partagent les objets ; rugosité indépendante.\\\bottomrule
+\end{tabular}
+\end{center}
+
+S dispose de sept valeurs $\gamma\in\{0;0,01;0,03;0,1;0,3;0,6;1\}$ et vingt $\alpha\in\operatorname{logspace}(-3,3,20)$ : \textbf{140 candidats}. M0, Diag et H1m ont les mêmes vingt $\alpha$. E a vingt $\lambda\in\operatorname{logspace}(-8,1,20)$ ; H1 a vingt $a\in\operatorname{logspace}(-10,1,20)$. Les 240 candidats par ajustement sont conservés avec leurs scores.
+
+Le budget de recherche de S est donc réellement plus grand. La décision compare deux procédures pratiques, pas deux recherches identiques. Pour expliquer l'effet propre du mélange, M0 et H1m sont aussi calculés au \textbf{même $\alpha$ choisi pour S}, sans nouveau réglage. Ces diagnostics restent descriptifs.
+
+La perte quadratique moyenne de validation choisit les paramètres. La tolérance des ex æquo est\[10^{-12}\max(1,\text{score minimal}).\]Ils sont départagés par norme opérateur puis indice. Les vérités de test ne sont pas transmises au sélecteur. Aucune grille n'est étendue après résultats.
+
+Les modèles sont entraînés pour le masque et bruit connus, puis conservés pour les perturbations de rugosité et hauteur. Les dix scénarios sont complets/32 contigus/32 espacés/16 contigus nominaux ; bruit 0,003 ou 0,03 en complet ; rugosité $p=1,5$ en complet ou contigu ; hauteur +10\,\% en complet ou contigu.
+
+\newpage
+\section{Décision préspécifiée et incertitude}
+Le contraste principal est S/M0 en complet, $N=64$, $\sigma=0,01$, $p=2,5$ et $H=0,25$. La perte inverse est $\|\widehat q-q\|_{L^2}^2$ sur 128 coefficients, y compris les 64 modes omis. On moyenne d'abord les quatre bruits d'un objet, puis les 400 objets.
+
+Le seuil utile $R_S/R_{M0}\leq0,97$ exige 3\,\% de réduction de risque, environ 1,51\,\% en racine du risque. C'est une exigence pratique conventionnelle, fixée avant test pour une méthode ayant un paramètre de plus ; elle n'est ni une constante théorique ni choisie pour rendre les résultats significatifs.
+
+La protection porte sur 32 capteurs contigus nominaux au même $N$ et bruit : $R_S/R_{M0}\leq1,03$. Elle protège le risque de M0 ; elle ne démontre pas par elle-même le maintien d'une supériorité sur H1 ou E.
+
+\plot{primary}\figsource{primary}
+\begin{center}\small\input{primary_table.tex}\end{center}
+
+Pour chaque entraînement, 4\,000 bootstraps rééchantillonnent les objets en conservant les quatre bruits, les méthodes et les deux masques ensemble. Les bornes supérieures percentile à 99,5\,\% appliquent Bonferroni aux dix inégalités. Les dix conditions doivent être satisfaites pour conclure positivement. La couverture nominale est approximative et conditionnelle aux modèles et validations observés. Les cinq entraînements montrent une dispersion, sans fournir une confiance populationnelle sur tous les entraînements.
+
+\newpage
+\section{Résultats principaux et tailles d'apprentissage}
+Aucune borne principale n'est sous 0,97 ; toutes les bornes de protection sont sous 1,03, la plus haute valant 1,02913. La décision globale est \textbf{non établi}. Les réductions ponctuelles principales de 1,77 à 3,93\,\% ne suffisent pas à certifier le gain utile de 3\,\% selon la règle fixée. Deux bornes dépassent même 1, ce qui laisse une dégradation compatible avec cette incertitude conditionnelle.
+
+\begin{center}\input{method_table.tex}\end{center}
+{\small Risques moyens sur cinq entraînements, $N=64$, nominal. Méthodes réglées séparément ; valeurs complètes non arrondies dans le CSV lié aux figures.}
+
+\plot{training}\figsource{training}
+
+À $N=32$, le ratio des risques moyens complets S/M0 vaut environ 0,9283 ; à $N=256$, il vaut 0,9898. Ces résultats secondaires suggèrent un effet plus visible à petit échantillon. Ils ne remplacent pas le contraste principal $N=64$ après examen des résultats.
+
+Diag bat S dans chacun des cinq entraînements nominaux complets et partiels. Il atteint un risque complet moyen légèrement inférieur à S ($0,0006398$ contre $0,0006477$). Dans ce générateur à coefficients cosinus indépendants, une cible diagonale empirique est donc un comparateur pertinent. Les lignes d'entraînement entre tailles imbriquées ne sont pas des intervalles de confiance.
+
+\newpage
+\section{Ce que révèle le diagnostic à \texorpdfstring{$\alpha$}{alpha} partagé}
+\plot{matched}\figsource{matched}
+
+En complet, M0 réglé séparément a un risque moyen de $0,0006664$. M0 au $\alpha$ choisi pour S monte à $0,0010155$, alors que S donne $0,0006477$. Le contraste à $\alpha$ commun isole bien la modification de covariance, mais il ne remplace pas la comparaison pratique à M0 convenablement réglé. L'amélioration plus spectaculaire de ce diagnostic ne doit pas être présentée comme le gain confirmatoire de la méthode.
+
+H1m réglé séparément est très proche de S en complet : $0,0006479$ contre $0,0006477$. Cela s'accorde avec les poids choisis, souvent proches de la cible H1 dans ce masque. Les différences avec H1 historique englobent le centre et la grille de pénalisation, pas seulement la covariance.
+
+Sur 32 capteurs contigus, les poids de contraction sont plus faibles. Le risque S/M0 est proche de 1 ; sa protection est respectée, mais un gain moyen systématique sur M0 n'est pas démontré. Les comparaisons à E ou H1 restent descriptives.
+
+\subsection{Séparer changement de famille et contraction}
+En complet à $N=64$, le ratio S/E vaut 0,7549. Il serait erroné d'attribuer l'intégralité de cet avantage à $\gamma>0$ : M0 diffère déjà de E par l'usage de l'opérateur nominal, les covariances et le centre. Le ratio S/M0 ne vaut que 0,9720. L'égalité $S/E=(S/M0)(M0/E)$ entre risques moyens rappelle ces deux étapes distinctes.
+
+\newpage
+\section{Perturbations : bénéfices locaux et dégradations}
+\plot{robustness}\figsource{robustness}
+
+Tous les ratios de cette figure sont descriptifs, calculés comme rapports des risques moyens sur cinq entraînements à $N=64$. Les hypothèses secondaires n'ont pas été transformées en tests confirmatoires après résultats.
+
+Face à M0, S se dégrade d'environ 1,4\,\% sur les objets rugueux en complet, 2,7\,\% sous hauteur +10\,\% en complet et 1,9\,\% sous cette hauteur en contigu. Sur les objets rugueux contigus, le risque S/M0 diminue d'environ 3,2\,\%, mais S reste moins bon que H1 historique : ratio S/H1 de 1,0653. Le mélange ne résout donc pas toutes les dégradations antérieures.
+
+Le $q_{95}$ moyen complet S/M0 vaut environ 0,9406 au nominal ; en contigu nominal, il vaut 1,0085. Ces percentiles sont calculés sur les pertes moyennes par objet puis moyennés entre entraînements, pas sur un mélange de toutes les répétitions. Ils n'entrent pas dans la décision principale de cette étude.
+
+Les perturbations sont limitées à une rugosité et une hauteur positive de +10\,\%, sans modification de géométrie, bruit corrélé, valeur aberrante ou position de capteur. La positivité des matrices n'implique pas de robustesse à ces changements non étudiés.
+
+\newpage
+\section{Poids de mélange et rôle de la cible}
+\plot{gamma}\figsource{gamma}
+
+Les poids sont choisis sur validation nominale, sans consulter les vérités de rugosité ou de hauteur. À $N=64$, les cinq poids en complet sont $1;1;0,6;1;0,6$ dans l'ordre des jeux ; autrement dit trois cas $\gamma=1$ et deux cas $\gamma=0,6$. En contigu, ils sont $0;0,1;0,1;0,03;0,1$.
+
+Dans les cas $\gamma=1$, la méthode choisit l'extrémité H1 appariée plutôt qu'une covariance conservant une partie de la forme empirique. La trace reste apprise ; cette sélection ne doit pas être présentée comme la découverte de corrélations physiques. À $\gamma=0$, S et M0 au $\alpha$ de S coïncident exactement, ce qui constitue aussi un contrôle numérique.
+
+La grille de $\gamma$ est irrégulière et finie ; aucun poids optimal continu n'est revendiqué. Des choix aux extrémités sont conservés tels quels, sans affiner la recherche après observation du test. La valeur de $\gamma$ seule n'est pas comparable à une mesure universelle de confiance dans les données : elle dépend de la cible, de son échelle et de $\alpha$.
+
+\newpage
+\section{Contrôles, ressources et reproduction}
+\textbf{Tests et pilote.} Les 17 tests ciblés ont réussi : PSD, traces, cas singulier, résidus de résolution, identité H1 exacte au paramètre converti, reproduction de E/H1 historiques, contre-exemple E/M0, sélection, graines, bruit apparié, pertes et bootstrap. Le pilote séparé a produit 1\,536 évaluations sans panne. L'extrapolation CPU majorée par 10 était d'environ 1\,649 secondes, avant passage à la campagne selon le protocole.
+
+\textbf{Campagne.} Les 150 conditions correspondent à trois tailles, cinq entraînements et dix scénarios. Les six méthodes représentent 1\,440\,000 évaluations ; les deux diagnostics en ajoutent 480\,000, soit 1\,920\,000 au total. Les 90 ajustements contiennent chacun 240 candidats, sans candidat invalide ni perte manquante. Les diagnostics ne sont pas des objets indépendants supplémentaires.
+
+\textbf{Revue indépendante.} Les 150 archives, 4\,800 statistiques et 40\,000 valeurs bootstrap ont été recomposées. Les paramètres des diagnostics et les correspondances des extrémités ont été contrôlés. Une reconstruction indépendante par intégrales de sinus retrouve 576 pertes scalaires, avec un écart maximal inférieur à $1,3\times10^{-15}$. Le verdict principal et la protection sont reproduits. Cette revue n'est pas une relance de la campagne.
+
+\textbf{Ressources.} La campagne seule utilise environ 7,69 secondes CPU, un pic de 98,1 Mo et 63,5 Mo de sorties. Le bilan de livraison additionne audits, tests, pilote, analyse, figures et compilation, avec réserves conservatrices pour les contrôles légers. Les plafonds restent 4 h CPU, 2 Gio RAM et 200 Mo de nouvelles sorties. Aucun GPU, FreeFem ou service payant. Les journaux détaillés restent privés.
+
+\subsection{Traçabilité des figures et résultats}
+Version scientifique immuable :\par
+{\small\texttt{\DataCommit}}.
+
+Chaque figure lie son NPZ, son script, sa configuration et sa version. Les pertes brutes, statuts, matrices affines, covariances, moyennes, scores de sélection et valeurs bootstrap sont conservés. Les graines permettent de reproduire les observations sans téléchargement. Les sources du direct et de l'acquisition réutilisées sont hachées et inchangées. Les documents sont propres à l'étude 3, sans écraser les PDF ou conclusions précédents.
+
+\newpage
+\section{Limites, antériorité et conclusion}
+La contraction étudiée est cohérente et soluble, mais le gain utile préspécifié n'est pas établi. Le critère de protection de M0 sur capteurs contigus est satisfait conditionnellement aux cinq modèles observés. Les améliorations ponctuelles et les dégradations demeurent des résultats, sans changement opportuniste des seuils.
+
+Les conclusions dépendent des grilles, d'une cible H1 à trace ajustée, de la validation synthétique supervisée et du générateur à coefficients cosinus indépendants. L'incertitude est conditionnelle et approximative ; cinq entraînements ne suffisent pas pour une garantie populationnelle. Les modèles peuvent bénéficier d'un direct nominal exact sur certains aspects, mais restent exposés à son erreur de discrétisation et de hauteur. Aucune étude sur données réelles n'a été exécutée.
+
+\subsection*{Antériorités et portée des lectures}
+O. Ledoit et M. Wolf, \emph{A well-conditioned estimator for large-dimensional covariance matrices}, Journal of Multivariate Analysis 88(2), 365--411, 2004. \href{https://www.econ.uzh.ch/dam/jcr:ffffffff-961c-1dd9-ffff-ffffceb83f14/wellCond.pdf}{PDF institutionnel}, résumé, introduction et §2.1 consultés. La contraction de covariance est établie ; notre réglage sur validation ne reproduit pas leur poids analytique ni leurs garanties.
+
+G. S. Alberti, E. De Vito, M. Lassas, L. Ratti et M. Santacesaria, \emph{Learning the optimal Tikhonov regularizer for inverse problems}, NeurIPS 2021. \href{https://papers.nips.cc/paper_files/paper/2021/hash/d3e6cd9f66f2c1d3840ade4161cf7406-Abstract.html}{Résumé officiel} consulté ; preuves non réauditées. L'apprentissage de régularisateurs quadratiques à partir des moments est établi.
+
+M. Burger et S. Kabri, \emph{Learned Regularization for Inverse Problems: Insights from a Spectral Model}, arXiv:2312.09845v2, 2024. \href{https://arxiv.org/html/2312.09845v2}{Introduction et cadre spectral} consultés.
+
+C. Tajani et J. Abouchabaka, \emph{On the data completion problem for Laplace's equation}, Annals of the University of Craiova, Mathematics and Computer Science Series 45(1), 11--36, 2018. Référence physique conservée des études précédentes ; KMF non reproduit.
+
+Code, analyse et rédaction avec assistance d'IA ; validation académique relevant de l'auteur et de l'encadrant. Aucune invention ni approbation institutionnelle implicite. Les logos désignent les affiliations ; les documents tiers privés ne sont pas redistribués.
+
+\subsection*{Contact}
+Halhoul Mhamed\par
+\href{mailto:halhoul.mhamed@etu.uae.ac.ma}{halhoul.mhamed@etu.uae.ac.ma}\par
+\href{mailto:halhoulmhamed@gmail.com}{halhoulmhamed@gmail.com}\par
+\href{https://github.com/halhoulmhamed-droid/inverse-laplace-learning}{Dépôt public inverse-laplace-learning}
+\end{document}

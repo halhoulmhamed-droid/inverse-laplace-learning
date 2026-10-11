@@ -1,0 +1,251 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\babelprovide[import,main]{french}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx}
+\input{provenance.tex}
+\definecolor{ink}{RGB}{25,48,73}
+\definecolor{accent}{RGB}{23,116,126}
+\definecolor{caution}{RGB}{159,76,35}
+\setbeamercolor{normal text}{fg=ink,bg=white}
+\setbeamercolor{frametitle}{fg=ink}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{block title}{bg=accent!12,fg=ink}
+\setbeamercolor{block body}{bg=accent!4,fg=ink}
+\setbeamercolor{alerted text}{fg=caution}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{\hfill\scriptsize Halhoul Mhamed\quad Étude 3\quad\insertframenumber/\inserttotalframenumber\hspace{5mm}\vspace{3mm}}
+\setbeamersize{text margin left=9mm,text margin right=9mm}
+\hypersetup{pdftitle={Étude 3 : Régularisation des covariances apprises pour une reconstruction robuste de données de Laplace},pdfauthor={Halhoul Mhamed}}
+\newcommand{\src}[2]{\href{\DataURL{#1}}{#2}}
+\newcommand{\figsource}[1]{\par\tiny\src{figures/#1.npz}{Données}\,|\,\src{src/figures.py}{Script}\,|\,\src{results/final/configuration.json}{Configuration}\,|\,\src{figures/#1.pdf}{Version scientifique}\par}
+\newcommand{\plot}[2]{\includegraphics[width=#2\linewidth,height=.61\textheight,keepaspectratio]{../figures/#1.pdf}}
+\begin{document}
+
+\begin{frame}[plain]
+\begin{columns}[T]
+\column{.48\textwidth}\includegraphics[width=\linewidth,height=12mm,keepaspectratio]{../../../assets/logos/university.png}
+\column{.48\textwidth}\raggedleft\includegraphics[width=\linewidth,height=12mm,keepaspectratio]{../../../assets/logos/faculty.png}
+\end{columns}
+\centering
+{\scriptsize Université Abdelmalek Essaâdi --- Faculté Polydisciplinaire de Larache\par}
+\par\vspace{2mm}
+{\large Projet scientifique de Master --- Étude 3\par}
+\par\vspace{3mm}
+{\LARGE\bfseries Régularisation des covariances apprises\par}
+{\large pour une reconstruction robuste de données de Laplace\par}
+\par\vspace{4mm}
+{\large Halhoul Mhamed\par}
+{\scriptsize Master « Modélisation mathématique et applications et apprentissages » --- M2 en cours\par}
+\par\vspace{4mm}
+\textbf{Professeur encadrant : Pr. Chakir Tajani}\par
+\vfill
+{\tiny 11 octobre 2026}
+\end{frame}
+
+\begin{frame}{Une amélioration ponctuelle, un gain utile non établi}
+\begin{block}{Question}
+Une covariance apprise régularisée vers une cible H1 peut-elle réduire l'erreur avec tous les capteurs, tout en préservant la reconstruction avec des capteurs partiels ?
+\end{block}
+\par\vspace{2mm}
+\begin{itemize}
+\item Le ratio de risque S/M0 observé vaut \textbf{0,9607 à 0,9823} dans le scénario principal.
+\item Aucune des cinq bornes supérieures n'atteint le seuil de gain utile fixé à \textbf{0,97} : \alert{conclusion principale non établie}.
+\item La marge de non-dégradation de \textbf{3\,\%} sur 32 capteurs contigus est respectée par les cinq bornes conditionnelles.
+\end{itemize}
+\par\vspace{2mm}
+\small Des dégradations apparaissent sous rugosité ou erreur de hauteur. Aucun résultat positif ni aucune supériorité générale n'est présumé.
+\end{frame}
+
+\begin{frame}{Un nouveau test, sur un modèle physique inchangé}
+\[
+q(x)=\sum_{k=0}^{127}c_k\phi_k(x),\qquad
+y=M(B_Hc+\sigma\varepsilon)/8,\quad \varepsilon\sim\mathcal N(0,I_{64}).
+\]
+\begin{itemize}
+\item Rectangle harmonique, $H=0,25$ ; 64 moyennes de capteurs. Générateur analytique à 128 modes ; inverse FD à 64 modes.
+\item Tous les nouveaux estimateurs prédisent les 64 coefficients : aucune troncature singulière à rang 12.
+\item Nouvelle racine de graines \texttt{2026101103}. Apprentissage, validation, pilote et test séparés ; mêmes bruits entre méthodes.
+\end{itemize}
+\begin{block}{Interprétation des covariances}
+Les coefficients cosinus du générateur restent indépendants. Des corrélations en coordonnées singulières peuvent venir du changement de base ; elles ne démontrent pas des corrélations physiques des coefficients.
+\end{block}
+\end{frame}
+
+\begin{frame}{Mélanger des covariances de signal à énergie égale}
+\small
+\[
+C_{\rm emp}=\frac1{N-1}\sum_i(c_i-\mu)(c_i-\mu)^\top,\quad
+Q_{kk}=1+(\pi k)^2,\quad
+C_{H1}=sQ^{-1},\quad s=\frac{\operatorname{tr}C_{\rm emp}}{\operatorname{tr}Q^{-1}}.
+\]
+\[
+\boxed{C_\gamma=(1-\gamma)C_{\rm emp}+\gamma C_{H1}},\qquad
+\operatorname{tr}C_\gamma=\operatorname{tr}C_{\rm emp}.
+\]
+\[
+\widehat c=\mu+C_\gamma A^\top(AC_\gamma A^\top+\beta I)^{-1}(y-A\mu),
+\qquad \beta=\alpha\sigma^2/64>0.
+\]
+\begin{itemize}
+\item $C_\gamma$ est PSD ; le système d'observation est SPD, même si $\gamma=0$ et $N<64$.
+\item $\gamma=1$ : H1 affine exact, pénalité $\eta Q$ avec $\eta=\beta/s$, centre $A\mu$.
+\item La cible H1 diffère de la vraie covariance nominale. Positivité et solvabilité ne garantissent pas une baisse du risque.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Six familles : centres et budgets déclarés}
+\small
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Méthode & Construction & Centre observation & Candidats\\
+\midrule
+S & Mélange $C_\gamma$, $7\times20$ couples & $A\mu$ & 140\\
+M0 & Covariance signal $C_{\rm emp}$, $\gamma=0$ & $A\mu$ & 20\\
+Diag & $\operatorname{diag}(\operatorname{diag}C_{\rm emp})$, cosinus & $A\mu$ & 20\\
+E & $C_{cy}(C_{yy}+\lambda t_yI)^{-1}$ empirique & $\mu_y$ & 20\\
+H1 & Tikhonov historique, pénalité $Q/Q_{\max}$ & $\mu_y$ & 20\\
+H1m & Extrémité $\gamma=1$, grille $\alpha$ appariée & $A\mu$ & 20\\
+\bottomrule
+\end{tabular}
+\end{center}
+\par\vspace{2mm}
+\begin{block}{Deux distinctions nécessaires}
+$\gamma=0$ n'est pas en général le LMMSE empirique E : blocs de covariance et centrage diffèrent. H1m et H1 peuvent aussi différer par leur centre et leur grille.
+\end{block}
+\scriptsize $\gamma\in\{0;0,01;0,03;0,1;0,3;0,6;1\}$ ; $\alpha\in\operatorname{logspace}(-3,3,20)$. Le supplément de recherche de S est assumé ; aucune égalité de budget n'est revendiquée.
+\end{frame}
+
+\begin{frame}{Règle figée avant le test final}
+\begin{columns}[T]
+\column{.49\textwidth}
+\textbf{Données et sélection}
+\begin{itemize}
+\item $N=32,64,256$, cinq entraînements indépendants ; tailles imbriquées.
+\item 256 objets de validation nominale, deux bruits ; réglage supervisé uniquement sur validation.
+\item 400 objets test, quatre bruits appariés ; perte quadratique L$^2$ sur les 128 modes.
+\end{itemize}
+\column{.49\textwidth}
+\textbf{Un contraste : S/M0, $N=64$}
+\begin{itemize}
+\item Gain utile avec 64 capteurs : ratio de risque $\leq0,97$.
+\item Protection avec 32 contigus : ratio de risque $\leq1,03$.
+\item 4\,000 bootstraps par objet ; bornes 99,5\,\%, dix inégalités simultanées par Bonferroni.
+\end{itemize}
+\end{columns}
+\par\vspace{3mm}
+\small Gel : \texttt{8c23fcc}. Seuils conventionnels fixés avant les nouveaux résultats. Incertitude conditionnelle ; couverture bootstrap approximative, sans intervalle populationnel sur l'aléa d'entraînement.
+\end{frame}
+
+\begin{frame}{Contraste principal : la règle complète n'est pas satisfaite}
+\centering\plot{primary}{.98}\figsource{primary}
+\par\vspace{2mm}
+\small Les bornes du scénario principal dépassent toutes 0,97. Les cinq bornes de protection restent sous 1,03. Les deux exigences doivent être réunies dans chaque entraînement.
+\end{frame}
+
+\begin{frame}{Cinq entraînements : les valeurs derrière la décision}
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+Jeu & Ratio principal & Borne sup. & Ratio partiel & Borne sup.\\
+\midrule
+0 & 0,9607 & 0,9844 & 1,0000 & 1,0000\\
+1 & 0,9759 & 1,0001 & 1,0060 & 1,0291\\
+2 & 0,9707 & 0,9903 & 1,0004 & 1,0158\\
+3 & 0,9823 & 1,0097 & 1,0037 & 1,0074\\
+4 & 0,9709 & 0,9858 & 1,0126 & 1,0267\\
+\bottomrule
+\end{tabular}
+\end{center}
+\par\vspace{3mm}
+\begin{itemize}
+\item Principal : amélioration ponctuelle dans les cinq jeux, mais gain utile de 3\,\% non établi.
+\item Partiel : quatre ratios ponctuels dépassent 1 ; ils demeurent compatibles avec la marge préfixée de 3\,\%.
+\item Une absence de gain utile établi n'est pas une preuve d'équivalence.
+\end{itemize}
+\par\vspace{2mm}
+{\tiny\src{results/analysis/report.json}{Ratios et bornes exacts}\,|\,\src{results/analysis/bootstrap.npz}{Tirages bootstrap}\,|\,\src{src/analysis.py}{Analyse}}
+\end{frame}
+
+\begin{frame}{Tailles d'apprentissage : des performances dépendantes du régime}
+\centering\plot{training}{1}\figsource{training}
+\par\vspace{2mm}
+\small Les tailles sont imbriquées dans chaque entraînement ; le test reste commun. La dispersion entre cinq entraînements est distincte de l'incertitude conditionnelle. Comparaisons secondaires descriptives.
+\end{frame}
+
+\begin{frame}{Le poids de la cible H1 dépend de la couverture}
+\centering\plot{gamma}{.98}\figsource{gamma}
+\par\vspace{2mm}
+\small À $N=64$, capteurs complets : $\gamma=(1;1;0,6;1;0,6)$. Avec 32 contigus : $\gamma=(0;0,1;0,1;0,03;0,1)$. Une sélection à l'extrémité est conservée, sans élargir la grille après test.
+\end{frame}
+
+\begin{frame}{Même $\alpha$ : isoler l'effet du changement de covariance}
+\centering\plot{matched}{.98}\figsource{matched}
+\par\vspace{2mm}
+\small M0\_at\_S et H1m\_at\_S utilisent le $\alpha$ choisi pour S : seuls les mélanges de covariance changent. Ce diagnostic n'est pas une comparaison de trois méthodes chacune réglée au mieux, ni un second contraste confirmatoire.
+\end{frame}
+
+\begin{frame}{Robustesse : les dégradations restent dans le bilan}
+\begin{columns}[c]
+\column{.72\textwidth}
+\centering\plot{robustness}{1}\figsource{robustness}
+\column{.26\textwidth}
+\small S face à M0, $N=64$ :
+\par\vspace{3mm}
+Rugueux, complet :\par
+\alert{+1,37\,\%} de risque.
+\par\vspace{3mm}
+Hauteur $+10\,\%$, complet :\par
+\alert{+2,66\,\%}.
+\par\vspace{3mm}
+Hauteur $+10\,\%$, partiel :\par
+\alert{+1,89\,\%}.
+\par\vspace{3mm}
+\scriptsize Ratios des risques moyens sur cinq entraînements ; descriptifs, sans preuve secondaire corrigée.
+\end{columns}
+\par\vspace{2mm}
+\small Au nominal complet, Diag obtient aussi un risque moyen inférieur à S. Aucun avantage universel de la covariance mélangée n'est établi.
+\end{frame}
+
+\begin{frame}{Contrôles ciblés et limites de portée}
+\begin{columns}[T]
+\column{.49\textwidth}
+\textbf{Vérifications}
+\begin{itemize}
+\item Audit des archives de l'étude 2 : gel, partitions, scalaires et projections ; aucune anomalie substantielle détectée.
+\item 17 tests réussis : extrémités, covariance singulière, E/H1 historiques, sélection et bootstrap.
+\item Pilote séparé réussi ; aucune panne numérique dans la campagne.
+\end{itemize}
+\column{.49\textwidth}
+\textbf{Limites}
+\begin{itemize}
+\item Simulation gaussienne, même géométrie ; aucune donnée expérimentale réelle.
+\item Cible H1 imposée, grilles finies et validation uniquement nominale.
+\item Cinq entraînements ; incertitude conditionnelle aux modèles observés.
+\item S examine 140 candidats, contre 20 par comparateur.
+\end{itemize}
+\end{columns}
+\par\vspace{3mm}
+\scriptsize Campagne seule : 7,69 s CPU, pic 98,1 Mo RAM, sorties 63,5 Mo. Plafonds globaux : 4 h CPU, 2 Gio RAM, 200 Mo de nouvelles sorties. Aucun service payant, GPU ou FreeFem.\par
+\src{AUDIT_STUDY2.md}{Audit préalable}\,|\,\src{results/tests.json}{Tests ciblés}\,|\,\src{results/final/report.json}{Bilan de campagne}
+\end{frame}
+
+\begin{frame}{Conclusion, attribution et contact}
+\begin{block}{Conclusion}
+La cible H1 apporte une amélioration ponctuelle au nominal complet ; le gain utile fixé à 3\,\% n'est pas établi. La marge de non-dégradation partielle est satisfaite conditionnellement, mais des dégradations secondaires subsistent.
+\end{block}
+\small
+Antériorités : Ledoit--Wolf (2004), Alberti et al. (NeurIPS 2021), Burger--Kabri (2024), Tajani--Abouchabaka (2018). \src{SOURCES.md}{Références et portée des lectures}. Aucun algorithme nouveau revendiqué ; aucune garantie transférée sans preuve.
+\par\vspace{2mm}
+Code, analyse et rédaction avec assistance d'IA ; validation académique relevant de l'auteur et de l'encadrant. Les logos ne valent pas approbation des résultats.
+\par\vspace{2mm}
+\textbf{Halhoul Mhamed}\par
+\href{mailto:halhoul.mhamed@etu.uae.ac.ma}{halhoul.mhamed@etu.uae.ac.ma}\par
+\href{mailto:halhoulmhamed@gmail.com}{halhoulmhamed@gmail.com}\par
+\href{https://github.com/halhoulmhamed-droid/inverse-laplace-learning}{Dépôt public inverse-laplace-learning}\par
+\par\vspace{2mm}
+{\tiny Version scientifique : \texttt{\DataCommit}}
+\end{frame}
+\end{document}

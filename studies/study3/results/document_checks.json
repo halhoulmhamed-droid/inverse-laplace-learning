@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-10-11T15:35:07.218164+00:00",
+  "baseline_commit": "1f11fea35d5367a355901c3866d21f5b3b21a5b0",
+  "scientific_commit": "867144db98eba3c0f5fe7cece4261918a46f1c31",
+  "baseline_files_preserved": 629,
+  "baseline_sha256_inventory_digest": "0119cb863838db149f5b6df7b6180392929818bf10005fd3f50f93385a33d569",
+  "changes_only_under": "studies/study3/",
+  "freeze_and_tested_sources_unchanged": true,
+  "logo_sha256": {
+    "university.png": "225552e504ed640284005fa060b2aeccb89a5fd8e94bc6904ce27c05d3372e5b",
+    "faculty.png": "0e9941ae6991d05d3322966e561a9d4ebe7c3f0cdc557bec661755a5c913db73"
+  },
+  "documents": {
+    "report": {
+      "pages": 13,
+      "unique_links": 24,
+      "pdf_sha256": "17e9989cf0d283e5f3ae4b006140101212370d6aa43ad50bb257bf0bdd616fd5",
+      "latex_sha256": "233c9ae4cc7a9846d9cd393d2bdaee31a47776c0fe49110d0b227e92fb5f0147",
+      "all_pages_visually_reviewed": true,
+      "clipping_or_overlap_detected": false,
+      "cover_logo_pixels_and_proportions_verified": true,
+      "latex_final_warnings": 0
+    },
+    "slides": {
+      "pages": 14,
+      "unique_links": 22,
+      "pdf_sha256": "caafde5cc735390104309eb729d73a165907c45949ae8b6ff396b338d063dcc9",
+      "latex_sha256": "a38f47b069b84d4b28c42d4b36dbed703e0afe178770a91da0940150a1c611f4",
+      "all_pages_visually_reviewed": true,
+      "clipping_or_overlap_detected": false,
+      "cover_logo_pixels_and_proportions_verified": true,
+      "latex_final_warnings": 0
+    }
+  },
+  "five_figures_visually_reviewed": true,
+  "pdf_scientific_targets_exist_at_immutable_commit": true,
+  "independent_content_review": "passed; sufficient-condition clarification documented after campaign without altering freeze",
+  "tests": {
+    "passed": 17,
+    "rerun_after_campaign": false,
+    "reason": "tested scientific sources unchanged"
+  },
+  "remote_checks": "performed after final commit and push; evidence kept privately"
+}
