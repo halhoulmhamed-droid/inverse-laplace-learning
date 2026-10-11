@@ -185,9 +185,10 @@ def run(args):
         e=errors(0,mi,ri).mean(axis=1);r=metrics['residual_nominal'][0,mi,1,ri].mean(axis=1)
         scatter_data[name+'_errors']=e;scatter_data[name+'_residuals']=r
         for j in range(11):axes[ci].scatter(r[:,j],e[:,j],s=5,alpha=.45,color=colors[j],label=LABELS[j],rasterized=True)
-        axes[ci].set(xscale='log',yscale='log',title=name+' — entraînement 0',xlabel='Résidu nominal moyen',ylabel='Erreur relative moyenne')
+        axes[ci].set(xscale='linear',yscale='log',title=name+' — entraînement 0',xlabel='Résidu nominal moyen',ylabel='Erreur relative moyenne')
+        axes[ci].ticklabel_format(axis='x',style='sci',scilimits=(0,0))
         hidden=int(np.count_nonzero(~np.isfinite(r)|~np.isfinite(e)|(r<=0)|(e<=0)))
-        axes[ci].text(.02,.02,f'{hidden} couples non représentables en log (conservés)',transform=axes[ci].transAxes,fontsize=6)
+        axes[ci].text(.02,.02,f'{hidden} couples non représentables (conservés)',transform=axes[ci].transAxes,fontsize=6)
     fig.legend(*axes[0].get_legend_handles_labels(),loc='lower center',ncol=4,bbox_to_anchor=(.5,-.17))
     save('residu_erreur',fig,scatter_data,'Moyennes objet sur dix réalisations ; toutes méthodes, aucun filtrage succès seuls')
     x=np.linspace(0,1,257);basis=np.sqrt(2)*np.cos(np.pi*x[:,None]*np.arange(cfg['K']));basis[:,0]=1
