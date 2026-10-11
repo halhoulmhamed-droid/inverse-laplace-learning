@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "failures": [],
+  "cpu_seconds": 0.10364914500000003,
+  "wall_seconds": 0.10167686600107118,
+  "peak_rss_bytes": 59457536,
+  "bytes": 935327,
+  "reconstructions": 2496,
+  "max_operator_projection_error": 2.6068036618198676e-13,
+  "diagnostics": [
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0,
+      "identity_error": 3.5735303605122226e-16
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "full",
+      "failures": 0,
+      "identity_error": 5.2909066017292616e-17
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "quarter",
+      "failures": 0,
+      "identity_error": 7.389922007661198e-16
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "height10",
+      "failures": 0,
+      "identity_error": 2.8796409701215e-16
+    }
+  ],
+  "estimated_final_cpu_with_10x_margin": 1295.6143125000003,
+  "estimated_final_bytes_raw": 103000000,
+  "feasibility_pass": true
+}

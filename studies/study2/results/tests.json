@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "tests_run": 11,
+  "failures": 0,
+  "errors": 0,
+  "cpu_seconds": 0.06793376200000001,
+  "source_hashes": {
+    "src/run.py": "9279f86113506688fe9d30d044c48523c0b675a5067d89a36a2cb2181bb46142",
+    "src/bounded.py": "fe678730e46ae7424a31365ce973c073692266e302e52684139a33ad9023de0d",
+    "src/analysis.py": "acbcca9c1576c2e36bed1b48b9ad124e89c6d7d38fac3876ae5e9718d43fb166",
+    "src/model.py": "7766f60d1d19e9816102837a5700d5b0968c108f4b76335fb604f1dd3c199851",
+    "tests/test_study2.py": "b8a2d75c7916497e6fdc1321051a4afb85c8b57f72d5b4b65a625b1f04280704"
+  }
+}
