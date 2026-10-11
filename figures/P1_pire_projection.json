@@ -1,0 +1,9 @@
+{
+  "source": "figures/P1_pire.npz",
+  "source_sha256": "07b941afee1feb72b8d960aa525f869425fae51de9bf690baf2d8401830d1441",
+  "script": "scripts/presentation_figures.py",
+  "object": 197,
+  "repetition": 0,
+  "methods": "all eleven, same inputs",
+  "cpu_seconds": 0.499301
+}
