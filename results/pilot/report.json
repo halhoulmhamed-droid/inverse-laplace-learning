@@ -1,0 +1,65 @@
+{
+  "mode": "pilot",
+  "complete": true,
+  "verdict": "PASS",
+  "failures": 0,
+  "cpu_seconds": 5.079884999999999,
+  "peak_rss_bytes": 69259264,
+  "stored_bytes": 477922,
+  "elapsed_seconds": 0.08664363700154354,
+  "timing": {
+    "fit_cpu": 0.026266999999999957,
+    "test_cpu": 0.005168000000000006,
+    "conditions": 2,
+    "reconstructions": 704
+  },
+  "reconstruction_count": 704,
+  "controls": {
+    "fine_grid_cpu_seconds": 0.03372999999999998,
+    "modal_relative_errors": [
+      8.140336996128769e-14,
+      6.0861713789262775e-06,
+      2.211338683922076e-05,
+      0.0001483980454933428,
+      0.00042754748880918623,
+      0.0009171474823373606,
+      0.0016767131482354348,
+      0.002766207518292817,
+      0.004245835892637122
+    ],
+    "noiseless_object_ids": [
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ]
+  },
+  "independent_tests_report_sha256": "7d3b72ceca64ab59e85a9d046ab64837090d950a44a1fb7130daf02199e2d974",
+  "prior_cpu_debit_seconds": 5.0,
+  "feasibility": {
+    "full": {
+      "estimated_total_cpu_seconds_with_margin": 5687.034135000001,
+      "fit_cpu": 118.20149999999981,
+      "test_cpu": 69.76800000000009,
+      "preparation_and_analysis_reserve": 3600
+    },
+    "fallback": {
+      "estimated_total_cpu_seconds_with_margin": 5414.672056875,
+      "fit_cpu": 4.432556249999993,
+      "test_cpu": 1.9622250000000023,
+      "preparation_and_analysis_reserve": 3600
+    }
+  }
+}

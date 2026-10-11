@@ -1,0 +1,104 @@
+{
+  "train_0": [
+    {
+      "path": "truth/train_0.0000.npy",
+      "shape": [
+        878,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 899200,
+      "sha256": "b68bb7d9deb34dd5d1df6b272a5e3ce459bf506e3a1b9d193397a79fb9ba3b65"
+    },
+    {
+      "path": "truth/train_0.0001.npy",
+      "shape": [
+        122,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 125056,
+      "sha256": "c617ec0f7fd4bf746df09002375751df032d97a2bb3945aa38118ceb7df0b268"
+    }
+  ],
+  "train_1": [
+    {
+      "path": "truth/train_1.0000.npy",
+      "shape": [
+        878,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 899200,
+      "sha256": "8b3d49a9e2e442581b2a1b3fe4d3372a6e4d47a08c03e99b0f818560f87ee219"
+    },
+    {
+      "path": "truth/train_1.0001.npy",
+      "shape": [
+        122,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 125056,
+      "sha256": "3bd2852ddcd57efa04297b7efe2ef421f6d6aa6715f58dcc0a66b27e8c74d72f"
+    }
+  ],
+  "train_2": [
+    {
+      "path": "truth/train_2.0000.npy",
+      "shape": [
+        878,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 899200,
+      "sha256": "3ca48ffe42830de0f6fc8a76a92a02003640ecc45811e5a6d6b44dd70c41b46f"
+    },
+    {
+      "path": "truth/train_2.0001.npy",
+      "shape": [
+        122,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 125056,
+      "sha256": "91602483f16a1bb5e6924b899fb2581dd961e477585b2dabd8a9a2e2e6eb311a"
+    }
+  ],
+  "validation": [
+    {
+      "path": "truth/validation.0000.npy",
+      "shape": [
+        200,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 204928,
+      "sha256": "55c3a21f2d1e3b864f05c55284df59d59eb74d8620ac09dc9432a34e20653876"
+    }
+  ],
+  "nominal": [
+    {
+      "path": "truth/nominal.0000.npy",
+      "shape": [
+        200,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 204928,
+      "sha256": "eb5938106de9b50a2c4776aad05d60e599fd2d9143ea5ce8c084a9a4f457dfd3"
+    }
+  ],
+  "rough": [
+    {
+      "path": "truth/rough.0000.npy",
+      "shape": [
+        200,
+        128
+      ],
+      "dtype": "<f8",
+      "bytes": 204928,
+      "sha256": "6efa57ebedb330c7003a1075fcffa0c55f136916081a6a79e9a6df536d62aed6"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "tests_run": 31,
+  "cpu_seconds": 0.390665,
+  "source_sha256": {
+    "data.py": "28fa4e92b3e8cc58a3c02eafbd4137a0d0e724189cd2bd1056939ce5199b1ac9",
+    "direct.py": "ae7c9e853eacee824387540b8902620722b2168a2039ec19611e545f0036416e",
+    "experiment.py": "30eeaa61351a2c4d4467dd1f164a93a026ef9679cbf721a09da46996675f7e15",
+    "filters.py": "279fff09c871ae5d07ffea8ea3dc8df432fe2883f33c5ff04ecc58fd7c2d92c9",
+    "metrics.py": "34e71caafcd48ef3da42ee9b2a61b3b54dd2da3e919865bdd82da4d5f5e91865",
+    "storage.py": "7f54e67b4c7bc3ad7f95ec5039f0aa04525233d9701a2eecfd2578fcc52e1dd6"
+  },
+  "test_sha256": {
+    "test_data.py": "6ee7ad47f87fc17ac2524b39924ba182d264705d68d31e64619dc3aa2a4ba1c3",
+    "test_direct.py": "110a883f4604332f2d6194198e1a1425d5bf502689bbd6f744f7e155670d5774",
+    "test_filters.py": "805ce87d1ae8f898d840ee410bbf402ac9567ac9a98ed21c6bb4a60996ac7b97",
+    "test_metrics.py": "2b9f17f0c60c2d8f017c9fe03afc97ddf9c1f9232e6ecd954e75ee58fc3e349f",
+    "test_storage.py": "e1f07423f8a8f0293ec204626ee2f6f212e22dc0756762681c288a46906f9c8c"
+  }
+}

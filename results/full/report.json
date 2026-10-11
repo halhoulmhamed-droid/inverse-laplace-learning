@@ -1,0 +1,20 @@
+{
+  "mode": "full",
+  "complete": true,
+  "verdict": "PASS",
+  "failures": 0,
+  "cpu_seconds": 9.514339999999999,
+  "peak_rss_bytes": 181538816,
+  "stored_bytes": 110590797,
+  "elapsed_seconds": 4.541823827999906,
+  "timing": {
+    "fit_cpu": 0.6675830000000011,
+    "test_cpu": 3.409173999999998,
+    "conditions": 27,
+    "reconstructions": 2376000
+  },
+  "reconstruction_count": 2376000,
+  "controls": {},
+  "independent_tests_report_sha256": "7d3b72ceca64ab59e85a9d046ab64837090d950a44a1fb7130daf02199e2d974",
+  "prior_cpu_debit_seconds": 5.079884999999999
+}

@@ -1,0 +1,50 @@
+{
+  "train_0": [
+    {
+      "path": "truth/train_0.0000.npy",
+      "shape": [
+        24,
+        64
+      ],
+      "dtype": "<f8",
+      "bytes": 12416,
+      "sha256": "867760a297afc3cfe8a55f4365f9a052f75f5da62cc4681b6126ebd0f557ec93"
+    }
+  ],
+  "validation": [
+    {
+      "path": "truth/validation.0000.npy",
+      "shape": [
+        8,
+        64
+      ],
+      "dtype": "<f8",
+      "bytes": 4224,
+      "sha256": "073a3982e2969f8a0e2d985aca8c724beeae50bb09a76aa778bb9575482185ff"
+    }
+  ],
+  "nominal": [
+    {
+      "path": "truth/nominal.0000.npy",
+      "shape": [
+        8,
+        64
+      ],
+      "dtype": "<f8",
+      "bytes": 4224,
+      "sha256": "03bec7b4a33cf0c5d15a9fade0a6fae1004227343d0a87fbffa379c50b794700"
+    }
+  ],
+  "rough": [
+    {
+      "path": "truth/rough.0000.npy",
+      "shape": [
+        0,
+        64
+      ],
+      "dtype": "<f8",
+      "bytes": 128,
+      "sha256": "a0e26fbe1c8ca223f2403b44b1dcb14fa38f1c54f6a78f24a0df64c617f439fe"
+    }
+  ]
+}

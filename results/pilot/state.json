@@ -1,0 +1,21 @@
+{
+  "completed": [
+    "0_0_0",
+    "0_1_0"
+  ],
+  "cpu_seconds": 5.079884999999999,
+  "running": false,
+  "reservation_cpu_seconds": 0,
+  "condition_hashes": {
+    "0_0_0": "3032556a353ee2f7cddd9091ad3f1e80d6eb082af29eb082c63875b2ce6c5f96",
+    "0_1_0": "c6defd0b7019f540b6ebed17b63b27be84b3831ffd45d72697d8df1281d3d85f"
+  },
+  "peak_rss_bytes": 69259264,
+  "stored_bytes": 477829,
+  "timing": {
+    "fit_cpu": 0.026266999999999957,
+    "test_cpu": 0.005168000000000006,
+    "conditions": 2,
+    "reconstructions": 704
+  }
+}

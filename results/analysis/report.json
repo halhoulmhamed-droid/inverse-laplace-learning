@@ -1,0 +1,28 @@
+{
+  "verdict": "PASS",
+  "complete": true,
+  "campaign_integrity_verified": true,
+  "conditions": 27,
+  "aggregate_rows": 1188,
+  "failures": 0,
+  "analysis_cpu_seconds": 1.089119251,
+  "cpu_seconds": 20.794452251,
+  "cumulative_cpu_seconds": 20.794452251,
+  "extra_prior_cpu_seconds": 10.190993,
+  "peak_rss_bytes": 135245824,
+  "files": {
+    "summary.csv": {
+      "bytes": 546997,
+      "sha256": "2c3145ddb48b77080177486bcb9d26bec347a81fcfb749fc29b0b8936d8d94b3"
+    },
+    "primary.json": {
+      "bytes": 2326,
+      "sha256": "0a4dbf1ddcde635e037988925de9408d94b9be1a7d6d2c8b3f12d5bf7781cb35"
+    },
+    "bootstrap.npz": {
+      "bytes": 193570,
+      "sha256": "cea0b4e3c5186afa6bed212b041c9eeaa3d76aa5ab614699bb86387170afe4be"
+    }
+  },
+  "analysis_script_sha256": "ec2f4d2b07a1197462f491d318be4e2b081b6ae166e353b0ab2669f6b3aeb8bb"
+}

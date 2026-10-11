@@ -1,0 +1,86 @@
+{
+  "candidates_0_0_0.json": {
+    "bytes": 30139,
+    "sha256": "3c0a71fde0ab7991c98856cab9ed9e9aa32335ee5a0babc3df8b657c95ce2adc"
+  },
+  "candidates_0_1_0.json": {
+    "bytes": 29486,
+    "sha256": "6c262e58b76b50e1e255138cd18bf61ee21922dc9d3e7dbeeb507f28c91f7cad"
+  },
+  "configuration.json": {
+    "bytes": 1804,
+    "sha256": "8b25cabc9af8eacf4ebf2e024fff973c9c12e552fe0fdb52a3bb040dbb05c98f"
+  },
+  "error_abs.npy": {
+    "bytes": 5760,
+    "sha256": "755094d7ec7bac486609e9f8e6c583d5f2aa0b04de93e57a1d4c053e037b07a2"
+  },
+  "estimators_0_0_0.npz": {
+    "bytes": 223750,
+    "sha256": "faf64775ac6824b8a44a09cafea32ec248ae7acbfff0992863dbbf3c88e3636e"
+  },
+  "estimators_0_1_0.npz": {
+    "bytes": 118790,
+    "sha256": "0176014f265c9bb2234e1f1491092123da244d4b8faaa69621b412e449afc36c"
+  },
+  "noiseless_controls.npz": {
+    "bytes": 16918,
+    "sha256": "9cfad377b8e393d75aac968e2372d8a10a53c398bc149aba35495634e8c93dc8"
+  },
+  "null.npy": {
+    "bytes": 5760,
+    "sha256": "0c86f09397400c631e227fc35a609d0aa59fc187eaa953e7c991057404527f9a"
+  },
+  "report.json": {
+    "bytes": 1534,
+    "sha256": "7c0c1e15c1e9554c85f4fb5c802973efed7c0c29d6964c1f508b8e7a38d261ee"
+  },
+  "residual_independent.npy": {
+    "bytes": 5760,
+    "sha256": "046a0b4039d6dceab5e6a47a6124dd6d7bb20e81631ced78dbe6dc8930b12100"
+  },
+  "residual_nominal.npy": {
+    "bytes": 5760,
+    "sha256": "299ffaaa8a559c1ae2ee24d5dd60075882715a3f3bbeef8310d4f7aaec52ab92"
+  },
+  "selection_0_0_0.json": {
+    "bytes": 1915,
+    "sha256": "05f2907420f7d53b41b8f60baa645400418182d6f9de2f9df8d3b3f22fc257fd"
+  },
+  "selection_0_1_0.json": {
+    "bytes": 1904,
+    "sha256": "0dfe1a7cb96da2b05a3e774e5709d03c681f765e896006a6164283218a2c5387"
+  },
+  "state.json": {
+    "bytes": 526,
+    "sha256": "c8d0304b8540877f711f753e6e2c8786ca25d28dac856b2136b9a6393363bab9"
+  },
+  "status.npy": {
+    "bytes": 832,
+    "sha256": "cf9b057e52d4bddbf0b6cf2e66c558edd7d0c77f48bf3e63d0fe73d8aa8ad814"
+  },
+  "truth/nominal.0000.npy": {
+    "bytes": 4224,
+    "sha256": "03bec7b4a33cf0c5d15a9fade0a6fae1004227343d0a87fbffa379c50b794700"
+  },
+  "truth/rough.0000.npy": {
+    "bytes": 128,
+    "sha256": "a0e26fbe1c8ca223f2403b44b1dcb14fa38f1c54f6a78f24a0df64c617f439fe"
+  },
+  "truth/train_0.0000.npy": {
+    "bytes": 12416,
+    "sha256": "867760a297afc3cfe8a55f4365f9a052f75f5da62cc4681b6126ebd0f557ec93"
+  },
+  "truth/validation.0000.npy": {
+    "bytes": 4224,
+    "sha256": "073a3982e2969f8a0e2d985aca8c724beeae50bb09a76aa778bb9575482185ff"
+  },
+  "truth_manifest.json": {
+    "bytes": 990,
+    "sha256": "9212df2ef26d0237d1e5fb82f0b251cea6c02b0e768d42744222fc06e29f5809"
+  },
+  "visible.npy": {
+    "bytes": 5760,
+    "sha256": "a92b0d54622f719feaee57e6d59cafe623cbb8db38cdea097f626657d786cf07"
+  }
+}

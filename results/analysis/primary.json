@@ -1,0 +1,93 @@
+{
+  "comparisons": [
+    {
+      "contrast": "P1",
+      "training": 0,
+      "q95_ratio": 0.9709612624017456,
+      "median_ratio": 0.9876076670635348,
+      "upper_q95": 0.9990760718885638,
+      "upper_median": 1.0012697333678706,
+      "invalid_q95": 0,
+      "invalid_median": 0,
+      "verdict": "NOT_SATISFIED"
+    },
+    {
+      "contrast": "P2",
+      "training": 0,
+      "q95_ratio": 1.0,
+      "median_ratio": 1.0,
+      "upper_q95": 1.0,
+      "upper_median": 1.0,
+      "invalid_q95": 0,
+      "invalid_median": 0,
+      "verdict": "NOT_SATISFIED"
+    },
+    {
+      "contrast": "P1",
+      "training": 1,
+      "q95_ratio": 0.984982115755912,
+      "median_ratio": 0.992997550626842,
+      "upper_q95": 1.0011709846656962,
+      "upper_median": 1.003499071933846,
+      "invalid_q95": 0,
+      "invalid_median": 0,
+      "verdict": "NOT_SATISFIED"
+    },
+    {
+      "contrast": "P2",
+      "training": 1,
+      "q95_ratio": 1.0,
+      "median_ratio": 1.0,
+      "upper_q95": 1.0,
+      "upper_median": 1.0,
+      "invalid_q95": 0,
+      "invalid_median": 0,
+      "verdict": "NOT_SATISFIED"
+    },
+    {
+      "contrast": "P1",
+      "training": 2,
+      "q95_ratio": 0.9898670694601029,
+      "median_ratio": 0.9901849235571046,
+      "upper_q95": 1.0030828758518755,
+      "upper_median": 1.0034043803667976,
+      "invalid_q95": 0,
+      "invalid_median": 0,
+      "verdict": "NOT_SATISFIED"
+    },
+    {
+      "contrast": "P2",
+      "training": 2,
+      "q95_ratio": 1.0,
+      "median_ratio": 1.0,
+      "upper_q95": 1.0,
+      "upper_median": 1.0,
+      "invalid_q95": 0,
+      "invalid_median": 0,
+      "verdict": "NOT_SATISFIED"
+    }
+  ],
+  "diagnostics": {
+    "P1": {
+      "median": 110,
+      "q95": 168,
+      "worst": 197,
+      "low_residual_high_error": 183,
+      "failure": null,
+      "repeat": 0
+    },
+    "P2": {
+      "median": 132,
+      "q95": 35,
+      "worst": 197,
+      "low_residual_high_error": 138,
+      "failure": null,
+      "repeat": 0
+    }
+  },
+  "robust_across_trainings": false,
+  "coverage": "Bonferroni four ratios conditional on each training; no simultaneous three-training coverage",
+  "quantile": "ceil(q*N), no interpolation",
+  "bootstrap_object_draws": 2000,
+  "campaign_manifest_sha256": "4a6c5140536290a066a628cf893f15569e5457cccb02df2d373a86673927f976"
+}

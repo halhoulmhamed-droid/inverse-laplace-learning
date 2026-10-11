@@ -1,0 +1,6 @@
+{
+  "success": true,
+  "scope": "Copied scientific modules, scripts and tests; existing pinned environment; no repeated campaign",
+  "exit_code": 0,
+  "fixture_correction": "First isolated copy omitted scripts required by analysis tests; corrected without scientific code change"
+}

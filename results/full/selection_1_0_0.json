@@ -1,0 +1,79 @@
+{
+  "tikhonov_l2": {
+    "parameter": 6.158482110660267e-05,
+    "grid_index": 10.0,
+    "operator_norm": 63.503406606533716,
+    "valid": true,
+    "score": 1.0127928156651656e-06
+  },
+  "tikhonov_h1": {
+    "parameter": 0.012742749857031322,
+    "grid_index": 14.0,
+    "operator_norm": 40.50926366312705,
+    "valid": true,
+    "score": 1.0053771635957807e-06
+  },
+  "tsvd": {
+    "parameter": 6.0,
+    "grid_index": 2.0,
+    "operator_norm": 25.083986551747227,
+    "valid": true,
+    "score": 1.0267946817530088e-06
+  },
+  "wiener": {
+    "parameter": null,
+    "grid_index": 0.0,
+    "operator_norm": 37.89325683226616,
+    "valid": true,
+    "score": 1.0053788979058237e-06
+  },
+  "wiener_cap": {
+    "parameter": 48.32930238571752,
+    "grid_index": 8.0,
+    "operator_norm": 37.89325683226616,
+    "valid": true,
+    "score": 1.0053788979058237e-06
+  },
+  "learned_signed": {
+    "parameter": null,
+    "grid_index": 0.0,
+    "operator_norm": 39.17135101706525,
+    "valid": true,
+    "score": 1.007613844660629e-06
+  },
+  "learned_signed_cap": {
+    "parameter": 48.32930238571752,
+    "grid_index": 8.0,
+    "operator_norm": 39.17135101706525,
+    "valid": true,
+    "score": 1.007613844660629e-06
+  },
+  "learned_positive": {
+    "parameter": null,
+    "grid_index": 0.0,
+    "operator_norm": 39.17135101706525,
+    "valid": true,
+    "score": 1.007613826055215e-06
+  },
+  "learned_bounded": {
+    "parameter": null,
+    "grid_index": 0.0,
+    "operator_norm": 39.17135101706525,
+    "valid": true,
+    "score": 1.0061969209808257e-06
+  },
+  "learned_bounded_cap": {
+    "parameter": 48.32930238571752,
+    "grid_index": 8.0,
+    "operator_norm": 39.17135101706525,
+    "valid": true,
+    "score": 1.0061969209808257e-06
+  },
+  "lmmse": {
+    "parameter": 1.1288378916846883e-06,
+    "grid_index": 7.0,
+    "operator_norm": 28.99377720628609,
+    "valid": true,
+    "score": 1.0087793766946654e-06
+  }
+}

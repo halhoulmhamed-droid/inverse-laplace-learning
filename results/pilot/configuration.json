@@ -1,0 +1,91 @@
+{
+  "design": {
+    "mode": "pilot",
+    "n": 32,
+    "K": 64,
+    "nx": 32,
+    "ny": 8,
+    "train": 24,
+    "validation": 8,
+    "test": 8,
+    "repetitions": 2,
+    "games": 1,
+    "masks": [
+      "full",
+      "contiguous"
+    ],
+    "levels": [
+      0.01
+    ],
+    "regimes": [
+      "nominal",
+      "height_5"
+    ]
+  },
+  "source_sha256": {
+    "data.py": "28fa4e92b3e8cc58a3c02eafbd4137a0d0e724189cd2bd1056939ce5199b1ac9",
+    "direct.py": "ae7c9e853eacee824387540b8902620722b2168a2039ec19611e545f0036416e",
+    "experiment.py": "30eeaa61351a2c4d4467dd1f164a93a026ef9679cbf721a09da46996675f7e15",
+    "filters.py": "279fff09c871ae5d07ffea8ea3dc8df432fe2883f33c5ff04ecc58fd7c2d92c9",
+    "metrics.py": "34e71caafcd48ef3da42ee9b2a61b3b54dd2da3e919865bdd82da4d5f5e91865",
+    "storage.py": "7f54e67b4c7bc3ad7f95ec5039f0aa04525233d9701a2eecfd2578fcc52e1dd6"
+  },
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "seed_root": 20261011,
+  "axes": [
+    "training",
+    "mask",
+    "noise",
+    "regime",
+    "object",
+    "repeat",
+    "method"
+  ],
+  "methods": [
+    "tikhonov_l2",
+    "tikhonov_h1",
+    "tsvd",
+    "wiener",
+    "wiener_cap",
+    "learned_signed",
+    "learned_signed_cap",
+    "learned_positive",
+    "learned_bounded",
+    "learned_bounded_cap",
+    "lmmse"
+  ],
+  "metrics": [
+    "error_abs",
+    "visible",
+    "null",
+    "residual_nominal",
+    "residual_independent"
+  ],
+  "entry_status": {
+    "success": 0,
+    "numerical_failure": 1,
+    "metric_failure": 2,
+    "family_failure": 4,
+    "missing": 128
+  },
+  "pilot_ids": {
+    "train": [
+      0,
+      23
+    ],
+    "validation": [
+      24,
+      31
+    ],
+    "test": [
+      32,
+      39
+    ],
+    "noiseless": [
+      40,
+      55
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite this academic project and the underlying references when using these results."
+title: "Laplace data completion by learned spectral filtering"
+authors:
+  - family-names: "Halhoul"
+    given-names: "Mhamed"
+type: software
+repository-code: "https://github.com/halhoulmhamed-droid/inverse-laplace-learning"
+abstract: "Projet scientifique de Master: reproducible comparison of spectral filters under partial observations, noise and operator mismatch."
