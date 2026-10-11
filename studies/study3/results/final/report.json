@@ -1,0 +1,914 @@
+{
+  "success": true,
+  "failures": [],
+  "invalid_candidates": 0,
+  "conditions": 150,
+  "fits": 90,
+  "reconstructions": 1920000,
+  "cpu_seconds": 7.507798923999999,
+  "wall_seconds": 7.506619436000619,
+  "peak_rss_bytes": 98070528,
+  "bytes": 63533856,
+  "records": [
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 0,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 0,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 0,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 1,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 1,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 1,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 2,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 2,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 2,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 3,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 3,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 3,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 32,
+      "game": 4,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 64,
+      "game": 4,
+      "scenario": "height_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "primary",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "even32",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "quarter",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "noise_low",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "noise_high",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "rough_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "rough_partial",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "height_full",
+      "failures": 0
+    },
+    {
+      "N": 256,
+      "game": 4,
+      "scenario": "height_partial",
+      "failures": 0
+    }
+  ]
+}

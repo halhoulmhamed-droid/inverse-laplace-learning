@@ -1,0 +1,42 @@
+[
+  {
+    "name": "primary",
+    "data": "figures/primary.npz",
+    "figure": "figures/primary.pdf",
+    "script": "src/figures.py",
+    "configuration": "results/final/configuration.json",
+    "analysis": "src/analysis.py"
+  },
+  {
+    "name": "training",
+    "data": "figures/training.npz",
+    "figure": "figures/training.pdf",
+    "script": "src/figures.py",
+    "configuration": "results/final/configuration.json",
+    "analysis": "src/analysis.py"
+  },
+  {
+    "name": "robustness",
+    "data": "figures/robustness.npz",
+    "figure": "figures/robustness.pdf",
+    "script": "src/figures.py",
+    "configuration": "results/final/configuration.json",
+    "analysis": "src/analysis.py"
+  },
+  {
+    "name": "gamma",
+    "data": "figures/gamma.npz",
+    "figure": "figures/gamma.pdf",
+    "script": "src/figures.py",
+    "configuration": "results/final/configuration.json",
+    "analysis": "src/analysis.py"
+  },
+  {
+    "name": "matched",
+    "data": "figures/matched.npz",
+    "figure": "figures/matched.pdf",
+    "script": "src/figures.py",
+    "configuration": "results/final/configuration.json",
+    "analysis": "src/analysis.py"
+  }
+]
